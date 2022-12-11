@@ -1,6 +1,20 @@
 import styled from 'styled-components'
 
 
+const About = () => {
+
+    return (
+        <Section className="section" id="about">
+            <HeadingImage>
+                <Heading>Hi, I'm Edward <br/>
+                And ................</Heading>
+                <Image src="./profile-picture.png"/>
+            </HeadingImage>
+            <Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer quis auctor elit sed vulputate mi sit amet. Odio ut sem nulla pharetra diam sit amet nisl. Diam vel quam elementum pulvinar etiam non quam.</Paragraph>
+        </Section>
+    );
+};
+
 const Image = styled.img`
     max-width: 10rem;
     max-height: 10rem;
@@ -32,20 +46,5 @@ const HeadingImage = styled.div`
     justify-content: space-around;
     align-items: center;
 `
-
-
-const About = () => {
-
-    return (
-        <Section className="section" id="about">
-            <HeadingImage>
-                <Heading>Hi, I'm Edward <br/>
-                And ................</Heading>
-                <Image src="./profile-picture.png"/>
-            </HeadingImage>
-            <Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer quis auctor elit sed vulputate mi sit amet. Odio ut sem nulla pharetra diam sit amet nisl. Diam vel quam elementum pulvinar etiam non quam.</Paragraph>
-        </Section>
-    );
-};
 
 export default About;

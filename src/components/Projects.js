@@ -1,10 +1,98 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components'
-
-import Project from './Project';
-import ProjectList from './ProjectList';
 
 
 const Projects = () => {
+
+    const projectsInfo = [
+        {
+            name: "Budgissimo",
+            description: "This is the description for 1",
+            link: "link.com"
+        },
+        {
+            name: "Trivimon Duel",
+            description: "This is the description for 2",
+            link: "link.com"
+        },
+        {
+            name: "CWV Checker",
+            description: "This is the description for 3",
+            link: "link.com"
+        },
+        {
+            name: "Project 4",
+            description: "This is the description for 4",
+            link: "link.com"
+        },
+        {
+            name: "Project 5",
+            description: "This is the description for 5",
+            link: "link.com"
+        }
+    ]
+
+    const [selectedProject, handleProjectSelection] = useState(projectsInfo[0]);
+
+    useEffect( () => {
+        const project = document.getElementById(projectsInfo.map(project => project.name).indexOf(selectedProject.name));
+        if (project) {
+          project.scrollIntoView({behavior: "smooth"})
+        }
+    }, [selectedProject])
+    
+    const changeSelectedProject = (index) => {
+        const currentProjectIndex = projectsInfo.map(project => project.name).indexOf(selectedProject.name)
+
+        if (typeof index === "number") {
+            handleProjectSelection(projectsInfo[index])
+        } else {
+            if (index === "+1") {
+                if (currentProjectIndex + 1 !== projectsInfo.length) {
+                    handleProjectSelection(projectsInfo[currentProjectIndex + 1])
+                }
+            } else {
+                if (currentProjectIndex - 1 !== -1) {
+                    handleProjectSelection(projectsInfo[currentProjectIndex - 1])
+                }
+            }
+        }
+    }
+
+    const projectNameList = projectsInfo.map((project, index) => {
+        return ( 
+                project.name === selectedProject.name ?
+                <Li><Button key={index}
+                            id={index}
+                            onClick={() => changeSelectedProject(index)} 
+                            active >
+                            {project.name}
+                </Button></Li>
+                :
+                <Li><Button key={index} 
+                onClick={() => changeSelectedProject(index)} >
+                {project.name}
+                </Button></Li>
+        );
+    })
+
+    return (
+        <Section className="section" id="projects">
+            <Heading>My Projects</Heading>
+            <ProjectSection>
+                <Navigation>
+                    <Sidescroll onClick={() => changeSelectedProject("-1")}>&#8249;</Sidescroll>
+                    <List>
+                        {projectNameList}
+                    </List>
+                    <Sidescroll onClick={() => changeSelectedProject("+1")}>&#8250;</Sidescroll>
+                </Navigation>
+                <Paragraph>{selectedProject.description}</Paragraph>
+                <Link>{selectedProject.link}</Link>
+            </ProjectSection>
+        </Section>
+    );
+};
 
 const Section = styled.div`
     justify-content: space-around;
@@ -13,8 +101,35 @@ const Section = styled.div`
 
 const ProjectSection = styled.div`
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
+    flex-direction: column;
+`
+
+const Navigation = styled.nav`
+    display: flex;
+    align-items: center;
+`
+
+const Sidescroll = styled.button`
+    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    background-color: #191c29;
+    color: #f5f5f5;
+    border: 0;
+    margin: 0;
+    border-bottom: 0.1rem solid #2f344a;
+    font-size: 1.4rem;
+    padding: 0.55rem;
+    text-align: center;
+
+    &:hover {
+        background-color: #2f344a;
+        color: #1de0a3;
+    }
+
+    &:active {
+        font-weight: bold;
+        background-color: #2f344a;
+        color: #1de0a3;
+    }
 `
 
 const Heading = styled.h1`
@@ -27,14 +142,45 @@ const Heading = styled.h1`
 const Paragraph = styled.p`
 `
 
-    return (
-        <Section className="section" id="projects">
-            <Heading>My Projects</Heading>
-            <ProjectSection>
-                <ProjectList />
-                <Project />
-            </ProjectSection>
-        </Section>
-    );
-};
+const List = styled.ul`
+    padding: 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    width: 100%;
+    overflow: auto;
+`
+
+const Li = styled.li`
+    list-style: none;
+    margin: 0;
+    width: 100%;
+    display:inline;
+`
+
+const Button = styled.button`
+    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    background-color: ${props => props.active ? "#2f344a" : "transparent"};
+    color: ${props => props.active ? "#1de0a3" : "#f5f5f5"};
+    border: 0;
+    border-bottom: 0.1rem solid #2f344a;
+    padding: 1rem 1.1rem;
+    font-size: 0.8rem;
+    white-space: nowrap; 
+
+    &:hover {
+        background-color: #2f344a;
+        color: #1de0a3;
+    }
+
+    &:active {
+        font-weight: bold;
+    }
+`
+
+const Link = styled.a`
+    font-size: 1.5rem;
+    color: #1de0a3;
+`
+
 export default Projects;
