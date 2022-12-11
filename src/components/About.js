@@ -28,7 +28,7 @@ const About = () => {
                 }}
             />
                 </Heading>
-                <Image src="./profile-picture.png"/>
+                <Image src="./intro.gif"/>
             </HeadingImage>
             <Paragraph>
             I've recently started a Software Development course at CodeClan, which finishes in February 2023. 
@@ -48,9 +48,11 @@ const About = () => {
 };
 
 const Image = styled.img`
-    max-width: 7rem;
+    max-width: 10rem;
     max-height: 7rem;
-    padding-right: 2rem;
+    margin-right: 2rem;
+    border-radius: 50%;
+    border: 0.1rem solid #2f344a;
 
     @media (min-width: 769px) {
     }
@@ -85,7 +87,7 @@ const Heading = styled.h1`
         border-bottom: 0.1rem solid #2f344a;
         
         @media (min-width: 381px) {
-            margin: 0 1.5rem 0 1.5rem;
+            margin: 0 2rem 0 1.5rem;
             width: 100%;
         }
     }

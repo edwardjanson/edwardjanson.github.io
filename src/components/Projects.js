@@ -33,13 +33,6 @@ const Projects = () => {
     ]
 
     const [selectedProject, handleProjectSelection] = useState(projectsInfo[0]);
-
-    useEffect( () => {
-        const project = document.getElementById(projectsInfo.map(project => project.name).indexOf(selectedProject.name));
-        if (project) {
-          project.scrollIntoView({behavior: "smooth"})
-        }
-    }, [selectedProject])
     
     const changeSelectedProject = (index) => {
         const currentProjectIndex = projectsInfo.map(project => project.name).indexOf(selectedProject.name)
@@ -56,6 +49,11 @@ const Projects = () => {
                     handleProjectSelection(projectsInfo[currentProjectIndex - 1])
                 }
             }
+        }
+
+        const project = document.getElementById(projectsInfo.map(project => project.name).indexOf(selectedProject.name));
+        if (project) {
+          project.scrollIntoView({behavior: "smooth"})
         }
     }
 
