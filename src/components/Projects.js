@@ -95,8 +95,8 @@ const Projects = () => {
 };
 
 const Section = styled.div`
+    margin-top: 4rem;
     justify-content: space-around;
-    max-width: 40rem;
 `
 
 const ProjectSection = styled.div`
@@ -136,10 +136,23 @@ const Sidescroll = styled.button`
 `
 
 const Heading = styled.h1`
+    display: flex;
+    align-items: center;
     font-family: "Kadwa";
     font-weight: 900;
     font-size: 2rem;
     color: #1de0a3;
+    width: 100%;
+    white-space: nowrap;
+
+    &:after {
+        content: "";
+        display: inline-block;
+        margin: 0 auto 0 1.5rem;
+        width: 100%;
+        vertical-align: middle;
+        border-bottom: 0.1rem solid #2f344a;
+    }
 `
 
 const Paragraph = styled.p`
@@ -170,7 +183,7 @@ const Button = styled.button`
     color: ${props => props.active ? "#1de0a3" : "#f5f5f5"};
     border: 0;
     border-bottom: 0.1rem solid #2f344a;
-    padding: 1rem 1.1rem;
+    padding: 1rem 1.6rem;
     font-size: 0.8rem;
     white-space: nowrap; 
 
