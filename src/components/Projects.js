@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components'
 
 
@@ -7,32 +7,45 @@ const Projects = () => {
     const projectsInfo = [
         {
             name: "Budgissimo",
-            description: "This is the description for 1",
-            link: "link.com"
+            description: `My first solo capstone project at CodeClan which needed to be built in seven days.
+                            A mobile-first web application with CRUD operations and RESTful routes that allows users
+                            to keep track of their online advertising budgets and spending across multiple platforms and campaigns.`,
+            links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]]
         },
         {
             name: "Trivimon Duel",
             description: "This is the description for 2",
-            link: "link.com"
+            links: [["GitHub", "https://github.com/edwardjanson/trivimon-duel"],
+                    ["Website", "https://edwardjanson.github.io/trivimon-duel/"]]
         },
         {
             name: "CWV Checker",
             description: "This is the description for 3",
-            link: "link.com"
+            links: [["GitHub", "https://github.com/edwardjanson/cs50_final_project"],
+                    ["Website", "https://core-web-vitals-checker.herokuapp.com/"],
+                    ["Video", "https://www.youtube.com/watch?v=VetSbRSZAFE"]]
         },
         {
-            name: "Project 4",
+            name: "Metronome",
             description: "This is the description for 4",
-            link: "link.com"
-        },
-        {
-            name: "Project 5",
-            description: "This is the description for 5",
-            link: "link.com"
+            links: [["GitHub", "https://github.com/edwardjanson/metronome"],
+                    ["Website", "https://edwardjanson.github.io/metronome/"]]
         }
     ]
 
     const [selectedProject, handleProjectSelection] = useState(projectsInfo[0]);
+    const [initialRender, changeInitialRender] = useState(true);
+
+    useEffect( () => {
+        if (initialRender) {
+            changeInitialRender(false);
+          } else {
+            const project = document.getElementById(projectsInfo.map(project => project.name).indexOf(selectedProject.name));
+            if (project) {
+            project.scrollIntoView({behavior: "smooth"})
+        }
+        }
+    }, [selectedProject])
     
     const changeSelectedProject = (index) => {
         const currentProjectIndex = projectsInfo.map(project => project.name).indexOf(selectedProject.name)
@@ -50,27 +63,28 @@ const Projects = () => {
                 }
             }
         }
-
-        const project = document.getElementById(projectsInfo.map(project => project.name).indexOf(selectedProject.name));
-        if (project) {
-          project.scrollIntoView({behavior: "smooth"})
-        }
     }
 
     const projectNameList = projectsInfo.map((project, index) => {
         return ( 
                 project.name === selectedProject.name ?
-                <Li><Button key={index}
+                <Li key={index}><Button key={index}
                             id={index}
                             onClick={() => changeSelectedProject(index)} 
                             active >
                             {project.name}
                 </Button></Li>
                 :
-                <Li><Button key={index} 
+                <Li key={index}><Button key={index} 
                 onClick={() => changeSelectedProject(index)} >
                 {project.name}
                 </Button></Li>
+        );
+    })
+
+    const projectLinkList = selectedProject.links.map((link, index) => {
+        return ( 
+                <Link key={index} href={link[1]} target="blank">&#10157; {link[0]}</Link>
         );
     })
 
@@ -86,7 +100,9 @@ const Projects = () => {
                     <Sidescroll onClick={() => changeSelectedProject("+1")}>&#8250;</Sidescroll>
                 </Navigation>
                 <Paragraph>{selectedProject.description}</Paragraph>
-                <Link>{selectedProject.link}</Link>
+                <Links>
+                    {projectLinkList}
+                </Links>
             </ProjectSection>
         </Section>
     );
@@ -123,12 +139,16 @@ const Sidescroll = styled.button`
 
     &:hover {
         background-position: 0% 100%;
+        cursor: pointer;
         color: #1de0a3;
+
+        @media (hover:none), (hover:on-demand) {
+            background: transparent;
+            color: #f5f5f5;
+        }
     }
 
     &:active {
-        font-weight: bold;
-        background-color: #2f344a;
         color: #1de0a3;
     }
 `
@@ -181,7 +201,7 @@ const Button = styled.button`
     color: ${props => props.active ? "#1de0a3" : "#f5f5f5"};
     border: 0;
     border-bottom: 0.1rem solid #2f344a;
-    padding: 1rem 1.6rem;
+    padding: 1rem 1.5rem;
     font-size: 0.8rem;
     white-space: nowrap; 
 
@@ -191,14 +211,30 @@ const Button = styled.button`
         cursor: pointer;
     }
 
-    &:active {
-        font-weight: bold;
+    @media (min-width: 769px) {
+        padding: 1rem 2.5rem;
+    }
+
+    @media (min-width: 1025px) {
     }
 `
 
+const Links = styled.div`
+    display: flex;
+    gap: 1.5rem;
+    word-spacing: 0.5em;
+`
+
 const Link = styled.a`
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #1de0a3;
+    text-decoration: none;
+    word-spacing: -0.3rem;
+
+    &:hover {
+        font-weight: bold;
+        cursor: pointer;
+    }
 `
 
 export default Projects;

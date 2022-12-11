@@ -23,8 +23,10 @@ const Icon = styled.img`
     max-height: 1.5rem;
     filter: brightness(0) invert(1);
 
-    &:hover {
-        filter: invert(70%) sepia(1) hue-rotate(115deg);
+    @media (hover:hover) {
+        &:hover {
+            filter: invert(70%) sepia(1) hue-rotate(115deg);
+        }
     }
 `
 

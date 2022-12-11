@@ -50,7 +50,6 @@ const About = () => {
 const Image = styled.img`
     max-width: 10rem;
     max-height: 7rem;
-    margin-right: 2rem;
     border-radius: 50%;
     border: 0.1rem solid #2f344a;
 
@@ -72,12 +71,13 @@ const Heading = styled.h1`
     font-weight: 900;
     font-size: 2rem;
     color: #1de0a3;
+    width: 15rem;
+    height: 2rem;
     width: 100%;
 
-    @media (min-width: 381px) {
+    @media (min-width: 410px) {
         white-space: nowrap;
     }
-    
 
     &:after {
         content: "";
@@ -86,7 +86,7 @@ const Heading = styled.h1`
         margin-right: 1rem;
         border-bottom: 0.1rem solid #2f344a;
         
-        @media (min-width: 381px) {
+        @media (min-width: 447px) {
             margin: 0 2rem 0 1.5rem;
             width: 100%;
         }
