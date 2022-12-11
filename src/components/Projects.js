@@ -137,14 +137,12 @@ const Sidescroll = styled.button`
     padding: 0.56rem;
     text-align: center;
 
-    &:hover {
-        background-position: 0% 100%;
-        cursor: pointer;
-        color: #1de0a3;
 
-        @media (hover:none), (hover:on-demand) {
-            background: transparent;
-            color: #f5f5f5;
+    @media (hover:hover) {
+        &:hover {
+            background-position: 0% 100%;
+            cursor: pointer;
+            color: #1de0a3;
         }
     }
 
@@ -231,9 +229,12 @@ const Link = styled.a`
     text-decoration: none;
     word-spacing: -0.3rem;
 
-    &:hover {
-        font-weight: bold;
-        cursor: pointer;
+
+    @media (hover:hover) {
+        &:hover {
+            font-weight: bold;
+            cursor: pointer;
+        }
     }
 `
 
