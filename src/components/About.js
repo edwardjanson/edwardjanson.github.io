@@ -29,6 +29,7 @@ const Image = styled.img`
 const Section = styled.div`
     justify-content: space-around;
     max-width: 40rem;
+    margin-top: 2rem;
 `
 
 const Heading = styled.h1`

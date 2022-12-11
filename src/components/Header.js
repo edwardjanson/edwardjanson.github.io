@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 
-const Header = ({ handleScroll }) => {
+const Header = () => {
 
     return (
         <div className="header">
@@ -9,10 +9,6 @@ const Header = ({ handleScroll }) => {
                 <span>Link 1</span>
                 <span>Link 2</span>
                 <span>Link 3</span>
-            </div>
-            <div className="anchor-links">
-                <button onClick={(event) => handleScroll(event)} value="about">About</button>
-                <button onClick={(event) => handleScroll(event)} value="projects">Projects</button>
             </div>
         </div>
     );

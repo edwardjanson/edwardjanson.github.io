@@ -111,17 +111,20 @@ const Navigation = styled.nav`
 
 const Sidescroll = styled.button`
     font-family: "Space Mono", Arial, Helvetica, sans-serif;
-    background-color: #191c29;
+    background: linear-gradient(to top, #2f344a 50%, transparent 50%);
+    background-position: 0% 0%;
+    background-size: 100% 200%;
+    transition: all .3s ease;
     color: #f5f5f5;
     border: 0;
     margin: 0;
     border-bottom: 0.1rem solid #2f344a;
     font-size: 1.4rem;
-    padding: 0.55rem;
+    padding: 0.56rem;
     text-align: center;
 
     &:hover {
-        background-color: #2f344a;
+        background-position: 0% 100%;
         color: #1de0a3;
     }
 
@@ -160,7 +163,10 @@ const Li = styled.li`
 
 const Button = styled.button`
     font-family: "Space Mono", Arial, Helvetica, sans-serif;
-    background-color: ${props => props.active ? "#2f344a" : "transparent"};
+    background: linear-gradient(to top, #2f344a 50%, transparent 50%);
+    background-position: ${props => props.active ? "0% 100%" : "0% 0%"};
+    background-size: 100% 200%;
+    transition: all .3s ease;
     color: ${props => props.active ? "#1de0a3" : "#f5f5f5"};
     border: 0;
     border-bottom: 0.1rem solid #2f344a;
@@ -169,8 +175,9 @@ const Button = styled.button`
     white-space: nowrap; 
 
     &:hover {
-        background-color: #2f344a;
+        background-position: 0% 100%;
         color: #1de0a3;
+        cursor: pointer;
     }
 
     &:active {

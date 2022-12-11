@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import { createGlobalStyle } from 'styled-components'
+import styled from 'styled-components'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -18,21 +19,21 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
 
-  const handleScroll = (event) => {
-    const element = document.getElementById(event.target.value)
-    if (element) {
-      element.scrollIntoView({behavior: "smooth"})
-    }
-  }
-
   return (
-    <>
+    <Main>
       <GlobalStyle />
-      <Header handleScroll={handleScroll} />
+      <Header />
       <About />
       <Projects />
-    </>
+    </Main>
   );
 }
+
+const Main = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
 
 export default App;
