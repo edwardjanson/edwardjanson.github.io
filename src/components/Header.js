@@ -4,14 +4,28 @@ import styled from 'styled-components'
 const Header = () => {
 
     return (
-        <div className="header">
-            <div className="social-links">
-                <span>Link 1</span>
-                <span>Link 2</span>
-                <span>Link 3</span>
-            </div>
-        </div>
+        <Section className="section" id="header">
+            <a href="https://github.com/edwardjanson" target="_blank"><Icon src="./github-icon.png"></Icon></a>
+            <a href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src="./linkedin-icon.png"></Icon></a>
+        </Section>
     );
 };
+
+const Section = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1.5rem;
+`
+const Icon = styled.img`
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+    filter: brightness(0) invert(1);
+
+    &:hover {
+        filter: invert(70%) sepia(1) hue-rotate(115deg);
+    }
+`
 
 export default Header;

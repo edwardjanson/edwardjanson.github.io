@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Typewriter from 'typewriter-effect';
 
 
 const About = () => {
@@ -6,7 +7,27 @@ const About = () => {
     return (
         <Section className="section" id="about">
             <HeadingImage>
-                <Heading>Hi, I'm Edward.</Heading>
+                <Heading>
+                <Typewriter
+                options={{
+                    delay: "natural",
+                    changeDeleteSpeed: 800
+                }}
+                onInit={(typewriter) => {
+                    typewriter
+                    .start()
+                    .pauseFor(200)
+                    .typeString("Hi,")
+                    .pauseFor(200)
+                    .typeString(" I'm Edward")
+                    .pauseFor(200)
+                    .deleteChars(4)
+                    .pauseFor(100)
+                    .typeString(".")
+                    .callFunction(() => document.getElementsByClassName("Typewriter__cursor")[0].innerHTML = "");	
+                }}
+            />
+                </Heading>
                 <Image src="./profile-picture.png"/>
             </HeadingImage>
             <Paragraph>
@@ -51,7 +72,7 @@ const Heading = styled.h1`
     color: #1de0a3;
     width: 100%;
 
-    @media (min-width: 481px) {
+    @media (min-width: 381px) {
         white-space: nowrap;
     }
     
@@ -59,15 +80,18 @@ const Heading = styled.h1`
     &:after {
         content: "";
         display: inline-block;
-        margin: 0 1.5rem 0 1.5rem;
-        width: 100%;
         vertical-align: middle;
+        margin-right: 1rem;
         border-bottom: 0.1rem solid #2f344a;
+        
+        @media (min-width: 381px) {
+            margin: 0 1.5rem 0 1.5rem;
+            width: 100%;
+        }
     }
 `
 
 const Paragraph = styled.p`
-    font-size: 1rem;
 `
 
 const HeadingImage = styled.div`

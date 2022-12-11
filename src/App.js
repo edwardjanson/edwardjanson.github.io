@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: "Space Mono", Arial, Helvetica, sans-serif;
     background-color: #191c29;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #f5f5f5;
     margin: 1rem;
   }
@@ -31,7 +31,7 @@ const App = () => {
 
 const Main = styled.div`
     max-width: 45rem;
-    margin: 0 auto;
+    margin: 2rem auto;
 `
 
 
