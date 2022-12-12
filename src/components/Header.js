@@ -25,7 +25,7 @@ const Icon = styled.img`
 
     @media (hover:hover) {
         &:hover {
-            filter: invert(70%) sepia(1) hue-rotate(115deg);
+            filter: invert(70%) saturate(70%) sepia(1) hue-rotate(-10deg);
         }
     }
 `

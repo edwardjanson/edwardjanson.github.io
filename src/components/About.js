@@ -70,7 +70,7 @@ const Heading = styled.h1`
     font-family: "Kadwa";
     font-weight: 900;
     font-size: 2rem;
-    color: #1de0a3;
+    color: #f49f1c;
     width: 15rem;
     height: 2rem;
     width: 100%;

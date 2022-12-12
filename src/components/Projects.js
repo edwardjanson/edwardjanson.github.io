@@ -142,12 +142,12 @@ const Sidescroll = styled.button`
         &:hover {
             background-position: 0% 100%;
             cursor: pointer;
-            color: #1de0a3;
+            color: #f49f1c;
         }
     }
 
     &:active {
-        color: #1de0a3;
+        color: #f49f1c;
     }
 `
 
@@ -157,7 +157,7 @@ const Heading = styled.h1`
     font-family: "Kadwa";
     font-weight: 900;
     font-size: 2rem;
-    color: #1de0a3;
+    color: #f49f1c;
     width: 100%;
     white-space: nowrap;
 
@@ -196,7 +196,7 @@ const Button = styled.button`
     background-position: ${props => props.active ? "0% 100%" : "0% 0%"};
     background-size: 100% 200%;
     transition: all .3s ease;
-    color: ${props => props.active ? "#1de0a3" : "#f5f5f5"};
+    color: ${props => props.active ? "#f49f1c" : "#f5f5f5"};
     border: 0;
     border-bottom: 0.1rem solid #2f344a;
     padding: 1rem 1.5rem;
@@ -205,7 +205,7 @@ const Button = styled.button`
 
     &:hover {
         background-position: 0% 100%;
-        color: #1de0a3;
+        color: #f49f1c;
         cursor: pointer;
     }
 
@@ -225,7 +225,7 @@ const Links = styled.div`
 
 const Link = styled.a`
     font-size: 1rem;
-    color: #1de0a3;
+    color: #f49f1c;
     text-decoration: none;
     word-spacing: -0.3rem;
 
