@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
     color: #f5f5f5;
     margin: 1rem;
-    height: 100rem;
+    ${'' /* height: 100rem; */}
   }
 `
 

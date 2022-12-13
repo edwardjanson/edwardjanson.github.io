@@ -34,22 +34,23 @@ const Projects = () => {
     ]
 
     const [selectedProjectIndex, handleProjectSelection] = useState(0);
-    const [projectDetailsState, changeProjectDetailsState] = useState("show");
+    const [projectDetailsState, changeProjectDetailsState] = useState("transitionIn");
     const [initialRender, changeInitialRender] = useState(true);
 
     useEffect( () => {
         if (initialRender) {
             changeInitialRender(false);
-          } else {
-            const project = document.getElementById(selectedProjectIndex);
-            if (project) {
-                project.scrollIntoView({behavior: "smooth"})
-
+          } else {            
             changeProjectDetailsState("loadNew");
+            
             setTimeout(() => {
                 changeProjectDetailsState("transitionIn");
-            }, 250);
-        }
+            }, 300);
+
+            const project = document.getElementById(selectedProjectIndex);
+            if (project) {
+                project.scrollIntoView({behavior: "smooth", inline: "start"})
+            }
         }
     }, [selectedProjectIndex]);
     
@@ -57,11 +58,11 @@ const Projects = () => {
         if (index < 0 || index === projectsInfo.length || index === selectedProjectIndex) {
             return;
         } else {
-            changeProjectDetailsState("transitionOut")
+            changeProjectDetailsState("transitionOut");
             setTimeout(() => {
-                changeProjectDetailsState("hide")
-                handleProjectSelection(index)
-            }, 250);
+                changeProjectDetailsState("hide");
+                handleProjectSelection(index);
+            }, 300);
         }
     }
 
@@ -126,6 +127,7 @@ const Projects = () => {
 const Section = styled.div`
     margin-top: 4rem;
     justify-content: space-around;
+    height: 30rem;
 `
 
 const ProjectSection = styled.div`
@@ -146,7 +148,7 @@ const ProjectDetails = styled.div`
     }
 
     &.transitionIn {
-        transition: all .25s ease;
+        transition: all .2s ease;
         background-position: 0 100%;
     }
 
@@ -157,7 +159,7 @@ const ProjectDetails = styled.div`
     }
 
     &.transitionOut {
-        transition: all .25s ease-in-out;
+        transition: all .3s ease;
         background-position: 100% 0%;
     }
 `
@@ -228,12 +230,16 @@ const fadeOut = keyframes`
 const Paragraph = styled.p`
     padding: 1rem;
 
+    &.transitionIn {
+        animation: ${fadeIn} 1s;
+    }
+
     &.loadNew {
-        animation: ${fadeIn} 0.25s;
+        opacity: 0;
     }
 
     &.transitionOut {
-        animation: ${fadeOut} 0.25s;
+        animation: ${fadeOut} 0.35s;
     }
 `
 
@@ -284,12 +290,16 @@ const Links = styled.div`
     gap: 1.5rem;
     word-spacing: 0.5em;
 
+    &.transitionIn {
+        animation: ${fadeIn} 1s;
+    }
+
     &.loadNew {
-        animation: ${fadeIn} 0.25s;
+        opacity: 0;
     }
 
     &.transitionOut {
-        animation: ${fadeOut} 0.25s;
+        animation: ${fadeOut} 0.35s;
     }
 `
 
