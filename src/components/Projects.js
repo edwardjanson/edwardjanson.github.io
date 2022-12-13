@@ -229,11 +229,11 @@ const Paragraph = styled.p`
     padding: 1rem;
 
     &.loadNew {
-        animation: ${fadeIn} 1s;
+        animation: ${fadeIn} 0.25s;
     }
 
     &.transitionOut {
-        animation: ${fadeOut} 0.5s;
+        animation: ${fadeOut} 0.25s;
     }
 `
 
@@ -285,11 +285,11 @@ const Links = styled.div`
     word-spacing: 0.5em;
 
     &.loadNew {
-        animation: ${fadeIn} 1s;
+        animation: ${fadeIn} 0.25s;
     }
 
     &.transitionOut {
-        animation: ${fadeOut} 1s;
+        animation: ${fadeOut} 0.25s;
     }
 `
 
