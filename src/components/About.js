@@ -33,11 +33,11 @@ const About = () => {
             <Paragraph>
             I've recently started a Software Development course at CodeClan, which finishes in February 2023. 
             Before starting the course, I grew my expertise in Digital Marketing at a digital agency (80 DAYS) for seven years. 
-            I thoroughly enjoyed my time there, continuously developing my skills surrounded by a great team and friends. 
-            Whilst focusing more on data, usability and SEO over the years I developed a strong interest in UX, which I believe helps me develop more user-friendly apps.
+            I thoroughly enjoyed my time there, continuously developing my skills surrounded by a great team. 
+            Over the years I increased my focus on data, usability and SEO and developed a strong interest in UX, which I believe now helps me develop more user-friendly apps.
             </Paragraph>
             <Paragraph>
-            My passion for coding started whilst doing a Python course on Udemy.
+            My passion for coding started whilst doing a Python course on Udemy. 
             The ability to develop ideas and find new solutions to problems are some of the aspects of coding that drove me to take a career step change.
             </Paragraph>
             <Paragraph>

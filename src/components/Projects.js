@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import styled, { keyframes } from 'styled-components'
 
 
@@ -7,27 +7,30 @@ const Projects = () => {
     const projectsInfo = [
         {
             name: "Budgissimo",
-            description: `My first solo capstone project at CodeClan which needed to be built in seven days.
-                            A mobile-first web application with CRUD operations and RESTful routes that allows users
-                            to keep track of their online advertising budgets and spending across multiple platforms and campaigns.`,
+            description: [`My first solo capstone project at CodeClan. We were tasked to deliver a Python app with CRUD operations and RESTful routes in seven days. 
+                        I decided to build a mobile-first web application that allows users to keep track of their online advertising budgets and spending across multiple platforms and campaigns. 
+                        Tags can also be added to campaigns that share a common targeting location e.g., UK, a promotion e.g. "Christmas Offer", and more. 
+                        With tags, budget and spend can be viewed across multiple platforms in a single table.`,
+                        `The app currently requires users to update budgets and spend manually. 
+                        To improve usability, I am currently in the process of integrating a solution using the Google Sheets API.`],
             links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]]
         },
         {
             name: "Trivimon Duel",
-            description: "This is the description for 2",
+            description: ["This is the description for 2"],
             links: [["GitHub", "https://github.com/edwardjanson/trivimon-duel"],
                     ["Website", "https://edwardjanson.github.io/trivimon-duel/"]]
         },
         {
             name: "CWV Checker",
-            description: "This is the description for 3",
+            description: ["This is the description for 3"],
             links: [["GitHub", "https://github.com/edwardjanson/cs50_final_project"],
                     ["Website", "https://core-web-vitals-checker.herokuapp.com/"],
                     ["Video", "https://www.youtube.com/watch?v=VetSbRSZAFE"]]
         },
         {
             name: "Metronome",
-            description: "This is the description for 4",
+            description: ["This is the description for 4"],
             links: [["GitHub", "https://github.com/edwardjanson/metronome"],
                     ["Website", "https://edwardjanson.github.io/metronome/"]]
         }
@@ -36,6 +39,16 @@ const Projects = () => {
     const [selectedProjectIndex, handleProjectSelection] = useState(0);
     const [projectDetailsState, changeProjectDetailsState] = useState("transitionIn");
     const [initialRender, changeInitialRender] = useState(true);
+    // const targetDiv = useRef();
+    // const [divHeight, setDivHeight] = useState(null);
+
+    // useLayoutEffect(() => {
+    //     if (targetDiv.current) {
+    //         if (targetDiv.current.offsetHeight > divHeight) {
+    //             setDivHeight(targetDiv.current.offsetHeight);
+    //         }
+    //     }
+    //   }, []);
 
     useEffect( () => {
         if (initialRender) {
@@ -49,11 +62,11 @@ const Projects = () => {
 
             const project = document.getElementById(selectedProjectIndex);
             if (project) {
-                project.scrollIntoView({behavior: "smooth", inline: "start"})
+                project.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
             }
         }
     }, [selectedProjectIndex]);
-    
+
     const changeSelectedProject = (index) => {
         if (index < 0 || index === projectsInfo.length || index === selectedProjectIndex) {
             return;
@@ -84,22 +97,31 @@ const Projects = () => {
     });
 
     const projectDetails = projectsInfo.map((project, projectIndex) => {
+        const projectParagraphs = project.description.map((paragraph, paragraphIndex) => {
+            return ( 
+                <Paragraph key={paragraphIndex + 100}>{paragraph}</Paragraph>
+        )})
+
         const projectLinks = project.links.map((link, linkIndex) => {
             return ( 
-                <Link key={linkIndex + 100} href={link[1]} target="blank">&#10157; {link[0]}</Link>
+                <Link key={linkIndex + 200} href={link[1]} target="blank">&#10157; {link[0]}</Link>
         )})
 
         return (
                 projectIndex === selectedProjectIndex ?
                 <ProjectDetails className={projectDetailsState} key={projectIndex}>
-                    <Paragraph className={projectDetailsState}>{project.description}</Paragraph>
+                    <Paragraphs className={projectDetailsState}>
+                        {projectParagraphs}
+                    </Paragraphs>
                     <Links className={projectDetailsState}>
                         {projectLinks}
                     </Links>
                 </ProjectDetails>
                 :
                 <ProjectDetails className="hide" key={projectIndex}>
-                    <Paragraph>{project.description}</Paragraph>
+                    <Paragraphs>
+                        {projectParagraphs}
+                    </Paragraphs>
                     <Links>
                         {projectLinks}
                     </Links>
@@ -127,21 +149,40 @@ const Projects = () => {
 const Section = styled.div`
     margin-top: 4rem;
     justify-content: space-around;
-    height: 30rem;
+
+    @media (min-width: 769px) {
+    }
+
+    @media (min-width: 1025px) {
+    }
 `
 
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
+    height: 60rem;
+
+    @media (min-width: 769px) {
+    }
+
+    @media (min-width: 1025px) {
+    }
 `
 
 const ProjectDetails = styled.div`
+    height: 55rem;
+    margin-bottom: 3rem;
     max-width: 45rem;
     margin-top: -1rem;
-    height: 20rem;
     background: linear-gradient(to top, transparent 50%, #2f344a 50%);
     background-position: 0% 100%;
     background-size: 100% 200%;
+
+    @media (min-width: 769px) {
+    }
+
+    @media (min-width: 1025px) {
+    }
 
     &.hide {
         display: none;
@@ -227,7 +268,7 @@ const fadeOut = keyframes`
     100% { opacity: 0; }
 `
 
-const Paragraph = styled.p`
+const Paragraphs = styled.div`
     padding: 1rem;
 
     &.transitionIn {
@@ -241,6 +282,9 @@ const Paragraph = styled.p`
     &.transitionOut {
         animation: ${fadeOut} 0.35s;
     }
+`
+
+const Paragraph = styled.p`
 `
 
 const List = styled.ul`
