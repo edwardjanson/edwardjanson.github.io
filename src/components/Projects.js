@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 
 const Projects = () => {
@@ -33,41 +33,40 @@ const Projects = () => {
         }
     ]
 
-    const [selectedProject, handleProjectSelection] = useState(projectsInfo[0]);
+    const [selectedProjectIndex, handleProjectSelection] = useState(0);
+    const [projectDetailsState, changeProjectDetailsState] = useState("show");
     const [initialRender, changeInitialRender] = useState(true);
 
     useEffect( () => {
         if (initialRender) {
             changeInitialRender(false);
           } else {
-            const project = document.getElementById(projectsInfo.map(project => project.name).indexOf(selectedProject.name));
+            changeProjectDetailsState("loadNew");
+            setTimeout(() => {
+                changeProjectDetailsState("transitionIn");
+            }, 1000);
+            const project = document.getElementById(selectedProjectIndex); // CHANGED THIS
             if (project) {
-            project.scrollIntoView({behavior: "smooth"})
+                project.scrollIntoView({behavior: "smooth"})
         }
         }
-    }, [selectedProject])
+    }, [selectedProjectIndex]);
     
     const changeSelectedProject = (index) => {
-        const currentProjectIndex = projectsInfo.map(project => project.name).indexOf(selectedProject.name)
-
-        if (typeof index === "number") {
-            handleProjectSelection(projectsInfo[index])
+        if (index < 0 || index === projectsInfo.length || index === selectedProjectIndex) {
+            return;
         } else {
-            if (index === "+1") {
-                if (currentProjectIndex + 1 !== projectsInfo.length) {
-                    handleProjectSelection(projectsInfo[currentProjectIndex + 1])
-                }
-            } else {
-                if (currentProjectIndex - 1 !== -1) {
-                    handleProjectSelection(projectsInfo[currentProjectIndex - 1])
-                }
-            }
+            changeProjectDetailsState("transitionOut")
+            setTimeout(() => {
+                changeProjectDetailsState("hide")
+                handleProjectSelection(index)
+            }, 1000);
         }
     }
 
     const projectNameList = projectsInfo.map((project, index) => {
         return ( 
-                project.name === selectedProject.name ?
+                index === selectedProjectIndex ?
                 <Li key={index}><Button key={index}
                             id={index}
                             onClick={() => changeSelectedProject(index)} 
@@ -80,29 +79,44 @@ const Projects = () => {
                 {project.name}
                 </Button></Li>
         );
-    })
+    });
 
-    const projectLinkList = selectedProject.links.map((link, index) => {
-        return ( 
-                <Link key={index} href={link[1]} target="blank">&#10157; {link[0]}</Link>
+    const projectDetails = projectsInfo.map((project, projectIndex) => {
+        const projectLinks = project.links.map((link, linkIndex) => {
+            return ( 
+                <Link key={linkIndex + 100} href={link[1]} target="blank">&#10157; {link[0]}</Link>
+        )})
+
+        return (
+                projectIndex === selectedProjectIndex ?
+                <ProjectDetails className={projectDetailsState} key={projectIndex}>
+                    <Paragraph >{project.description}</Paragraph>
+                    <Links>
+                        {projectLinks}
+                    </Links>
+                </ProjectDetails>
+                :
+                <ProjectDetails className="hide" key={projectIndex}>
+                    <Paragraph >{project.description}</Paragraph>
+                    <Links>
+                        {projectLinks}
+                    </Links>
+                </ProjectDetails>
         );
-    })
+    });
 
     return (
         <Section className="section" id="projects">
             <Heading>My Projects</Heading>
             <ProjectSection>
                 <Navigation>
-                    <Sidescroll onClick={() => changeSelectedProject("-1")}>&#8249;</Sidescroll>
+                    <Sidescroll onClick={() => changeSelectedProject(selectedProjectIndex - 1)}>&#8249;</Sidescroll>
                     <List>
                         {projectNameList}
                     </List>
-                    <Sidescroll onClick={() => changeSelectedProject("+1")}>&#8250;</Sidescroll>
+                    <Sidescroll onClick={() => changeSelectedProject(selectedProjectIndex + 1)}>&#8250;</Sidescroll>
                 </Navigation>
-                <Paragraph>{selectedProject.description}</Paragraph>
-                <Links>
-                    {projectLinkList}
-                </Links>
+                {projectDetails}
             </ProjectSection>
         </Section>
     );
@@ -116,6 +130,35 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
+`
+
+const ProjectDetails = styled.div`
+    max-width: 45rem;
+    margin-top: -1rem;
+    height: 20rem;
+    background: linear-gradient(to top, transparent 50%, #2f344a 50%);
+    background-position: 0% 100%;
+    background-size: 100% 200%;
+
+    &.hide {
+        display: none;
+    }
+
+    &.transitionIn {
+        transition: all .5s ease;
+        background-position: 0 100%;
+    }
+
+    &.loadNew {
+        background: linear-gradient(to top, transparent 50%, #2f344a 50%);
+        background-position: 100% 0%;
+        background-size: 100% 200%;
+    }
+
+    &.transitionOut {
+        transition: all .5s ease-in-out;
+        background-position: 100% 0%;
+    }
 `
 
 const Navigation = styled.nav`
@@ -172,6 +215,7 @@ const Heading = styled.h1`
 `
 
 const Paragraph = styled.p`
+    padding: 1rem;
 `
 
 const List = styled.ul`
@@ -224,6 +268,7 @@ const Links = styled.div`
 `
 
 const Link = styled.a`
+    padding: 1rem;
     font-size: 1rem;
     color: #f49f1c;
     text-decoration: none;
