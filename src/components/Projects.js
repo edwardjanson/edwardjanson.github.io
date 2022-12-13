@@ -41,13 +41,14 @@ const Projects = () => {
         if (initialRender) {
             changeInitialRender(false);
           } else {
+            const project = document.getElementById(selectedProjectIndex);
+            if (project) {
+                project.scrollIntoView({behavior: "smooth"})
+
             changeProjectDetailsState("loadNew");
             setTimeout(() => {
                 changeProjectDetailsState("transitionIn");
-            }, 1000);
-            const project = document.getElementById(selectedProjectIndex); // CHANGED THIS
-            if (project) {
-                project.scrollIntoView({behavior: "smooth"})
+            }, 250);
         }
         }
     }, [selectedProjectIndex]);
@@ -60,7 +61,7 @@ const Projects = () => {
             setTimeout(() => {
                 changeProjectDetailsState("hide")
                 handleProjectSelection(index)
-            }, 1000);
+            }, 250);
         }
     }
 
@@ -90,14 +91,14 @@ const Projects = () => {
         return (
                 projectIndex === selectedProjectIndex ?
                 <ProjectDetails className={projectDetailsState} key={projectIndex}>
-                    <Paragraph >{project.description}</Paragraph>
-                    <Links>
+                    <Paragraph className={projectDetailsState}>{project.description}</Paragraph>
+                    <Links className={projectDetailsState}>
                         {projectLinks}
                     </Links>
                 </ProjectDetails>
                 :
                 <ProjectDetails className="hide" key={projectIndex}>
-                    <Paragraph >{project.description}</Paragraph>
+                    <Paragraph>{project.description}</Paragraph>
                     <Links>
                         {projectLinks}
                     </Links>
@@ -145,7 +146,7 @@ const ProjectDetails = styled.div`
     }
 
     &.transitionIn {
-        transition: all .5s ease;
+        transition: all .25s ease;
         background-position: 0 100%;
     }
 
@@ -156,7 +157,7 @@ const ProjectDetails = styled.div`
     }
 
     &.transitionOut {
-        transition: all .5s ease-in-out;
+        transition: all .25s ease-in-out;
         background-position: 100% 0%;
     }
 `
@@ -171,7 +172,7 @@ const Sidescroll = styled.button`
     background: linear-gradient(to top, #2f344a 50%, transparent 50%);
     background-position: 0% 0%;
     background-size: 100% 200%;
-    transition: all .3s ease;
+    transition: all .5s ease;
     color: #f5f5f5;
     border: 0;
     margin: 0;
@@ -214,8 +215,26 @@ const Heading = styled.h1`
     }
 `
 
+const fadeIn = keyframes`
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+`
+
+const fadeOut = keyframes`
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+`
+
 const Paragraph = styled.p`
     padding: 1rem;
+
+    &.loadNew {
+        animation: ${fadeIn} 1s;
+    }
+
+    &.transitionOut {
+        animation: ${fadeOut} 0.5s;
+    }
 `
 
 const List = styled.ul`
@@ -239,7 +258,7 @@ const Button = styled.button`
     background: linear-gradient(to top, #2f344a 50%, transparent 50%);
     background-position: ${props => props.active ? "0% 100%" : "0% 0%"};
     background-size: 100% 200%;
-    transition: all .3s ease;
+    transition: all .5s ease;
     color: ${props => props.active ? "#f49f1c" : "#f5f5f5"};
     border: 0;
     border-bottom: 0.1rem solid #2f344a;
@@ -248,7 +267,6 @@ const Button = styled.button`
     white-space: nowrap; 
 
     &:hover {
-        background-position: 0% 100%;
         color: #f49f1c;
         cursor: pointer;
     }
@@ -265,6 +283,14 @@ const Links = styled.div`
     display: flex;
     gap: 1.5rem;
     word-spacing: 0.5em;
+
+    &.loadNew {
+        animation: ${fadeIn} 1s;
+    }
+
+    &.transitionOut {
+        animation: ${fadeOut} 1s;
+    }
 `
 
 const Link = styled.a`
