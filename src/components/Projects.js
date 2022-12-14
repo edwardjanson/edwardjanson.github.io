@@ -62,9 +62,16 @@ const Projects = () => {
             changeInitialRender(false);
           } else {            
             changeProjectDetailsState("loadNew");
+            // let timeoutCompleted = true;
             
             setTimeout(() => {
-                changeProjectDetailsState("transitionIn");
+                // if (timeoutCompleted) {
+                //     timeoutCompleted = false;
+                //     setTimeout(() => { 
+                        changeProjectDetailsState("transitionIn");
+                    //     timeoutCompleted = true;
+                    // }, 100)
+            //     }
             }, 300);
 
             const project = document.getElementById(selectedProjectIndex);
@@ -80,8 +87,8 @@ const Projects = () => {
         } else {
             changeProjectDetailsState("transitionOut");
             setTimeout(() => {
-                changeProjectDetailsState("hide");
                 handleProjectSelection(index);
+                changeProjectDetailsState("hide");
             }, 300);
         }
     }
@@ -153,6 +160,7 @@ const Projects = () => {
     );
 };
 
+
 const Section = styled.div`
     margin-top: 4rem;
     justify-content: space-around;
@@ -190,8 +198,8 @@ const ProjectDetails = styled.div`
     margin-bottom: 3rem;
     max-width: 45rem;
     margin-top: -1rem;
-    background: linear-gradient(to top, transparent 50%, #2f344a 50%);
-    background-position: 0% 100%;
+    background: linear-gradient(to bottom, #2f344a 50%, transparent 50%);
+    background-position: 100% 0%;
     background-size: 100% 200%;
     height: 95rem;
 
@@ -215,26 +223,24 @@ const ProjectDetails = styled.div`
         height: 45rem;
     }
 
-
-
     &.hide {
         display: none;
     }
 
     &.transitionIn {
         transition: all .2s ease;
-        background-position: 0 100%;
+        background-position: 100% 0%;
     }
 
     &.loadNew {
         background: linear-gradient(to top, transparent 50%, #2f344a 50%);
-        background-position: 100% 0%;
+        background-position: 0 100%;
         background-size: 100% 200%;
     }
 
     &.transitionOut {
-        transition: all .3s ease;
-        background-position: 100% 0%;
+        transition: all 0.3s ease;
+        background-position: 0% 100%;
     }
 `
 
@@ -313,7 +319,7 @@ const Paragraphs = styled.div`
     }
 
     &.transitionOut {
-        animation: ${fadeOut} 0.35s;
+        animation: ${fadeOut} 0.3s;
     }
 `
 
@@ -377,7 +383,7 @@ const Links = styled.div`
     }
 
     &.transitionOut {
-        animation: ${fadeOut} 0.35s;
+        animation: ${fadeOut} 0.3s;
     }
 `
 
