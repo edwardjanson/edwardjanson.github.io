@@ -9,7 +9,7 @@ const Projects = () => {
             name: "Budgissimo",
             description: [`My first solo capstone project at CodeClan. We were tasked to deliver a Python app with CRUD operations and RESTful routes in seven days. 
                         I decided to build a mobile-first web application that allows users to keep track of their online advertising budgets and spending across multiple platforms and campaigns. 
-                        Tags can also be added to campaigns that share a common targeting location e.g., UK, a promotion e.g. "Christmas Offer", and more. 
+                        Tags can also be added to campaigns that share a common targeting location e.g., UK, a promotion e.g. 'Christmas Offer', and more. 
                         With tags, budget and spend can be viewed across multiple platforms in a single table.`,
                         `The app currently requires users to update budgets and spend manually. 
                         To improve usability, I am currently in the process of integrating a solution using the Google Sheets API.`],
@@ -17,20 +17,37 @@ const Projects = () => {
         },
         {
             name: "Trivimon Duel",
-            description: ["This is the description for 2"],
+            description: [`This app was developed for a weekend project after week 1 of React at CodeClan. 
+                            We were tasked to deliver an app that made use of an API.`,
+                        `The gameplay:`,
+                        `➭ Win a duel against the computer. The player and computer start with a randomly selected 'Trivimon' with different health points (HP) and moves.`,
+                        `➭ The starting Trivimon is decided on the pace characteristic.`,
+                        `➭ At the start of each round, the player answers a random multiple choice trivia question. 
+                        On the player's round, an ability damage multiplier is set to x3 if answered correctly or x0.5 if answered incorrectly, and vice versa on the computer's round.`,
+                        `➭ Once a Trivimon loses all HP, the winner is decided.`],
             links: [["GitHub", "https://github.com/edwardjanson/trivimon-duel"],
                     ["Website", "https://edwardjanson.github.io/trivimon-duel/"]]
         },
         {
             name: "CWV Checker",
-            description: ["This is the description for 3"],
+            description: [`My capstone project for Harvard's CS50 Introduction to Computer Science course. 
+                            With Core Web Vitals (CWV) becoming an increasing ranking factor in Google's search engine algorithm, it is important to stay on top of the performance of all pages on a website.`,
+                        `Google's PageSpeed Insights report contains CWV metric stats, but requires individual checks to review multiple pages. 
+                        Search Console provides an overview of CWV issues on a website per page, and this project aims to provide an alternative outwith Search Console.`,
+                        `Google provides CWV metrics via the CrUX API and allows to get data at origin (homepage) and page level. 
+                        This project uses the CrUX API and is currently deployed on Heroku.`,
+                        `The process that this tool follows is as per the below:`,
+        `➭ A user inputs a website to investigate with the option to include and/or exclude specific URLs.`,
+        `➭ Website URLs are collected using internal links.`,
+        `➭ The CrUX API fetches CWV metrics for the collected URLs.`,
+        `➭ The metrics are displayed in a table at page level with a score of 'good', 'needs improvement' or 'poor'.`],
             links: [["GitHub", "https://github.com/edwardjanson/cs50_final_project"],
                     ["Website", "https://core-web-vitals-checker.herokuapp.com/"],
                     ["Video", "https://www.youtube.com/watch?v=VetSbRSZAFE"]]
         },
         {
             name: "Metronome",
-            description: ["This is the description for 4"],
+            description: ["Half-day duo project (https://github.com/bsmith/) project building a metronome using React."],
             links: [["GitHub", "https://github.com/edwardjanson/metronome"],
                     ["Website", "https://edwardjanson.github.io/metronome/"]]
         }
@@ -39,16 +56,6 @@ const Projects = () => {
     const [selectedProjectIndex, handleProjectSelection] = useState(0);
     const [projectDetailsState, changeProjectDetailsState] = useState("transitionIn");
     const [initialRender, changeInitialRender] = useState(true);
-    // const targetDiv = useRef();
-    // const [divHeight, setDivHeight] = useState(null);
-
-    // useLayoutEffect(() => {
-    //     if (targetDiv.current) {
-    //         if (targetDiv.current.offsetHeight > divHeight) {
-    //             setDivHeight(targetDiv.current.offsetHeight);
-    //         }
-    //     }
-    //   }, []);
 
     useEffect( () => {
         if (initialRender) {
@@ -149,40 +156,58 @@ const Projects = () => {
 const Section = styled.div`
     margin-top: 4rem;
     justify-content: space-around;
-
-    @media (min-width: 769px) {
-    }
-
-    @media (min-width: 1025px) {
-    }
 `
 
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 60rem;
+    height: 75rem;
 
-    @media (min-width: 769px) {
+    @media (min-width: 400px) {
+        height: 65rem;
     }
 
-    @media (min-width: 1025px) {
+    @media (min-width: 500px) {
+        height: 60rem;
     }
+
+    @media (min-width: 600px) {
+        height: 55rem;
+    }
+
+    @media (min-width: 700px) {
+        height: 50rem;
+    }
+
+
 `
 
 const ProjectDetails = styled.div`
-    height: 55rem;
     margin-bottom: 3rem;
     max-width: 45rem;
     margin-top: -1rem;
     background: linear-gradient(to top, transparent 50%, #2f344a 50%);
     background-position: 0% 100%;
     background-size: 100% 200%;
+    height: 70rem;
 
-    @media (min-width: 769px) {
+    @media (min-width: 400px) {
+        height: 65rem;
     }
 
-    @media (min-width: 1025px) {
+    @media (min-width: 500px) {
+        height: 60rem;
     }
+
+    @media (min-width: 600px) {
+        height: 55rem;
+    }
+
+    @media (min-width: 700px) {
+        height: 50rem;
+    }
+
+
 
     &.hide {
         display: none;
@@ -321,11 +346,12 @@ const Button = styled.button`
         cursor: pointer;
     }
 
-    @media (min-width: 769px) {
-        padding: 1rem 2.5rem;
+    @media (min-width: 622px) {
+        padding: 1rem 3rem;
     }
 
-    @media (min-width: 1025px) {
+    @media (min-width: 777px) {
+        padding: 1rem 2.5rem;
     }
 `
 
