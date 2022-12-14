@@ -62,17 +62,9 @@ const Projects = () => {
             changeInitialRender(false);
           } else {            
             changeProjectDetailsState("loadNew");
-            // let timeoutCompleted = true;
-            
             setTimeout(() => {
-                // if (timeoutCompleted) {
-                //     timeoutCompleted = false;
-                //     setTimeout(() => { 
-                        changeProjectDetailsState("transitionIn");
-                    //     timeoutCompleted = true;
-                    // }, 100)
-            //     }
-            }, 300);
+                changeProjectDetailsState("transitionIn");
+            }, 100);
 
             const project = document.getElementById(selectedProjectIndex);
             if (project) {
@@ -89,7 +81,7 @@ const Projects = () => {
             setTimeout(() => {
                 handleProjectSelection(index);
                 changeProjectDetailsState("hide");
-            }, 300);
+            }, 400);
         }
     }
 
@@ -228,7 +220,7 @@ const ProjectDetails = styled.div`
     }
 
     &.transitionIn {
-        transition: all .2s ease;
+        transition: all .4s ease;
         background-position: 100% 0%;
     }
 
@@ -239,7 +231,7 @@ const ProjectDetails = styled.div`
     }
 
     &.transitionOut {
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
         background-position: 0% 100%;
     }
 `
@@ -254,7 +246,7 @@ const Sidescroll = styled.button`
     background: linear-gradient(to top, #2f344a 50%, transparent 50%);
     background-position: 0% 0%;
     background-size: 100% 200%;
-    transition: all .5s ease;
+    transition: all .4s ease;
     color: #f5f5f5;
     border: 0;
     margin: 0;
@@ -319,7 +311,7 @@ const Paragraphs = styled.div`
     }
 
     &.transitionOut {
-        animation: ${fadeOut} 0.3s;
+        animation: ${fadeOut} 0.4s;
     }
 `
 
@@ -347,7 +339,7 @@ const Button = styled.button`
     background: linear-gradient(to top, #2f344a 50%, transparent 50%);
     background-position: ${props => props.active ? "0% 100%" : "0% 0%"};
     background-size: 100% 200%;
-    transition: all .5s ease;
+    transition: all .4s ease;
     color: ${props => props.active ? "#f49f1c" : "#f5f5f5"};
     border: 0;
     border-bottom: 0.1rem solid #2f344a;
@@ -383,7 +375,7 @@ const Links = styled.div`
     }
 
     &.transitionOut {
-        animation: ${fadeOut} 0.3s;
+        animation: ${fadeOut} 0.4s;
     }
 `
 
