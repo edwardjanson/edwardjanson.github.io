@@ -182,14 +182,12 @@ const ProjectSection = styled.div`
     @media (min-width: 700px) {
         height: 50rem;
     }
-
-
 `
 
 const ProjectDetails = styled.div`
     margin-bottom: 3rem;
     max-width: 45rem;
-    margin-top: -1rem;
+    margin-top: -1.15rem;
     background: linear-gradient(to bottom, #2f344a 50%, transparent 50%);
     background-position: 100% 0%;
     background-size: 100% 200%;
@@ -250,9 +248,8 @@ const Sidescroll = styled.button`
     color: #f5f5f5;
     border: 0;
     margin: 0;
-    border-bottom: 0.1rem solid #2f344a;
     font-size: 1.4rem;
-    padding: 0.56rem;
+    padding: 0.58rem;
     text-align: center;
 
 
@@ -322,16 +319,15 @@ const List = styled.ul`
     padding: 0;
     display: flex;
     align-items: center;
-    white-space: nowrap;
     width: 100%;
     overflow: auto;
 `
 
 const Li = styled.li`
+    display: flex;
     list-style: none;
     margin: 0;
     width: 100%;
-    display:inline;
 `
 
 const Button = styled.button`
@@ -342,7 +338,7 @@ const Button = styled.button`
     transition: all .4s ease;
     color: ${props => props.active ? "#f49f1c" : "#f5f5f5"};
     border: 0;
-    border-bottom: 0.1rem solid #2f344a;
+    width: 100%;
     padding: 1rem 1.5rem;
     font-size: 0.8rem;
     white-space: nowrap; 
@@ -350,14 +346,6 @@ const Button = styled.button`
     &:hover {
         color: #f49f1c;
         cursor: pointer;
-    }
-
-    @media (min-width: 622px) {
-        padding: 1rem 3rem;
-    }
-
-    @media (min-width: 777px) {
-        padding: 1rem 2.5rem;
     }
 `
 
