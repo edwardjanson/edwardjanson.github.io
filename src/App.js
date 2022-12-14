@@ -15,7 +15,7 @@ const App = () => {
       <Header />
       <About />
       <Projects />
-      <Footer>© Edward Janson 2022</Footer>
+      <Footer><Copyright>©</Copyright> Edward Janson 2022</Footer>
     </Main>
   );
 }
@@ -33,8 +33,12 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Main = styled.div`
-    max-width: 45rem;
-    margin: 2rem auto 4rem auto;
+  max-width: 45rem;
+  margin: 2rem auto 4rem auto;
+`
+
+const Copyright = styled.span`
+  font-family: sans-serif;
 `
 
 const Footer = styled.span`
