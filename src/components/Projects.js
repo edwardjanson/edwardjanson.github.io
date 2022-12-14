@@ -161,18 +161,22 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 75rem;
+    height: 100rem;
+
+    @media (min-width: 350px) {
+        height: 90rem;
+    }
 
     @media (min-width: 400px) {
-        height: 65rem;
+        height: 80rem;
     }
 
     @media (min-width: 500px) {
-        height: 60rem;
+        height: 70rem;
     }
 
     @media (min-width: 600px) {
-        height: 55rem;
+        height: 60rem;
     }
 
     @media (min-width: 700px) {
@@ -189,14 +193,18 @@ const ProjectDetails = styled.div`
     background: linear-gradient(to top, transparent 50%, #2f344a 50%);
     background-position: 0% 100%;
     background-size: 100% 200%;
-    height: 70rem;
+    height: 95rem;
+
+    @media (min-width: 350px) {
+        height: 85rem;
+    }
 
     @media (min-width: 400px) {
-        height: 65rem;
+        height: 75rem;
     }
 
     @media (min-width: 500px) {
-        height: 60rem;
+        height: 65rem;
     }
 
     @media (min-width: 600px) {
@@ -204,7 +212,7 @@ const ProjectDetails = styled.div`
     }
 
     @media (min-width: 700px) {
-        height: 50rem;
+        height: 45rem;
     }
 
 
