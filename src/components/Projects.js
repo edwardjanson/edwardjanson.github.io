@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useLayoutEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from 'styled-components'
 
 
@@ -47,7 +47,7 @@ const Projects = () => {
         },
         {
             name: "Metronome",
-            description: ["Half-day duo project (https://github.com/bsmith/) project building a metronome using React."],
+            description: ["Half-day duo project (with https://github.com/bsmith/) project building a metronome using React."],
             links: [["GitHub", "https://github.com/edwardjanson/metronome"],
                     ["Website", "https://edwardjanson.github.io/metronome/"]]
         }
@@ -56,6 +56,10 @@ const Projects = () => {
     const [selectedProjectIndex, handleProjectSelection] = useState(0);
     const [projectDetailsState, changeProjectDetailsState] = useState("transitionIn");
     const [initialRender, changeInitialRender] = useState(true);
+    const touchStartX = useRef(null);
+    const touchEndX = useRef(null);
+    const touchStartY = useRef(null);
+    const touchEndY = useRef(null);
 
     useEffect( () => {
         if (initialRender) {
@@ -82,6 +86,36 @@ const Projects = () => {
                 handleProjectSelection(index);
                 changeProjectDetailsState("hide");
             }, 400);
+        }
+    }
+
+    // Swipe logic taken from: https://stackoverflow.com/questions/70612769/how-do-i-recognize-swipe-events-in-react
+    const minSwipeDistance = 50 
+
+    const onTouchStart = (e) => {
+        touchEndX.current = null;
+        touchEndY.current = null;
+        touchStartX.current = e.targetTouches[0].clientX;
+        touchStartY.current = e.targetTouches[0].clientY;
+    }
+
+    const onTouchMove = (e) => {
+        touchEndX.current = e.targetTouches[0].clientX;
+        touchEndY.current = e.targetTouches[0].clientY;
+    }
+
+    const onTouchEnd = () => {
+        if (!touchStartX || !touchEndX) return;
+        const distanceX = touchStartX.current - touchEndX.current;
+        const distanceY = touchStartY.current - touchEndY.current;
+        const isLeftSwipe = distanceX > minSwipeDistance;
+        const isRightSwipe = distanceX < -minSwipeDistance;
+        
+        if (isRightSwipe && Math.abs(distanceX) > distanceY) {
+            changeSelectedProject(selectedProjectIndex - 1);
+        }
+        if (isLeftSwipe && distanceX > distanceY) {
+            changeSelectedProject(selectedProjectIndex + 1);
         }
     }
 
@@ -115,7 +149,8 @@ const Projects = () => {
 
         return (
                 projectIndex === selectedProjectIndex ?
-                <ProjectDetails className={projectDetailsState} key={projectIndex}>
+                <ProjectDetails className={projectDetailsState} key={projectIndex}
+                onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                     <Paragraphs className={projectDetailsState}>
                         {projectParagraphs}
                     </Paragraphs>
@@ -124,7 +159,8 @@ const Projects = () => {
                     </Links>
                 </ProjectDetails>
                 :
-                <ProjectDetails className="hide" key={projectIndex}>
+                <ProjectDetails className="hide" key={projectIndex}
+                onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                     <Paragraphs>
                         {projectParagraphs}
                     </Paragraphs>
@@ -137,7 +173,7 @@ const Projects = () => {
 
     return (
         <Section className="section" id="projects">
-            <Heading>My Projects</Heading>
+            <Heading>Projects</Heading>
             <ProjectSection>
                 <Navigation>
                     <Sidescroll onClick={() => changeSelectedProject(selectedProjectIndex - 1)}>&#8249;</Sidescroll>
