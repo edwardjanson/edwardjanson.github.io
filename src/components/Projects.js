@@ -36,10 +36,13 @@ const Projects = () => {
                         `➭ Once a Trivimon loses all HP, the winner is decided.`],
             links: [["GitHub", "https://github.com/edwardjanson/trivimon-duel"],
                     ["Website", "https://edwardjanson.github.io/trivimon-duel/"]],
-            media: [{videos: [
-            ]},
-            {images:[
-            ]}]
+                    media: [{videos: [
+                        "https://www.youtube.com/embed/watch?v=VetSbRSZAFE"
+                    ]},
+                    {images:[
+                        "/media/budgissimo-platforms.png",
+                        "/media/budgissimo-edit.png"
+                    ]}]
         },
         {
             name: "CWV Checker",
@@ -170,7 +173,7 @@ const Projects = () => {
                 projectIndex === selectedProjectIndex ?
                 <ProjectDetails className={projectDetailsState} key={projectIndex}
                 onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-                    <MediaCarousel media={project.media}>hello there</MediaCarousel>
+                    <MediaCarousel media={project.media} />
                     <Paragraphs className={projectDetailsState}>
                         {projectParagraphs}
                     </Paragraphs>
