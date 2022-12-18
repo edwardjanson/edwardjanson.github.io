@@ -52,12 +52,6 @@ const Image = styled.img`
     max-height: 7rem;
     border-radius: 50%;
     border: 0.1rem solid #2f344a;
-
-    @media (min-width: 769px) {
-    }
-
-    @media (min-width: 1025px) {
-    }
 `
 
 const Section = styled.div`

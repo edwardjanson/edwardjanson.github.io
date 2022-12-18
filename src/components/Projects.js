@@ -17,7 +17,7 @@ const Projects = () => {
                         To improve usability, I am currently in the process of integrating a solution using the Google Sheets API.`],
             links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]],
             media: [{videos: [
-                        "https://www.youtube.com/embed/watch?v=VetSbRSZAFE"
+                        "https://www.youtube.com/embed/VetSbRSZAFE"
                     ]},
                     {images:[
                         "/media/budgissimo-platforms.png",
@@ -37,7 +37,7 @@ const Projects = () => {
             links: [["GitHub", "https://github.com/edwardjanson/trivimon-duel"],
                     ["Website", "https://edwardjanson.github.io/trivimon-duel/"]],
                     media: [{videos: [
-                        "https://www.youtube.com/embed/watch?v=VetSbRSZAFE"
+                        "https://www.youtube.com/embed/VetSbRSZAFE"
                     ]},
                     {images:[
                         "/media/budgissimo-platforms.png",
