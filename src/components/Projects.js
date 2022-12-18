@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from 'styled-components'
 
+import MediaCarousel from './MediaCarousel';
+
 
 const Projects = () => {
 
@@ -13,7 +15,14 @@ const Projects = () => {
                         With tags, budget and spend can be viewed across multiple platforms in a single table.`,
                         `The app currently requires users to update budgets and spend manually. 
                         To improve usability, I am currently in the process of integrating a solution using the Google Sheets API.`],
-            links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]]
+            links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]],
+            media: [{videos: [
+                        "https://www.youtube.com/embed/watch?v=VetSbRSZAFE"
+                    ]},
+                    {images:[
+                        "/media/budgissimo-platforms.png",
+                        "/media/budgissimo-edit.png"
+                    ]}]
         },
         {
             name: "Trivimon Duel",
@@ -26,7 +35,11 @@ const Projects = () => {
                         On the player's round, an ability damage multiplier is set to x3 if answered correctly or x0.5 if answered incorrectly, and vice versa on the computer's round.`,
                         `➭ Once a Trivimon loses all HP, the winner is decided.`],
             links: [["GitHub", "https://github.com/edwardjanson/trivimon-duel"],
-                    ["Website", "https://edwardjanson.github.io/trivimon-duel/"]]
+                    ["Website", "https://edwardjanson.github.io/trivimon-duel/"]],
+            media: [{videos: [
+            ]},
+            {images:[
+            ]}]
         },
         {
             name: "CWV Checker",
@@ -43,23 +56,29 @@ const Projects = () => {
         `➭ The metrics are displayed in a table at page level with a score of 'good', 'needs improvement' or 'poor'.`],
             links: [["GitHub", "https://github.com/edwardjanson/cs50_final_project"],
                     ["Website", "https://core-web-vitals-checker.herokuapp.com/"],
-                    ["Video", "https://www.youtube.com/watch?v=VetSbRSZAFE"]]
+                    ["Video", "https://www.youtube.com/watch?v=VetSbRSZAFE"]],
+            media: [{videos: [
+            ]},
+            {images:[
+            ]}]
         },
         {
             name: "Metronome",
             description: ["Half-day duo project (with https://github.com/bsmith/) project building a metronome using React."],
             links: [["GitHub", "https://github.com/edwardjanson/metronome"],
-                    ["Website", "https://edwardjanson.github.io/metronome/"]]
+                    ["Website", "https://edwardjanson.github.io/metronome/"]],
+            media: [{videos: [
+            ]},
+            {images:[
+            ]}]
         }
     ]
 
     const [selectedProjectIndex, handleProjectSelection] = useState(0);
     const [projectDetailsState, changeProjectDetailsState] = useState("transitionIn");
     const [initialRender, changeInitialRender] = useState(true);
-    const touchStartX = useRef(null);
-    const touchEndX = useRef(null);
-    const touchStartY = useRef(null);
-    const touchEndY = useRef(null);
+    const touchStart = useRef({x: null, y: null});
+    const touchEnd = useRef({x: null, y: null});
 
     useEffect( () => {
         if (initialRender) {
@@ -93,21 +112,21 @@ const Projects = () => {
     const minSwipeDistance = 50 
 
     const onTouchStart = (e) => {
-        touchEndX.current = null;
-        touchEndY.current = null;
-        touchStartX.current = e.targetTouches[0].clientX;
-        touchStartY.current = e.targetTouches[0].clientY;
+        touchEnd.current.x = null;
+        touchEnd.current.y = null;
+        touchStart.current.x = e.targetTouches[0].clientX;
+        touchStart.current.y = e.targetTouches[0].clientY;
     }
 
     const onTouchMove = (e) => {
-        touchEndX.current = e.targetTouches[0].clientX;
-        touchEndY.current = e.targetTouches[0].clientY;
+        touchEnd.current.x = e.targetTouches[0].clientX;
+        touchEnd.current.y = e.targetTouches[0].clientY;
     }
 
     const onTouchEnd = () => {
-        if (!touchStartX || !touchEndX) return;
-        const distanceX = touchStartX.current - touchEndX.current;
-        const distanceY = touchStartY.current - touchEndY.current;
+        if (!touchStart.current.x || !touchEnd.current.x) return;
+        const distanceX = touchStart.current.x - touchEnd.current.x;
+        const distanceY = touchStart.current.y - touchEnd.current.y;
         const isLeftSwipe = distanceX > minSwipeDistance;
         const isRightSwipe = distanceX < -minSwipeDistance;
         
@@ -151,6 +170,7 @@ const Projects = () => {
                 projectIndex === selectedProjectIndex ?
                 <ProjectDetails className={projectDetailsState} key={projectIndex}
                 onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                    <MediaCarousel media={project.media}>hello there</MediaCarousel>
                     <Paragraphs className={projectDetailsState}>
                         {projectParagraphs}
                     </Paragraphs>
@@ -161,6 +181,7 @@ const Projects = () => {
                 :
                 <ProjectDetails className="hide" key={projectIndex}
                 onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                    <MediaCarousel media={project.media} />
                     <Paragraphs>
                         {projectParagraphs}
                     </Paragraphs>
