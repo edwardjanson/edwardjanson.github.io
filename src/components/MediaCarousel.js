@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import styled from 'styled-components'
+import { Modal } from 'react-responsive-modal';
 
 
 const MediaCarousel = ({media}) => {
@@ -8,6 +9,7 @@ const MediaCarousel = ({media}) => {
     const [activeMedia, changeActiveMedia] = useState(0);
     const [fullScreen, changeViewType] = useState(false);
     const videoCount = useRef(0);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
 
@@ -47,40 +49,46 @@ const MediaCarousel = ({media}) => {
         }
     }
 
-    const fullScreenHandle = useFullScreenHandle();
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
 
     return (
         <Container>
-            <Section className="smallscreen">
-                <MediaNav>
-                    <Button className="side" onClick={decreaseOne}>&#8249;</Button>
-                </MediaNav>
-                <Media>
+            <Section>
+                <SmallNav>
+                    <SmallButton className="side" onClick={decreaseOne}>&#8249;</SmallButton>
+                </SmallNav>
+                <SmallMedia>
                     {mediaItems}
-                </Media>
-                <MediaNav>
-                    <Button className="open" onClick={fullScreenHandle.enter}><sup>&#8689;</sup><sub>&#8690;</sub></Button>
-                    <Button className="side" onClick={increaseOne}>&#8250;</Button>
-                </MediaNav>
+                </SmallMedia>
+                <SmallNav>
+                    <SmallButton className="open" onClick={onOpenModal}><sup>&#8689;</sup><sub>&#8690;</sub></SmallButton>
+                    <SmallButton className="side" onClick={increaseOne}>&#8250;</SmallButton>
+                </SmallNav>
             </Section>
-            <FullScreen handle={fullScreenHandle}>
-                <MediaNav>
-                    <Button className="side" onClick={decreaseOne}>&#8249;</Button>
-                </MediaNav>
-                <Media>
+            <Modal open={open} onClose={onCloseModal} animationIn="fadeIn" animationOut="fadeOut">
+                <ModalNav>
+                    <ModalButton className="left" onClick={decreaseOne}>&#8249;</ModalButton>
+                </ModalNav>
+                <ModalMedia>
                     {mediaItems}
-                </Media>
-                <MediaNav>
-                    <Button className="close" onClick={fullScreenHandle.exit}><sup>&#8690;</sup><sub>&#8689;</sub></Button>
-                    <Button className="side" onClick={increaseOne}>&#8250;</Button>
-                </MediaNav>
-            </FullScreen>
+                </ModalMedia>
+                <ModalNav>
+                    <ModalButton className="close" onClick={onCloseModal}><sup>&#8690;</sup><sub>&#8689;</sub></ModalButton>
+                    <ModalButton className="right" onClick={increaseOne}>&#8250;</ModalButton>
+                </ModalNav>
+            </Modal>
         </Container>
     );
 };
 
 
 const Container = styled.div`
+
+    & .react-responsive-modal-modal {
+        background: blue;
+    }
+
     & .fullscreen {
         display: none;
     }
@@ -162,7 +170,7 @@ const Section = styled.div`
     }
 `
 
-const MediaNav = styled.div`
+const SmallNav = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #191c29;
@@ -172,11 +180,42 @@ const MediaNav = styled.div`
     }
 `
 
-const Media = styled.div`
+const ModalNav = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: #191c29;
+
+    & .button {
+        font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    }
+`
+
+const SmallMedia = styled.div`
     display: flex;
     justify-content: center;
     width: 90%;
     background-color: #191c29;
+`
+
+const ModalMedia = styled.div`
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 75vh;
+    background-color: transparent;
+    position: absolute;
+
+    & img, iframe {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
 `
 
 const Iframe = styled.iframe`
@@ -215,9 +254,35 @@ const Image = styled.img`
     }
 `
 
-const Button = styled.button`
+const SmallButton = styled.button`
     font-family: "Space Mono", Arial, Helvetica, sans-serif;
     z-index: 1;
+
+    &:active {
+        color: #f49f1c;
+    }
+
+    @media (hover:hover) {
+        &:hover {
+            color: #f49f1c !important;
+            cursor: pointer;
+        }
+    }
+`
+
+const ModalButton = styled.button`
+    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    z-index: 1;
+    position: absolute;
+
+    &.left {
+        top: 50%;
+    }
+
+    &.right {
+        top: 50%;
+        left: 90%;
+    }
 
     &:active {
         color: #f49f1c;
