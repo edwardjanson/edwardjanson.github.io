@@ -52,7 +52,7 @@ const MediaCarousel = ({media}) => {
 
     return (
         <Container>
-            <Section>
+            <Section className="media">
                 <SmallNav>
                     <SmallButton className="side" onClick={decreaseOne}>&#8249;</SmallButton>
                 </SmallNav>
