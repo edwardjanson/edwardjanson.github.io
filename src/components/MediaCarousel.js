@@ -1,13 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Modal } from 'react-responsive-modal';
 
 
 const MediaCarousel = ({media}) => {
 
     const [activeMedia, changeActiveMedia] = useState(0);
-    const [fullScreen, changeViewType] = useState(false);
     const videoCount = useRef(0);
     const [open, setOpen] = useState(false);
 
@@ -21,7 +19,7 @@ const MediaCarousel = ({media}) => {
         if (Object.keys(type)[0] === "videos") {
             videoCount.current = type.videos.length;
             const videosFound = type.videos.map((video, videoIndex) => {
-                return <Iframe allow="fullscreen;" className={videoIndex === activeMedia? "show" : "hide"} src={video} key={videoIndex}/>
+                return <Iframe allow="fullscreen;" className={videoIndex === activeMedia? "show" : "hide"} src={video} key={videoIndex + "?rel=0&modestbranding=1"} width="1120" height="630"/>
             })
             mediaFound.push(videosFound)
         }
@@ -82,7 +80,6 @@ const MediaCarousel = ({media}) => {
     );
 };
 
-
 const Container = styled.div`
 
     & .react-responsive-modal-modal {
@@ -127,43 +124,51 @@ const Container = styled.div`
 const Section = styled.div`
     display: flex;
     justify-content: center;
-    width: 75%;
-    height: 8rem;
+    width: 15rem;
+    height: 7.6rem;
     margin: 3rem auto 2rem;
     border: 0;
 
+    @media (min-width: 375px) {
+        width: 18rem;
+        height: 9.5rem;
+    }
+
     @media (min-width: 423px) {
-        height: 10rem;
+        width: 20rem;
+        height: 11rem;
     }
 
     @media (min-width: 521px) {
-        height: 13rem;
-    }
-
-    @media (min-width: 591px) {
+        width: 26rem;
         height: 15rem;
     }
 
+    @media (min-width: 591px) {
+        width: 30rem;
+        height: 18rem;
+    }
+
     @media (min-width: 751px) {
-        height: 20rem;
+        width: 38rem;
+        height: 23rem;
     }
 
     & .side {
         z-index: 1;
-        width: 5%;
         height: 100%;
-        font-size: 2rem;
+        font-size: 3rem;
         background-color: transparent;
         color: white;
         border: 0;
     }
 
     & .open {
-        height: 0;
+        margin-bottom: -110%;
         z-index: 2;
         top: 0%;
         right: 0%;
-        font-size: 1rem;
+        font-size: 1.5rem;
         background-color: transparent;
         color: white;
         border: 0;
@@ -173,7 +178,6 @@ const Section = styled.div`
 const SmallNav = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #191c29;
 
     & .button {
         font-family: "Space Mono", Arial, Helvetica, sans-serif;
@@ -194,7 +198,6 @@ const SmallMedia = styled.div`
     display: flex;
     justify-content: center;
     width: 90%;
-    background-color: #191c29;
 `
 
 const ModalMedia = styled.div`
@@ -219,7 +222,8 @@ const ModalMedia = styled.div`
 `
 
 const Iframe = styled.iframe`
-    width: 10rem;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     border: 0;
 
@@ -227,21 +231,7 @@ const Iframe = styled.iframe`
         display: none;
     }
 
-    @media (min-width: 423px) {
-        width: 15rem;
-    }
-
-    @media (min-width: 521px) {
-        width: 30rem;
-    }
-
-    @media (min-width: 591px) {
-        width: 40rem;
-    }
-
-    @media (min-width: 751px) {
-        width: 100rem;
-    }
+    & .ytp-swatch-background-color { background-color: green !important; }
 `
 
 const Image = styled.img`

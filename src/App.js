@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
       height: 100%;
       margin: auto;
       padding: 0;
-      background: #191c29;
+      background: black;
     }
 
     .react-responsive-modal-overlay,
@@ -49,15 +49,6 @@ const GlobalStyle = createGlobalStyle`
 const Main = styled.div`
   max-width: 45rem;
   margin: 2rem auto 4rem auto;
-
-  & .customOverlay {
-  background: rgba(36, 123, 160, 0.7);
-  }
-  & .customModal {
-  background: #b2dbbf;
-  max-width: 500px;
-  width: 100%;
-}
 `
 
 const Copyright = styled.span`

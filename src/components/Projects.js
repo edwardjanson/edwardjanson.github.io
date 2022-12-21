@@ -244,6 +244,16 @@ const ProjectSection = styled.div`
     }
 `
 
+const fadeIn = keyframes`
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+`
+
+const fadeOut = keyframes`
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+`
+
 const ProjectDetails = styled.div`
     margin-bottom: 3rem;
     max-width: 45rem;
@@ -278,7 +288,8 @@ const ProjectDetails = styled.div`
     }
 
     &.transitionIn {
-        transition: all .4s ease;
+        animation: ${fadeIn} 0.4s;
+        transition: all 0.4s ease;
         background-position: 100% 0%;
     }
 
@@ -286,9 +297,11 @@ const ProjectDetails = styled.div`
         background: linear-gradient(to top, transparent 50%, #2f344a 50%);
         background-position: 0 100%;
         background-size: 100% 200%;
+        opacity: 0;
     }
 
     &.transitionOut {
+        animation: ${fadeOut} 0.4s;
         transition: all 0.4s ease;
         background-position: 0% 100%;
     }
@@ -346,30 +359,8 @@ const Heading = styled.h1`
     }
 `
 
-const fadeIn = keyframes`
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-`
-
-const fadeOut = keyframes`
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-`
-
 const Paragraphs = styled.div`
     padding: 1rem;
-
-    &.transitionIn {
-        animation: ${fadeIn} 1s;
-    }
-
-    &.loadNew {
-        opacity: 0;
-    }
-
-    &.transitionOut {
-        animation: ${fadeOut} 0.4s;
-    }
 `
 
 const Paragraph = styled.p`
@@ -413,18 +404,6 @@ const Links = styled.div`
     display: flex;
     gap: 1.5rem;
     word-spacing: 0.5em;
-
-    &.transitionIn {
-        animation: ${fadeIn} 1s;
-    }
-
-    &.loadNew {
-        opacity: 0;
-    }
-
-    &.transitionOut {
-        animation: ${fadeOut} 0.4s;
-    }
 `
 
 const Link = styled.a`
