@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
     .react-responsive-modal-overlay,
     .react-responsive-modal-container,
     .react-responsive-modal-modal {
+      background-color: black;
       animation-fill-mode: forwards !important;
     }
   }

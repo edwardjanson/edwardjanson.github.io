@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
-import styled, { keyframes } from 'styled-components'
+import { useState, useRef } from 'react';
+import styled from 'styled-components'
 import { Modal } from 'react-responsive-modal';
 
 
@@ -9,9 +9,9 @@ const MediaCarousel = ({media}) => {
     const videoCount = useRef(0);
     const [open, setOpen] = useState(false);
 
-    useEffect(() => {
-
-    }, [activeMedia])
+    const closeIcon = (
+        <ModalButton className="close"><sup>&#8690;</sup><sub>&#8689;</sub></ModalButton>
+      );
 
     const mediaItems = media.map((type) => {
         const mediaFound = []
@@ -64,7 +64,7 @@ const MediaCarousel = ({media}) => {
                     <SmallButton className="side" onClick={increaseOne}>&#8250;</SmallButton>
                 </SmallNav>
             </Section>
-            <Modal open={open} onClose={onCloseModal} animationIn="fadeIn" animationOut="fadeOut">
+            <Modal open={open} onClose={onCloseModal} closeIcon={closeIcon}>
                 <ModalNav>
                     <ModalButton className="left" onClick={decreaseOne}>&#8249;</ModalButton>
                 </ModalNav>
@@ -72,7 +72,6 @@ const MediaCarousel = ({media}) => {
                     {mediaItems}
                 </ModalMedia>
                 <ModalNav>
-                    <ModalButton className="close" onClick={onCloseModal}><sup>&#8690;</sup><sub>&#8689;</sub></ModalButton>
                     <ModalButton className="right" onClick={increaseOne}>&#8250;</ModalButton>
                 </ModalNav>
             </Modal>
@@ -81,44 +80,6 @@ const MediaCarousel = ({media}) => {
 };
 
 const Container = styled.div`
-
-    & .react-responsive-modal-modal {
-        background: blue;
-    }
-
-    & .fullscreen {
-        display: none;
-    }
-
-    & .fullscreen-enabled {
-        display: flex;
-        justify-content: center;
-    }
-
-    & .fullscreen .side {
-        height: 100%;
-        font-size: 2rem;
-        padding: 0.5rem;
-        background-color: transparent;
-        color: white;
-        border: 0;
-
-        @media (min-width: 421px) {
-            padding: 1rem;
-            font-size: 3rem;
-        }
-    }
-
-    & .fullscreen .close {
-        height: 0;
-        z-index: 2;
-        top: 0%;
-        right: 0%;
-        font-size: 1.5rem;
-        background-color: transparent;
-        color: white;
-        border: 0;
-    }
 `
 
 const Section = styled.div`
@@ -264,14 +225,32 @@ const ModalButton = styled.button`
     font-family: "Space Mono", Arial, Helvetica, sans-serif;
     z-index: 1;
     position: absolute;
+    background: transparent;
+    color: white;
+    border: 0;
+    text-shadow: 1px 1px 3px black;
+
+    &.left, &.right {
+        font-size: 3rem;
+
+        @media (min-width: 421px) {
+            font-size: 4rem;
+        }
+    }
 
     &.left {
-        top: 50%;
+        top: 45%;
     }
 
     &.right {
-        top: 50%;
-        left: 90%;
+        top: 45%;
+        right: 0;
+    }
+
+    &.close {
+        top: 0;
+        right: 0;
+        font-size: 1.5rem;
     }
 
     &:active {
