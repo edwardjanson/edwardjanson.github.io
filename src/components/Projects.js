@@ -221,26 +221,26 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100rem;
+    height: 115rem;
 
     @media (min-width: 350px) {
-        height: 90rem;
+        height: 110rem;
     }
 
     @media (min-width: 400px) {
-        height: 80rem;
+        height: 105rem;
     }
 
     @media (min-width: 500px) {
-        height: 70rem;
+        height: 100rem;
     }
 
     @media (min-width: 600px) {
-        height: 60rem;
+        height: 90rem;
     }
 
     @media (min-width: 700px) {
-        height: 50rem;
+        height: 85rem;
     }
 `
 
@@ -261,26 +261,26 @@ const ProjectDetails = styled.div`
     background: linear-gradient(to bottom, #2f344a 50%, transparent 50%);
     background-position: 100% 0%;
     background-size: 100% 200%;
-    height: 95rem;
+    height: 120rem;
 
     @media (min-width: 350px) {
-        height: 85rem;
+        height: 115rem;
     }
 
     @media (min-width: 400px) {
-        height: 75rem;
+        height: 100rem;
     }
 
     @media (min-width: 500px) {
-        height: 65rem;
+        height: 95rem;
     }
 
     @media (min-width: 600px) {
-        height: 55rem;
+        height: 85rem;
     }
 
     @media (min-width: 700px) {
-        height: 45rem;
+        height: 80rem;
     }
 
     &.hide {
@@ -370,6 +370,8 @@ const Heading = styled.h1`
 
 const Paragraphs = styled.div`
     padding: 1rem;
+    width: 90%;
+    margin: auto;
 
     &.transitionIn {
         animation: ${fadeIn} 0.4s;
@@ -423,8 +425,10 @@ const Button = styled.button`
 
 const Links = styled.div`
     display: flex;
-    gap: 1.5rem;
-    word-spacing: 0.5em;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 90%;
+    margin: auto;
 
     &.transitionIn {
         animation: ${fadeIn} 0.4s;
@@ -440,7 +444,6 @@ const Links = styled.div`
 `
 
 const Link = styled.a`
-    padding: 1rem;
     font-size: 1rem;
     color: #f49f1c;
     text-decoration: none;
