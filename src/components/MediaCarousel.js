@@ -86,36 +86,36 @@ const Section = styled.div`
     display: flex;
     justify-content: center;
     width: 15rem;
-    height: 7.6rem;
+    height: 10.25rem;
     margin: 3rem auto 2rem;
-    border: 0;
 
     @media (min-width: 375px) {
-        width: 18rem;
-        height: 9.5rem;
+        width: 19.5rem;
+        height: 13.3rem;
     }
 
     @media (min-width: 423px) {
-        width: 20rem;
-        height: 11rem;
-    }
-
-    @media (min-width: 521px) {
-        width: 26rem;
+        width: 22rem;
         height: 15rem;
     }
 
+    @media (min-width: 521px) {
+        width: 28.5rem;
+        height: 19.4rem;
+    }
+
     @media (min-width: 591px) {
-        width: 30rem;
-        height: 18rem;
+        width: 31rem;
+        height: 21.2rem;
     }
 
     @media (min-width: 751px) {
-        width: 38rem;
-        height: 23rem;
+        width: 36rem;
+        height: 24.6rem;
     }
 
     & .side {
+        text-shadow: 1px 1px 3px black;
         z-index: 1;
         height: 100%;
         font-size: 3rem;
@@ -125,10 +125,11 @@ const Section = styled.div`
     }
 
     & .open {
-        margin-bottom: -110%;
+        text-shadow: 1px 1px 3px black;
+        margin-bottom: -145%;
         z-index: 2;
-        top: 0%;
-        right: 0%;
+        top: 0;
+        right: 0;
         font-size: 1.5rem;
         background-color: transparent;
         color: white;
@@ -158,7 +159,8 @@ const ModalNav = styled.div`
 const SmallMedia = styled.div`
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 100%;
+    margin: 0 -2.1rem;
 `
 
 const ModalMedia = styled.div`
@@ -208,6 +210,7 @@ const Image = styled.img`
 const SmallButton = styled.button`
     font-family: "Space Mono", Arial, Helvetica, sans-serif;
     z-index: 1;
+    padding: 0;
 
     &:active {
         color: #f49f1c;
