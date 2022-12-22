@@ -17,7 +17,6 @@ const Projects = () => {
                         To improve usability, I am currently in the process of integrating a solution using the Google Sheets API.`],
             links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]],
             media: [{videos: [
-                        "https://www.youtube.com/embed/VetSbRSZAFE"
                     ]},
                     {images:[
                         "/media/budgissimo-platforms.png",
@@ -36,12 +35,13 @@ const Projects = () => {
                         `➭ Once a Trivimon loses all HP, the winner is decided.`],
             links: [["GitHub", "https://github.com/edwardjanson/trivimon-duel"],
                     ["Website", "https://edwardjanson.github.io/trivimon-duel/"]],
-                    media: [{videos: [
-                        "https://www.youtube.com/embed/VetSbRSZAFE"
+            media: [{videos: [
                     ]},
                     {images:[
-                        "/media/budgissimo-platforms.png",
-                        "/media/budgissimo-edit.png"
+                        "/media/trivimon-start.png",
+                        "/media/trivimon-trivia.png",
+                        "/media/trivimon-move.png",
+                        "/media/trivimon-end.png"
                     ]}]
         },
         {
@@ -61,8 +61,12 @@ const Projects = () => {
                     ["Website", "https://core-web-vitals-checker.herokuapp.com/"],
                     ["Video", "https://www.youtube.com/watch?v=VetSbRSZAFE"]],
             media: [{videos: [
+                "https://www.youtube.com/embed/VetSbRSZAFE"
             ]},
             {images:[
+                "/media/cwv-home.png",
+                "/media/cwv-report.png",
+                "/media/cwv-about.png"
             ]}]
         },
         {
@@ -73,6 +77,7 @@ const Projects = () => {
             media: [{videos: [
             ]},
             {images:[
+                "/media/metronome.png"
             ]}]
         }
     ]
@@ -221,27 +226,37 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100rem;
+    height: 115rem;
 
     @media (min-width: 350px) {
-        height: 90rem;
+        height: 110rem;
     }
 
     @media (min-width: 400px) {
-        height: 80rem;
+        height: 105rem;
     }
 
     @media (min-width: 500px) {
-        height: 70rem;
+        height: 100rem;
     }
 
     @media (min-width: 600px) {
-        height: 60rem;
+        height: 90rem;
     }
 
     @media (min-width: 700px) {
-        height: 50rem;
+        height: 85rem;
     }
+`
+
+const fadeIn = keyframes`
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+`
+
+const fadeOut = keyframes`
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 `
 
 const ProjectDetails = styled.div`
@@ -251,26 +266,26 @@ const ProjectDetails = styled.div`
     background: linear-gradient(to bottom, #2f344a 50%, transparent 50%);
     background-position: 100% 0%;
     background-size: 100% 200%;
-    height: 95rem;
+    height: 120rem;
 
     @media (min-width: 350px) {
-        height: 85rem;
+        height: 115rem;
     }
 
     @media (min-width: 400px) {
-        height: 75rem;
+        height: 100rem;
     }
 
     @media (min-width: 500px) {
-        height: 65rem;
+        height: 95rem;
     }
 
     @media (min-width: 600px) {
-        height: 55rem;
+        height: 85rem;
     }
 
     @media (min-width: 700px) {
-        height: 45rem;
+        height: 80rem;
     }
 
     &.hide {
@@ -278,7 +293,7 @@ const ProjectDetails = styled.div`
     }
 
     &.transitionIn {
-        transition: all .4s ease;
+        transition: all 0.4s ease;
         background-position: 100% 0%;
     }
 
@@ -291,6 +306,18 @@ const ProjectDetails = styled.div`
     &.transitionOut {
         transition: all 0.4s ease;
         background-position: 0% 100%;
+    }
+
+    &.transitionIn .media {
+        animation: ${fadeIn} 0.4s;
+    }
+
+    &.loadNew .media {
+        opacity: 0;
+    }
+
+    &.transitionOut .media {
+        animation: ${fadeOut} 0.4s;
     }
 `
 
@@ -346,21 +373,13 @@ const Heading = styled.h1`
     }
 `
 
-const fadeIn = keyframes`
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-`
-
-const fadeOut = keyframes`
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-`
-
 const Paragraphs = styled.div`
     padding: 1rem;
+    width: 90%;
+    margin: auto;
 
     &.transitionIn {
-        animation: ${fadeIn} 1s;
+        animation: ${fadeIn} 0.4s;
     }
 
     &.loadNew {
@@ -411,11 +430,13 @@ const Button = styled.button`
 
 const Links = styled.div`
     display: flex;
-    gap: 1.5rem;
-    word-spacing: 0.5em;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 90%;
+    margin: auto;
 
     &.transitionIn {
-        animation: ${fadeIn} 1s;
+        animation: ${fadeIn} 0.4s;
     }
 
     &.loadNew {
@@ -428,7 +449,6 @@ const Links = styled.div`
 `
 
 const Link = styled.a`
-    padding: 1rem;
     font-size: 1rem;
     color: #f49f1c;
     text-decoration: none;
