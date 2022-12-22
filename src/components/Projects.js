@@ -17,7 +17,6 @@ const Projects = () => {
                         To improve usability, I am currently in the process of integrating a solution using the Google Sheets API.`],
             links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]],
             media: [{videos: [
-                        "https://www.youtube.com/embed/VetSbRSZAFE"
                     ]},
                     {images:[
                         "/media/budgissimo-platforms.png",
@@ -36,12 +35,13 @@ const Projects = () => {
                         `➭ Once a Trivimon loses all HP, the winner is decided.`],
             links: [["GitHub", "https://github.com/edwardjanson/trivimon-duel"],
                     ["Website", "https://edwardjanson.github.io/trivimon-duel/"]],
-                    media: [{videos: [
-                        "https://www.youtube.com/embed/VetSbRSZAFE"
+            media: [{videos: [
                     ]},
                     {images:[
-                        "/media/budgissimo-platforms.png",
-                        "/media/budgissimo-edit.png"
+                        "/media/trivimon-start.png",
+                        "/media/trivimon-trivia.png",
+                        "/media/trivimon-move.png",
+                        "/media/trivimon-end.png"
                     ]}]
         },
         {
@@ -61,8 +61,12 @@ const Projects = () => {
                     ["Website", "https://core-web-vitals-checker.herokuapp.com/"],
                     ["Video", "https://www.youtube.com/watch?v=VetSbRSZAFE"]],
             media: [{videos: [
+                "https://www.youtube.com/embed/VetSbRSZAFE"
             ]},
             {images:[
+                "/media/cwv-home.png",
+                "/media/cwv-report.png",
+                "/media/cwv-about.png"
             ]}]
         },
         {
@@ -73,6 +77,7 @@ const Projects = () => {
             media: [{videos: [
             ]},
             {images:[
+                "/media/metronome.png"
             ]}]
         }
     ]

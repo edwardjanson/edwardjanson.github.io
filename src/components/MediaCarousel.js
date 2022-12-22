@@ -35,8 +35,7 @@ const MediaCarousel = ({media}) => {
     })
 
     const increaseOne = () => {
-        console.log(mediaItems[0].length + mediaItems[1].length)
-        if (activeMedia + 1 <= (mediaItems[0].length + mediaItems[1].length)) {
+        if (activeMedia + 1 < (media[0].videos.length + media[1].images.length)) {
             changeActiveMedia(activeMedia + 1)
         }
     }
