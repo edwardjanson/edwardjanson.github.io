@@ -228,24 +228,44 @@ const ProjectSection = styled.div`
     flex-direction: column;
     height: 115rem;
 
-    @media (min-width: 350px) {
+    /* @media (min-width: 350px) {
         height: 110rem;
-    }
+    } */
 
-    @media (min-width: 400px) {
+    /* @media (min-width: 400px) {
         height: 105rem;
-    }
+    } */
 
-    @media (min-width: 500px) {
+    /* @media (min-width: 500px) {
+        height: 100rem;
+    } */
+
+    /* @media (min-width: 600px) {
+        height: 90rem;
+    } */
+
+    /* @media (min-width: 700px) {
+        height: 85rem;
+    } */
+
+    @media (min-width: 375px) {
         height: 100rem;
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 423px) {
+        height: 95rem;
+    }
+
+    @media (min-width: 521px) {
         height: 90rem;
     }
 
-    @media (min-width: 700px) {
-        height: 85rem;
+    @media (min-width: 591px) {
+        height: 87rem;
+    }
+
+    @media (min-width: 751px) {
+        height: 82rem;
     }
 `
 
@@ -268,24 +288,44 @@ const ProjectDetails = styled.div`
     background-size: 100% 200%;
     height: 120rem;
 
-    @media (min-width: 350px) {
+    /* @media (min-width: 350px) {
+        height: 115rem;
+    } */
+
+    /* @media (min-width: 400px) {
+        height: 100rem;
+    } */
+
+    /* @media (min-width: 500px) {
+        height: 95rem;
+    } */
+
+    /* @media (min-width: 600px) {
+        height: 85rem;
+    } */
+
+    /* @media (min-width: 700px) {
+        height: 80rem;
+    } */
+
+    @media (min-width: 375px) {
         height: 115rem;
     }
 
-    @media (min-width: 400px) {
+    @media (min-width: 423px) {
         height: 100rem;
     }
 
-    @media (min-width: 500px) {
+    @media (min-width: 521px) {
         height: 95rem;
     }
 
-    @media (min-width: 600px) {
-        height: 85rem;
+    @media (min-width: 591px) {
+        height: 90rem;
     }
 
-    @media (min-width: 700px) {
-        height: 80rem;
+    @media (min-width: 751px) {
+        height: 85rem;
     }
 
     &.hide {
@@ -353,7 +393,7 @@ const Sidescroll = styled.button`
     }
 `
 
-const Heading = styled.h1`
+const Heading = styled.h2`
     display: flex;
     align-items: center;
     font-family: "Kadwa";

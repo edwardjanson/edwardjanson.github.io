@@ -5,8 +5,8 @@ const Header = () => {
 
     return (
         <Section className="section" id="header">
-            <a href="https://github.com/edwardjanson" target="_blank"><Icon src={process.env.PUBLIC_URL + "/github-icon.png"}></Icon></a>
-            <a href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src={process.env.PUBLIC_URL + "/linkedin-icon.png"}></Icon></a>
+            <a href="https://github.com/edwardjanson" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/github-icon.png"}></Icon></a>
+            <a href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/linkedin-icon.png"}></Icon></a>
         </Section>
     );
 };

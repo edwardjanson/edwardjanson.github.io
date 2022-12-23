@@ -1,10 +1,11 @@
 import React from "react";
+import { createGlobalStyle } from 'styled-components'
+import styled from 'styled-components'
 
 import Header from "./components/Header";
 import About from "./components/About";
+import Skills from "./components/Skills";
 import Projects from "./components/Projects";
-import { createGlobalStyle } from 'styled-components'
-import styled from 'styled-components'
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <GlobalStyle />
       <Header />
       <About />
+      <Skills />
       <Projects />
       <Footer><Copyright>©</Copyright> Edward Janson 2022</Footer>
     </Main>
