@@ -10,7 +10,7 @@ const Skills = () => {
             <Boxes>
                 <Box>
                     <BoxHeading>
-                        <Icon src={process.env.PUBLIC_URL + "/media/code.png"} />
+                        <Icon src={process.env.PUBLIC_URL + "/media/code-icon.png"} />
                         Languages
                     </BoxHeading>
                     <Paragraph>
