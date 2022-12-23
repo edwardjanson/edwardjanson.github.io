@@ -353,7 +353,7 @@ const Sidescroll = styled.button`
     }
 `
 
-const Heading = styled.h1`
+const Heading = styled.h2`
     display: flex;
     align-items: center;
     font-family: "Kadwa";
