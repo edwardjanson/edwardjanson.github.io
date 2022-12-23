@@ -28,7 +28,7 @@ const About = () => {
                 }}
             />
                 </Heading>
-                <Image src={process.env.PUBLIC_URL + "/intro.gif"}/>
+                <Image src={process.env.PUBLIC_URL + "/media/intro.gif"}/>
             </HeadingImage>
             <Paragraph>
             I've recently started a Software Development course at CodeClan, which finishes in February 2023. 
