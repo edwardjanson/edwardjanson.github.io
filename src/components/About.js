@@ -55,7 +55,7 @@ const Image = styled.img`
 `
 
 const Section = styled.div`
-    margin-top: 2rem;
+    margin-top: 5rem;
 `
 
 const Heading = styled.h1`
@@ -91,6 +91,8 @@ const Paragraph = styled.p`
 `
 
 const HeadingImage = styled.div`
+    margin-top: -5rem;
+    padding-top: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
