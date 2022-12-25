@@ -1,7 +1,9 @@
 import React from "react";
+import { useState } from "react";
 import { createGlobalStyle } from 'styled-components'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
+import Intro from "./components/Intro";
 import Header from "./components/Header";
 import About from "./components/About";
 import Skills from "./components/Skills";
@@ -10,21 +12,39 @@ import Projects from "./components/Projects";
 
 const App = () => {
 
+  const [introFinished, updateIntroFinished] = useState(false);
+  const [transitionStart, updateTransitionStart] = useState(false);
+
+  const updateIntro = () => {
+      updateIntroFinished(true);
+      setTimeout(() => {
+        updateTransitionStart(true);
+  }, 1000);
+  }
+
   const handleScroll = (event) => {
-    const element = document.getElementById(event.target.value)
+    const element = document.getElementById(event.target.value);
     if (element) {
-      element.scrollIntoView({behavior: "smooth"})
+      element.scrollIntoView({behavior: "smooth"});
     }
   }
 
   return (
     <Main>
       <GlobalStyle />
-      <Header handleScroll={handleScroll} />
-      <About />
-      <Skills />
-      <Projects />
-      <Footer><Copyright>©</Copyright> Edward Janson 2022</Footer>
+      {!transitionStart ?
+      <IntroAnimation className={introFinished ? "start" : "hold"}>
+        <Intro updateIntro={updateIntro}/>
+      </IntroAnimation>
+      :
+      <Section className={introFinished ? "start" : "display"}>
+        <Header handleScroll={handleScroll} />
+        <About />
+        <Skills />
+        <Projects />
+        <Footer><Copyright>©</Copyright> Edward Janson 2022</Footer>
+      </Section>
+      }
     </Main>
   );
 }
@@ -56,9 +76,47 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {         
+    opacity: 0;
+  }
+`
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {         
+    opacity: 1;
+  }
+`
+
 const Main = styled.div`
   max-width: 45rem;
   margin: 2rem auto 4rem auto;
+`
+
+const IntroAnimation = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  margin-top: 40vh;
+
+  &.start {
+      animation: ${fadeOut} 1s;
+  }
+`
+
+const Section = styled.div`
+  max-width: 45rem;
+  margin: 2rem auto 4rem auto;
+
+  &.start {
+    animation: ${fadeIn} 1s;
+  }
 `
 
 const Copyright = styled.span`

@@ -7,27 +7,7 @@ const About = () => {
     return (
         <Section className="section" id="about">
             <HeadingImage>
-                <Heading>
-                <Typewriter
-                options={{
-                    delay: "natural",
-                    changeDeleteSpeed: 800
-                }}
-                onInit={(typewriter) => {
-                    typewriter
-                    .start()
-                    .pauseFor(200)
-                    .typeString("Hi,")
-                    .pauseFor(200)
-                    .typeString(" I'm Edward")
-                    .pauseFor(200)
-                    .deleteChars(4)
-                    .pauseFor(100)
-                    .typeString(".")
-                    .callFunction(() => document.getElementsByClassName("Typewriter__cursor")[0].innerHTML = "");	
-                }}
-            />
-                </Heading>
+                <Heading>About me</Heading>
                 <Image src={process.env.PUBLIC_URL + "/media/intro.gif"}/>
             </HeadingImage>
             <Paragraph>
