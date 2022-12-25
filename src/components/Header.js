@@ -6,8 +6,8 @@ const Header = ({handleScroll}) => {
     return (
         <Section className="section" id="header">
             <ExternalLinks>
-                <Link href="https://github.com/edwardjanson" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/github-icon.png"}></Icon></Link>
-                <Link href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/linkedin-icon.png"}></Icon></Link>
+                <Link href="https://github.com/edwardjanson" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/github-icon-hover.png"}></Icon></Link>
+                <Link href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/linkedin-icon-hover.png"}></Icon></Link>
             </ExternalLinks>
             <AnchorLinks>
                 <Button onClick={(event) => handleScroll(event)} value="about">About</Button>
@@ -68,13 +68,14 @@ const Icon = styled.img`
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 1.4rem;
-    max-height: 1.4rem;
-    filter: brightness(0) invert(1);
+    width: 1.4rem;
+    height: 1.4rem;
+    object-fit: cover;
+    object-position: left;
 
     @media (hover:hover) {
         &:hover {
-            filter: invert(70%) saturate(70%) sepia(1) hue-rotate(-10deg);
+            object-position: right;
         }
     }
 `
