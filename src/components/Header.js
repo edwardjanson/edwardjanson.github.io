@@ -58,9 +58,15 @@ const Button = styled.button`
     color: white;
     font-size: 0.9rem;
 
-    &:hover {
+    &:active {
         color: #f49f1c;
-        cursor: pointer;
+    }
+
+    @media (hover:hover) {
+        &:hover {
+            color: #f49f1c;
+            cursor: pointer;
+        }
     }
 `
 
@@ -72,6 +78,10 @@ const Icon = styled.img`
     height: 1.4rem;
     object-fit: cover;
     object-position: left;
+
+    &:active {
+        object-position: right;
+    }
 
     @media (hover:hover) {
         &:hover {
