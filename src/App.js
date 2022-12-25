@@ -10,10 +10,17 @@ import Projects from "./components/Projects";
 
 const App = () => {
 
+  const handleScroll = (event) => {
+    const element = document.getElementById(event.target.value)
+    if (element) {
+      element.scrollIntoView({behavior: "smooth"})
+    }
+  }
+
   return (
     <Main>
       <GlobalStyle />
-      <Header />
+      <Header handleScroll={handleScroll} />
       <About />
       <Skills />
       <Projects />

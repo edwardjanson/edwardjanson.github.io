@@ -354,6 +354,8 @@ const Sidescroll = styled.button`
 `
 
 const Heading = styled.h2`
+    margin-top: -3rem;
+    padding-top: 3rem;
     display: flex;
     align-items: center;
     font-family: "Kadwa";
