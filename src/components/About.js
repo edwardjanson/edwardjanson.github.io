@@ -7,28 +7,8 @@ const About = () => {
     return (
         <Section className="section" id="about">
             <HeadingImage>
-                <Heading>
-                <Typewriter
-                options={{
-                    delay: "natural",
-                    changeDeleteSpeed: 800
-                }}
-                onInit={(typewriter) => {
-                    typewriter
-                    .start()
-                    .pauseFor(200)
-                    .typeString("Hi,")
-                    .pauseFor(200)
-                    .typeString(" I'm Edward")
-                    .pauseFor(200)
-                    .deleteChars(4)
-                    .pauseFor(100)
-                    .typeString(".")
-                    .callFunction(() => document.getElementsByClassName("Typewriter__cursor")[0].innerHTML = "");	
-                }}
-            />
-                </Heading>
-                <Image src={process.env.PUBLIC_URL + "/media/intro.gif"}/>
+                <Heading>About me</Heading>
+                <Image src={process.env.PUBLIC_URL + "/media/profile.jpg"}/>
             </HeadingImage>
             <Paragraph>
             I've recently started a Software Development course at CodeClan, which finishes in February 2023. 
@@ -68,10 +48,7 @@ const Heading = styled.h1`
     width: 15rem;
     height: 2rem;
     width: 100%;
-
-    @media (min-width: 410px) {
-        white-space: nowrap;
-    }
+    white-space: nowrap;
 
     &:after {
         content: "";
@@ -80,7 +57,7 @@ const Heading = styled.h1`
         margin-right: 1rem;
         border-bottom: 0.1rem solid #2f344a;
         
-        @media (min-width: 447px) {
+        @media (min-width: 360px) {
             margin: 0 2rem 0 1.5rem;
             width: 100%;
         }
