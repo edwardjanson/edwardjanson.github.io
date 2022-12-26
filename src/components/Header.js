@@ -19,12 +19,14 @@ const Header = ({handleScroll}) => {
 };
 
 const Section = styled.div`
+    z-index: 3;
     position: fixed;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #191c29;
+    opacity: 0.95;
     height: 3rem;
     width: 100%;
     margin-bottom: 4rem;
@@ -32,20 +34,21 @@ const Section = styled.div`
 `
 
 const ExternalLinks = styled.div`
+    opacity: 1;
+    position: absolute;
+    left: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-
-    @media (max-width: 600px) {
-        position: absolute;
-        left: 0;
-    }
+    gap: 1.3rem;
 `
 
 const AnchorLinks = styled.div`
+    opacity: 1;
     position: absolute;
     right: 5%;
+    display: flex;
+    gap: 0.8rem;
 `
 
 const Link = styled.a`
@@ -71,6 +74,7 @@ const Button = styled.button`
 `
 
 const Icon = styled.img`
+    opacity: 1;
     display: flex;
     align-items: center;
     justify-content: center;

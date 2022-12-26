@@ -98,9 +98,9 @@ const fadeIn = keyframes`
     opacity: 0;
     transform: scale(0.7, 0.7);
   }
-  90% {
-    opacity: 0.9;
-    transform: scale(1.05, 1.05);
+  60% {
+    opacity: 1;
+    transform: scale(1.1, 1.1);
   }
   100% {         
     opacity: 1;
@@ -138,22 +138,18 @@ const Section = styled.div`
 
   &.start #skills {
     animation: ${fadeIn} 0.5s;
-    animation-delay: 0.3s;
   }
 
   &.start #projects {
     animation: ${fadeIn} 0.5s;
-    animation-delay: 0.6s;
   }
 
   &.start #projects {
     animation: ${fadeIn} 0.5s;
-    animation-delay: 0.9;
   }
 
   &.start #footer {
     animation: ${fadeIn} 0.5s;
-    animation-delay: 1.2s;
   }
 `
 
