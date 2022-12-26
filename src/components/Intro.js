@@ -7,6 +7,7 @@ const Intro = ({updateIntro}) => {
     return (
         <Section className="section" id="intro">
             <HeadingImage>
+                <Image src={process.env.PUBLIC_URL + "/media/intro.gif"}/>
                 <Heading>
                     <Typewriter
                     options={{
@@ -16,7 +17,7 @@ const Intro = ({updateIntro}) => {
                     onInit={(typewriter) => {
                         typewriter
                         .start()
-                        .pauseFor(1000)
+                        .pauseFor(500)
                         .typeString("Hi,")
                         .pauseFor(200)
                         .typeString(" I'm Edward")
@@ -30,7 +31,6 @@ const Intro = ({updateIntro}) => {
                     }}
                     />
                 </Heading>
-                <Image src={process.env.PUBLIC_URL + "/media/intro.gif"}/>
             </HeadingImage>
         </Section>
     );
@@ -49,6 +49,7 @@ const Section = styled.div`
 
 const Heading = styled.h1`
     display: flex;
+    justify-content: center;
     align-items: center;
     font-family: "Kadwa";
     font-weight: 900;
@@ -67,9 +68,11 @@ const HeadingImage = styled.div`
     margin-top: -5rem;
     padding-top: 5rem;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+    gap: 3rem;
 `
 
 export default Intro;

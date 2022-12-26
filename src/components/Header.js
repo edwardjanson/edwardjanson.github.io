@@ -45,7 +45,7 @@ const ExternalLinks = styled.div`
 
 const AnchorLinks = styled.div`
     position: absolute;
-    right: 0;
+    right: 5%;
 `
 
 const Link = styled.a`

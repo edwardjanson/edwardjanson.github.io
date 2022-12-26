@@ -16,10 +16,12 @@ const App = () => {
   const [transitionStart, updateTransitionStart] = useState(false);
 
   const updateIntro = () => {
+    setTimeout(() => {
       updateIntroFinished(true);
       setTimeout(() => {
         updateTransitionStart(true);
-  }, 1000);
+      }, 300);
+    }, 500);
   }
 
   const handleScroll = (event) => {
@@ -37,12 +39,12 @@ const App = () => {
         <Intro updateIntro={updateIntro}/>
       </IntroAnimation>
       :
-      <Section className={introFinished ? "start" : "display"}>
+      <Section className={transitionStart ? "start" : "display"}>
         <Header handleScroll={handleScroll} />
         <About />
         <Skills />
         <Projects />
-        <Footer><Copyright>©</Copyright> Edward Janson 2022</Footer>
+        <Footer id="footer"><Copyright>©</Copyright> Edward Janson 2022</Footer>
       </Section>
       }
     </Main>
@@ -79,18 +81,30 @@ const GlobalStyle = createGlobalStyle`
 const fadeOut = keyframes`
   0% {
     opacity: 1;
+    transform: scale(1, 1);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1, 1.1);
   }
   100% {         
     opacity: 0;
+    transform: scale(0.5, 0.5);
   }
 `
 
 const fadeIn = keyframes`
   0% {
     opacity: 0;
+    transform: scale(0.7, 0.7);
+  }
+  90% {
+    opacity: 0.9;
+    transform: scale(1.05, 1.05);
   }
   100% {         
     opacity: 1;
+    transform: scale(1, 1);
   }
 `
 
@@ -103,10 +117,10 @@ const IntroAnimation = styled.div`
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  margin-top: 40vh;
+  margin-top: 20vh;
 
   &.start {
-      animation: ${fadeOut} 1s;
+      animation: ${fadeOut} 0.3s;
   }
 `
 
@@ -114,8 +128,32 @@ const Section = styled.div`
   max-width: 45rem;
   margin: 2rem auto 4rem auto;
 
-  &.start {
-    animation: ${fadeIn} 1s;
+  &.start #header {
+    animation: ${fadeIn} 0.5s;
+  }
+
+  &.start #about {
+    animation: ${fadeIn} 0.5s;
+  }
+
+  &.start #skills {
+    animation: ${fadeIn} 0.5s;
+    animation-delay: 0.3s;
+  }
+
+  &.start #projects {
+    animation: ${fadeIn} 0.5s;
+    animation-delay: 0.6s;
+  }
+
+  &.start #projects {
+    animation: ${fadeIn} 0.5s;
+    animation-delay: 0.9;
+  }
+
+  &.start #footer {
+    animation: ${fadeIn} 0.5s;
+    animation-delay: 1.2s;
   }
 `
 

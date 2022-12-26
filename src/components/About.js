@@ -48,10 +48,7 @@ const Heading = styled.h1`
     width: 15rem;
     height: 2rem;
     width: 100%;
-
-    @media (min-width: 410px) {
-        white-space: nowrap;
-    }
+    white-space: nowrap;
 
     &:after {
         content: "";
@@ -60,7 +57,7 @@ const Heading = styled.h1`
         margin-right: 1rem;
         border-bottom: 0.1rem solid #2f344a;
         
-        @media (min-width: 447px) {
+        @media (min-width: 360px) {
             margin: 0 2rem 0 1.5rem;
             width: 100%;
         }
