@@ -12,7 +12,7 @@ const Header = ({handleScroll}) => {
             let y = window.scrollY;
             if (y > lastY) setHeaderState("hide");
             if (y < lastY) setHeaderState("show");
-            lastY = y
+            lastY = y;
         }        
     }, [])
 

@@ -55,8 +55,8 @@ const Section = styled.div`
 `
 
 const Heading = styled.h2`
-    margin-top: -2rem;
-    padding-top: 2rem;
+    margin-top: -2.5rem;
+    padding-top: 2.5rem;
     display: flex;
     align-items: center;
     font-family: "Kadwa";
