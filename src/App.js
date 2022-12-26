@@ -129,27 +129,38 @@ const Section = styled.div`
   margin: 2rem auto 4rem auto;
 
   &.start #header {
+    opacity: 0;
     animation: ${fadeIn} 0.5s;
+    animation-delay: 0.1s;
+    animation-fill-mode: forwards;
   }
 
   &.start #about {
+    opacity: 0;
     animation: ${fadeIn} 0.5s;
+    animation-delay: 0.1s;
+    animation-fill-mode: forwards;
   }
 
   &.start #skills {
+    opacity: 0;
     animation: ${fadeIn} 0.5s;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
   }
 
   &.start #projects {
+    opacity: 0;
     animation: ${fadeIn} 0.5s;
-  }
-
-  &.start #projects {
-    animation: ${fadeIn} 0.5s;
+    animation-delay: 0.7s;
+    animation-fill-mode: forwards;
   }
 
   &.start #footer {
+    opacity: 0;
     animation: ${fadeIn} 0.5s;
+    animation-delay: 0.7s;
+    animation-fill-mode: forwards;
   }
 `
 
