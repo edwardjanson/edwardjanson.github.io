@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components';
 
 import MediaCarousel from './MediaCarousel';
 
 
-const Projects = () => {
+const Projects = ({handleScroll}) => {
 
     const projectsInfo = [
         {
@@ -149,7 +149,7 @@ const Projects = () => {
     const projectNameList = projectsInfo.map((project, index) => {
         return ( 
                 index === selectedProjectIndex ?
-                <Li key={index}><Button key={index}
+                <Li key={index} id="projectNav"><Button key={index}
                             id={index}
                             onClick={() => changeSelectedProject(index)} 
                             active >
@@ -185,6 +185,26 @@ const Projects = () => {
                     <Links className={projectDetailsState}>
                         {projectLinks}
                     </Links>
+                    <Footer className={projectDetailsState}>
+                        {selectedProjectIndex !== 0 ? 
+                        <ViewProjects onClick={(event) => {
+                            handleScroll(event);
+                            changeSelectedProject(selectedProjectIndex - 1);
+                            }
+                        } value="projectNav">&#8249; Previous project</ViewProjects>
+                        :
+                        ""
+                        }
+                        {selectedProjectIndex + 1 !== projectsInfo.length ?
+                        <ViewProjects onClick={(event) => {
+                            handleScroll(event);
+                            changeSelectedProject(selectedProjectIndex + 1);
+                            }
+                        } value="projectNav">Next project &#8250;</ViewProjects>
+                        :
+                        ""
+                        }
+                    </Footer>                
                 </ProjectDetails>
                 :
                 <ProjectDetails className="hide" key={projectIndex}
@@ -196,6 +216,9 @@ const Projects = () => {
                     <Links>
                         {projectLinks}
                     </Links>
+                    <Footer>
+                        <ViewProjects>View all projects &#10548;</ViewProjects>
+                    </Footer>
                 </ProjectDetails>
         );
     });
@@ -362,8 +385,6 @@ const Sidescroll = styled.button`
 `
 
 const Heading = styled.h2`
-    margin-top: -2.5rem;
-    padding-top: 2.5rem;
     display: flex;
     align-items: center;
     font-family: "Kadwa";
@@ -464,10 +485,51 @@ const Link = styled.a`
     text-decoration: none;
     word-spacing: -0.3rem;
 
-
     @media (hover:hover) {
         &:hover {
             font-weight: bold;
+            cursor: pointer;
+        }
+    }
+`
+
+const Footer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+
+    &.transitionIn {
+        animation: ${fadeIn} 0.4s;
+    }
+
+    &.loadNew {
+        opacity: 0;
+    }
+
+    &.transitionOut {
+        animation: ${fadeOut} 0.4s;
+    }
+`
+
+const ViewProjects = styled.button`
+    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    width: 12rem;
+
+    &:active {
+        color: #f49f1c;
+        border: 1px solid #f49f1c;
+    }
+
+    @media (hover:hover) {
+        &:hover {
+            border: 1px solid #f49f1c;
+            color: #f49f1c;
             cursor: pointer;
         }
     }

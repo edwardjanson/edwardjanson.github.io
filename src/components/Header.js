@@ -2,19 +2,21 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 
-const Header = ({handleScroll}) => {
+const Header = ({handleScroll, buttonScroll}) => {
 
     const [headerState, setHeaderState] = useState("show");
 
     useEffect(() => {
-        var lastY = 0;
+        if (window.scrollY === 0) setHeaderState("show");
+        let lastY = 0;
         window.onscroll = () => {
             let y = window.scrollY;
             if (y > lastY) setHeaderState("hide");
             if (y < lastY) setHeaderState("show");
+            if (buttonScroll) setHeaderState("hide");
             lastY = y;
-        }        
-    }, [])
+        }      
+    }, [buttonScroll]);
 
     return (
         <Section className={"section " + headerState} id="header">

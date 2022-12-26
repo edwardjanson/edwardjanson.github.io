@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import Typewriter from 'typewriter-effect';
+import styled from 'styled-components';
 
 
 const Skills = () => {
@@ -55,8 +54,6 @@ const Section = styled.div`
 `
 
 const Heading = styled.h2`
-    margin-top: -2.5rem;
-    padding-top: 2.5rem;
     display: flex;
     align-items: center;
     font-family: "Kadwa";

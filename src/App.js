@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { createGlobalStyle } from 'styled-components'
-import styled, { keyframes } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import Intro from "./components/Intro";
 import Header from "./components/Header";
@@ -14,6 +14,7 @@ const App = () => {
 
   const [introFinished, updateIntroFinished] = useState(false);
   const [transitionStart, updateTransitionStart] = useState(false);
+  const [buttonScroll, updateButtonScroll] = useState(false);
 
   const updateIntro = () => {
     setTimeout(() => {
@@ -27,7 +28,12 @@ const App = () => {
   const handleScroll = (event) => {
     const element = document.getElementById(event.target.value);
     if (element) {
+      updateButtonScroll(true);
       element.scrollIntoView({behavior: "smooth"});
+
+      setTimeout(() => {
+          updateButtonScroll(false);
+      }, 800);
     }
   }
 
@@ -40,10 +46,10 @@ const App = () => {
       </IntroAnimation>
       :
       <Section className={transitionStart ? "start" : "display"}>
-        <Header handleScroll={handleScroll} />
+        <Header handleScroll={handleScroll} buttonScroll={buttonScroll} />
         <About />
         <Skills />
-        <Projects />
+        <Projects handleScroll={handleScroll} updateButtonScroll={updateButtonScroll} />
         <Footer id="footer"><Copyright>©</Copyright> Edward Janson 2022</Footer>
       </Section>
       }
