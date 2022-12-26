@@ -1,10 +1,23 @@
-import styled from 'styled-components'
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 
 const Header = ({handleScroll}) => {
 
+    const [headerState, setHeaderState] = useState("show");
+
+    useEffect(() => {
+        var lastY = 0;
+        window.onscroll = () => {
+            let y = window.scrollY;
+            if (y > lastY) setHeaderState("hide");
+            if (y < lastY) setHeaderState("show");
+            lastY = y
+        }        
+    }, [])
+
     return (
-        <Section className="section" id="header">
+        <Section className={"section " + headerState} id="header">
             <ExternalLinks>
                 <Link href="https://github.com/edwardjanson" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/github-icon-hover.png"}></Icon></Link>
                 <Link href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/linkedin-icon-hover.png"}></Icon></Link>
@@ -25,12 +38,20 @@ const Section = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #191c29;
-    opacity: 0.95;
+    background-color: rgba(25, 28, 41, 0.95);
     height: 3rem;
     width: 100%;
     margin-bottom: 4rem;
     max-width: inherit !important;
+    transition: all 0.3s ease;
+    
+    &.hide {
+        top: -3rem;
+    }
+    
+    &.show {
+        top: 0;
+    }
 `
 
 const ExternalLinks = styled.div`
