@@ -250,13 +250,21 @@ const ProjectSection = styled.div`
 `
 
 const fadeIn = keyframes`
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% { 
+        opacity: 0;
+    }
+    100% { 
+        opacity: 1;
+    }
 `
 
 const fadeOut = keyframes`
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+    0% { 
+        opacity: 1;
+    }
+    100% { 
+        opacity: 0;
+    }
 `
 
 const ProjectDetails = styled.div`

@@ -96,15 +96,11 @@ const fadeOut = keyframes`
 const fadeIn = keyframes`
   0% {
     opacity: 0;
-    transform: scale(0.7, 0.7);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.1, 1.1);
+    transform: translateY(-5rem);
   }
   100% {         
     opacity: 1;
-    transform: scale(1, 1);
+    transform: translateY(0rem);
   }
 `
 
@@ -138,28 +134,28 @@ const Section = styled.div`
   &.start #about {
     opacity: 0;
     animation: ${fadeIn} 0.5s;
-    animation-delay: 0.1s;
+    animation-delay: 0.4s;
     animation-fill-mode: forwards;
   }
 
   &.start #skills {
     opacity: 0;
     animation: ${fadeIn} 0.5s;
-    animation-delay: 0.4s;
+    animation-delay: 0.7s;
     animation-fill-mode: forwards;
   }
 
   &.start #projects {
     opacity: 0;
     animation: ${fadeIn} 0.5s;
-    animation-delay: 0.7s;
+    animation-delay: 1s;
     animation-fill-mode: forwards;
   }
 
   &.start #footer {
     opacity: 0;
     animation: ${fadeIn} 0.5s;
-    animation-delay: 0.7s;
+    animation-delay: 1s;
     animation-fill-mode: forwards;
   }
 `

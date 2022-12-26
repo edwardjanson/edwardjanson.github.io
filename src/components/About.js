@@ -8,7 +8,7 @@ const About = () => {
         <Section className="section" id="about">
             <HeadingImage>
                 <Heading>About me</Heading>
-                <Image src={process.env.PUBLIC_URL + "/media/intro.gif"}/>
+                <Image src={process.env.PUBLIC_URL + "/media/profile.jpg"}/>
             </HeadingImage>
             <Paragraph>
             I've recently started a Software Development course at CodeClan, which finishes in February 2023. 
