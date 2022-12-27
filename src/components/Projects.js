@@ -16,6 +16,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                         `The app currently requires users to update budgets and spend manually. 
                         To improve usability, I am currently in the process of integrating a solution using the Google Sheets API.`],
             links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]],
+            technologies: ["Python", "Flask"],
             media: [{videos: [
                     ]},
                     {images:[
@@ -28,13 +29,14 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
             description: [`This app was developed for a weekend project after week 1 of React at CodeClan. 
                             We were tasked to deliver an app that made use of an API.`,
                         `The gameplay:`,
-                        `➭ Win a duel against the computer. The player and computer start with a randomly selected 'Trivimon' with different health points (HP) and moves.`,
-                        `➭ The starting Trivimon is decided on the pace characteristic.`,
-                        `➭ At the start of each round, the player answers a random multiple choice trivia question. 
+                        `‣ Win a duel against the computer. The player and computer start with a randomly selected 'Trivimon' with different health points (HP) and moves.`,
+                        `‣ The starting Trivimon is decided on the pace characteristic.`,
+                        `‣ At the start of each round, the player answers a random multiple choice trivia question. 
                         On the player's round, an ability damage multiplier is set to x3 if answered correctly or x0.5 if answered incorrectly, and vice versa on the computer's round.`,
-                        `➭ Once a Trivimon loses all HP, the winner is decided.`],
+                        `‣ Once a Trivimon loses all HP, the winner is decided.`],
             links: [["GitHub", "https://github.com/edwardjanson/trivimon-duel"],
                     ["Website", "https://edwardjanson.github.io/trivimon-duel/"]],
+            technologies: ["React"],
             media: [{videos: [
                     ]},
                     {images:[
@@ -53,13 +55,13 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                         `Google provides CWV metrics via the CrUX API and allows to get data at origin (homepage) and page level. 
                         This project uses the CrUX API and is currently deployed on Heroku.`,
                         `The process that this tool follows is as per the below:`,
-        `➭ A user inputs a website to investigate with the option to include and/or exclude specific URLs.`,
-        `➭ Website URLs are collected using internal links.`,
-        `➭ The CrUX API fetches CWV metrics for the collected URLs.`,
-        `➭ The metrics are displayed in a table at page level with a score of 'good', 'needs improvement' or 'poor'.`],
+        `‣ A user inputs a website to investigate with the option to include and/or exclude specific URLs.`,
+        `‣ Website URLs are collected using internal links.`,
+        `‣ The CrUX API fetches CWV metrics for the collected URLs.`,
+        `‣ The metrics are displayed in a table at page level with a score of 'good', 'needs improvement' or 'poor'.`],
             links: [["GitHub", "https://github.com/edwardjanson/cs50_final_project"],
-                    ["Website", "https://core-web-vitals-checker.herokuapp.com/"],
-                    ["Video", "https://www.youtube.com/watch?v=VetSbRSZAFE"]],
+                    ["Website", "https://core-web-vitals-checker.herokuapp.com/"]],
+            technologies: ["Python", "Flask"],
             media: [{videos: [
                 "https://www.youtube.com/embed/VetSbRSZAFE"
             ]},
@@ -72,6 +74,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
         {
             name: "Metronome",
             description: ["Half-day duo project (with https://github.com/bsmith/) project building a metronome using React."],
+            technologies: ["React"],
             links: [["GitHub", "https://github.com/edwardjanson/metronome"],
                     ["Website", "https://edwardjanson.github.io/metronome/"]],
             media: [{videos: [
@@ -160,7 +163,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
     const projectNameList = projectsInfo.map((project, index) => {
         return ( 
                 index === selectedProjectIndex && projectDetailsState === "transitionIn" ?
-                <Li key={index} id="projectNav">
+                <NavLi key={index} id="projectNav">
                     <Button key={index}
                             id={index}
                             onClick={(event) => {
@@ -174,9 +177,9 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                             active >
                             {project.name}
                     </Button>
-                </Li>
+                </NavLi>
                 :
-                <Li key={index}>
+                <NavLi key={index}>
                     <Button key={index} 
                             onClick={(event) => {
                                 handleScroll(event);
@@ -188,18 +191,23 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                             value="projectNav" >
                             {project.name}
                     </Button>
-                </Li>
+                </NavLi>
         );
     });
 
     const projectParagraphs = projectsInfo[selectedProjectIndex].description.map((paragraph, paragraphIndex) => {
             return ( 
-                <Paragraph key={paragraphIndex + 100}>{paragraph}</Paragraph>
+                <Paragraph key={paragraphIndex}>{paragraph}</Paragraph>
         )})
 
     const projectLinks = projectsInfo[selectedProjectIndex].links.map((link, linkIndex) => {
         return ( 
-            <Link key={linkIndex + 200} href={link[1]} target="blank">&#10157; {link[0]}</Link>
+            <InfoLi>&#8227;<Link key={linkIndex} href={link[1]} target="blank">{link[0]}</Link></InfoLi>
+    )})
+
+    const projectTechs = projectsInfo[selectedProjectIndex].technologies.map((tech, techIndex) => {
+        return ( 
+            <InfoLi>&#8227;<Tech key={techIndex}>{tech}</Tech></InfoLi>
     )})
 
     return (
@@ -217,9 +225,9 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                                 } 
                                 value="projectNav">&#8249;
                     </Sidescroll>
-                    <List>
+                    <NavList>
                         {projectNameList}
-                    </List>
+                    </NavList>
                     <Sidescroll className={selectedProjectIndex === projectsInfo.length - 1 ? "disable" : ""}
                                 onClick={(event) => {
                                     handleScroll(event);
@@ -233,28 +241,39 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                 </Navigation>
                 <ProjectDetails scrollDirection={scrollDirection} className={projectDetailsState} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                     <MediaCarousel media={projectsInfo[selectedProjectIndex].media} activeMedia={activeMedia} changeActiveMedia={changeActiveMedia} />
-                    <Paragraphs className={projectDetailsState}>
+                    <Paragraphs>
                         {projectParagraphs}
                     </Paragraphs>
-                    <Links className={projectDetailsState}>
-                        {projectLinks}
-                    </Links>
-                    <Footer className={projectDetailsState}>
+                    <Info>
+                        <InfoBox>
+                            <InfoHeading>Technologies</InfoHeading>
+                            <InfoList>
+                                {projectTechs}
+                            </InfoList>
+                        </InfoBox>
+                        <InfoBox>
+                            <InfoHeading>Links</InfoHeading>
+                            <InfoList>
+                                {projectLinks}
+                            </InfoList>
+                        </InfoBox>
+                    </Info>
+                    <Footer>
                         {selectedProjectIndex !== 0 ? 
-                            <ViewProjects onClick={(event) => {
+                            <FooterNav onClick={(event) => {
                             handleScroll(event);
                             changeSelectedProject(selectedProjectIndex - 1);
                             }
-                        } value="projectNav">&#8249; Previous</ViewProjects>
+                        } value="projectNav">&#8249; Previous</FooterNav>
                         :
                         ""
                         }
                         {selectedProjectIndex + 1 !== projectsInfo.length ?
-                        <ViewProjects onClick={(event) => {
+                        <FooterNav onClick={(event) => {
                             handleScroll(event);
                             changeSelectedProject(selectedProjectIndex + 1);
                             }
-                        } value="projectNav">Next &#8250;</ViewProjects>
+                        } value="projectNav">Next &#8250;</FooterNav>
                         :
                         ""
                         }
@@ -278,23 +297,23 @@ const ProjectSection = styled.div`
     overflow: hidden;
 
     @media (min-width: 375px) {
-        height: 100rem;
+        height: 112rem;
     }
 
     @media (min-width: 423px) {
-        height: 95rem;
+        height: 108rem;
     }
 
     @media (min-width: 521px) {
-        height: 90rem;
+        height: 105rem;
     }
 
     @media (min-width: 591px) {
-        height: 87rem;
+        height: 101rem;
     }
 
     @media (min-width: 751px) {
-        height: 85rem;
+        height: 95rem;
     }
 `
 
@@ -347,27 +366,7 @@ const ProjectDetails = styled.div`
     max-width: 45rem;
     margin-top: -1.15rem;
     background: #2f344a;
-    height: 125rem;
-
-    @media (min-width: 375px) {
-        height: 115rem;
-    }
-
-    @media (min-width: 423px) {
-        height: 100rem;
-    }
-
-    @media (min-width: 521px) {
-        height: 95rem;
-    }
-
-    @media (min-width: 591px) {
-        height: 90rem;
-    }
-
-    @media (min-width: 751px) {
-        height: 90rem;
-    }
+    height: 100%;
 
     &.hide {
         display: none;
@@ -405,6 +404,7 @@ const Sidescroll = styled.button`
     text-align: center;
 
     &.disable {
+        opacity: 0.3;
         color: #b0b0b0;
         pointer-events: none;
     }
@@ -451,7 +451,7 @@ const Paragraphs = styled.div`
 const Paragraph = styled.p`
 `
 
-const List = styled.ul`
+const NavList = styled.ul`
     padding: 0;
     display: flex;
     align-items: center;
@@ -459,7 +459,7 @@ const List = styled.ul`
     overflow: auto;
 `
 
-const Li = styled.li`
+const NavLi = styled.li`
     display: flex;
     list-style: none;
     margin: 0;
@@ -487,12 +487,40 @@ const Button = styled.button`
     }
 `
 
-const Links = styled.div`
+const Info = styled.div`
     display: flex;
-    flex-wrap: wrap;
     gap: 2rem;
     width: 90%;
     margin: auto;
+    color: #c5c5c7;
+`
+
+const InfoBox = styled.div`
+    margin-top: 1.5rem;
+    border-top: 1px solid #c5c5c7;
+    width: 9rem;
+    padding-top: 1rem;
+`
+
+const InfoHeading = styled.span`
+    font-weight: bold;
+`
+
+const InfoList = styled.ul`
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0.5rem 0;
+`
+
+const InfoLi = styled.li`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+`
+
+const Tech = styled.span`
 `
 
 const Link = styled.a`
@@ -512,11 +540,11 @@ const Link = styled.a`
 const Footer = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 3rem;
     gap: 1rem;
 `
 
-const ViewProjects = styled.button`
+const FooterNav = styled.button`
     font-family: "Space Mono", Arial, Helvetica, sans-serif;
     background: transparent;
     border: 1px solid white;

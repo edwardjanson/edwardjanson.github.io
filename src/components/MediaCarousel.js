@@ -209,6 +209,7 @@ const SmallButton = styled.button`
     padding: 0;
 
     &.disable {
+        opacity: 0.3;
         color: #b0b0b0;
         pointer-events: none;
     }
@@ -221,11 +222,6 @@ const SmallButton = styled.button`
         &:hover {
             color: #f49f1c !important;
             cursor: pointer;
-
-            &.disable {
-            color: grey;
-            }
-
         }
     }
 `
@@ -263,6 +259,7 @@ const ModalButton = styled.button`
     }
 
     &.disable {
+        opacity: 0.3;
         color: #b0b0b0;
         pointer-events: none;
     }
