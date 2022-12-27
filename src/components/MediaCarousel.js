@@ -1,11 +1,10 @@
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { Modal } from 'react-responsive-modal';
 
 
-const MediaCarousel = ({media}) => {
+const MediaCarousel = ({media, activeMedia, changeActiveMedia}) => {
 
-    const [activeMedia, changeActiveMedia] = useState(0);
     const videoCount = useRef(0);
     const [open, setOpen] = useState(false);
 
@@ -53,25 +52,25 @@ const MediaCarousel = ({media}) => {
         <Container>
             <Section className="media">
                 <SmallNav>
-                    <SmallButton className="side" onClick={decreaseOne}>&#8249;</SmallButton>
+                    <SmallButton className={activeMedia === 0 ? "side disable" : "side"} onClick={decreaseOne}>&#8249;</SmallButton>
                 </SmallNav>
                 <SmallMedia>
                     {mediaItems}
                 </SmallMedia>
                 <SmallNav>
                     <SmallButton className="open" onClick={onOpenModal}><sup>&#8689;</sup><sub>&#8690;</sub></SmallButton>
-                    <SmallButton className="side" onClick={increaseOne}>&#8250;</SmallButton>
+                    <SmallButton className={activeMedia === media[0].videos.length + media[1].images.length - 1 ? "side disable" : "side"} onClick={increaseOne}>&#8250;</SmallButton>
                 </SmallNav>
             </Section>
             <Modal open={open} onClose={onCloseModal} closeIcon={closeIcon}>
                 <ModalNav>
-                    <ModalButton className="left" onClick={decreaseOne}>&#8249;</ModalButton>
+                    <ModalButton className={activeMedia === 0 ? "left disable" : "left"} onClick={decreaseOne}>&#8249;</ModalButton>
                 </ModalNav>
                 <ModalMedia>
                     {mediaItems}
                 </ModalMedia>
                 <ModalNav>
-                    <ModalButton className="right" onClick={increaseOne}>&#8250;</ModalButton>
+                    <ModalButton className={activeMedia === media[0].videos.length + media[1].images.length - 1 ? "right disable" : "right"} onClick={increaseOne}>&#8250;</ModalButton>
                 </ModalNav>
             </Modal>
         </Container>
@@ -192,8 +191,6 @@ const Iframe = styled.iframe`
     &.hide {
         display: none;
     }
-
-    & .ytp-swatch-background-color { background-color: green !important; }
 `
 
 const Image = styled.img`
@@ -211,6 +208,11 @@ const SmallButton = styled.button`
     z-index: 1;
     padding: 0;
 
+    &.disable {
+        color: #b0b0b0;
+        pointer-events: none;
+    }
+
     &:active {
         color: #f49f1c;
     }
@@ -219,6 +221,11 @@ const SmallButton = styled.button`
         &:hover {
             color: #f49f1c !important;
             cursor: pointer;
+
+            &.disable {
+            color: grey;
+            }
+
         }
     }
 `
@@ -253,6 +260,11 @@ const ModalButton = styled.button`
         top: 0;
         right: 0;
         font-size: 1.5rem;
+    }
+
+    &.disable {
+        color: #b0b0b0;
+        pointer-events: none;
     }
 
     &:active {

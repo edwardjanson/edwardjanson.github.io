@@ -86,6 +86,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
     const [projectDetailsState, changeProjectDetailsState] = useState("transitionIn");
     const [initialRender, changeInitialRender] = useState(true);
     const [scrollDirection, changeScrollDirection] = useState("left");
+    const [activeMedia, changeActiveMedia] = useState(0);
     const touchStart = useRef({x: null, y: null});
     const touchEnd = useRef({x: null, y: null});
 
@@ -121,6 +122,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
             setTimeout(() => {
                 handleProjectSelection(index);
                 changeProjectDetailsState("hide");
+                changeActiveMedia(0);
             }, 400);
         }
     }
@@ -190,22 +192,47 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
         );
     });
 
-    const projectDetails = projectsInfo.map((project, projectIndex) => {
-        const projectParagraphs = project.description.map((paragraph, paragraphIndex) => {
+    const projectParagraphs = projectsInfo[selectedProjectIndex].description.map((paragraph, paragraphIndex) => {
             return ( 
                 <Paragraph key={paragraphIndex + 100}>{paragraph}</Paragraph>
         )})
 
-        const projectLinks = project.links.map((link, linkIndex) => {
-            return ( 
-                <Link key={linkIndex + 200} href={link[1]} target="blank">&#10157; {link[0]}</Link>
-        )})
+    const projectLinks = projectsInfo[selectedProjectIndex].links.map((link, linkIndex) => {
+        return ( 
+            <Link key={linkIndex + 200} href={link[1]} target="blank">&#10157; {link[0]}</Link>
+    )})
 
-        return (
-                projectIndex === selectedProjectIndex ?
-                <ProjectDetails scrollDirection={scrollDirection} className={projectDetailsState} key={projectIndex}
-                onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-                    <MediaCarousel media={project.media} />
+    return (
+        <Section className="section" id="projects">
+            <Heading>Projects</Heading>
+            <ProjectSection>
+                <Navigation>
+                    <Sidescroll className={selectedProjectIndex === 0 ? "disable" : ""}
+                                onClick={(event) => {
+                                    handleScroll(event);
+                                    setTimeout(() => {
+                                        changeSelectedProject(selectedProjectIndex - 1);
+                                        }, 100);
+                                    }
+                                } 
+                                value="projectNav">&#8249;
+                    </Sidescroll>
+                    <List>
+                        {projectNameList}
+                    </List>
+                    <Sidescroll className={selectedProjectIndex === projectsInfo.length - 1 ? "disable" : ""}
+                                onClick={(event) => {
+                                    handleScroll(event);
+                                    setTimeout(() => {
+                                        changeSelectedProject(selectedProjectIndex + 1);
+                                        }, 100);
+                                    }
+                                } 
+                                value="projectNav">&#8250;
+                    </Sidescroll>
+                </Navigation>
+                <ProjectDetails scrollDirection={scrollDirection} className={projectDetailsState} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                    <MediaCarousel media={projectsInfo[selectedProjectIndex].media} activeMedia={activeMedia} changeActiveMedia={changeActiveMedia} />
                     <Paragraphs className={projectDetailsState}>
                         {projectParagraphs}
                     </Paragraphs>
@@ -233,47 +260,6 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                         }
                     </Footer>                
                 </ProjectDetails>
-                :
-                <ProjectDetails className="hide" key={projectIndex}
-                onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-                    <MediaCarousel media={project.media} />
-                    <Paragraphs>
-                        {projectParagraphs}
-                    </Paragraphs>
-                    <Links>
-                        {projectLinks}
-                    </Links>
-                    <Footer>
-                        <ViewProjects>View all projects &#10548;</ViewProjects>
-                    </Footer>
-                </ProjectDetails>
-        );
-    });
-
-    return (
-        <Section className="section" id="projects">
-            <Heading>Projects</Heading>
-            <ProjectSection>
-                <Navigation>
-                    <Sidescroll onClick={(event) => {
-                        handleScroll(event);
-                        setTimeout(() => {
-                            changeSelectedProject(selectedProjectIndex - 1);
-                            }, 100);
-                        }
-                    } value="projectNav">&#8249;</Sidescroll>
-                    <List>
-                        {projectNameList}
-                    </List>
-                    <Sidescroll onClick={(event) => {
-                        handleScroll(event);
-                        setTimeout(() => {
-                            changeSelectedProject(selectedProjectIndex + 1);
-                            }, 100);
-                        }
-                    } value="projectNav">&#8250;</Sidescroll>
-                </Navigation>
-                {projectDetails}
             </ProjectSection>
         </Section>
     );
@@ -417,6 +403,11 @@ const Sidescroll = styled.button`
     font-size: 1.4rem;
     padding: 0.58rem;
     text-align: center;
+
+    &.disable {
+        color: #b0b0b0;
+        pointer-events: none;
+    }
 
     @media (hover:hover) {
         &:hover {
