@@ -85,6 +85,7 @@ const Projects = ({handleScroll}) => {
     const [selectedProjectIndex, handleProjectSelection] = useState(0);
     const [projectDetailsState, changeProjectDetailsState] = useState("transitionIn");
     const [initialRender, changeInitialRender] = useState(true);
+    const [scrollDirection, changeScrollDirection] = useState("left");
     const touchStart = useRef({x: null, y: null});
     const touchEnd = useRef({x: null, y: null});
 
@@ -105,6 +106,7 @@ const Projects = ({handleScroll}) => {
     }, [selectedProjectIndex]);
 
     const changeSelectedProject = (index) => {
+        index < selectedProjectIndex ? changeScrollDirection("right") : changeScrollDirection("left");
         if (index < 0 || index === projectsInfo.length || index === selectedProjectIndex) {
             return;
         } else {
@@ -149,17 +151,35 @@ const Projects = ({handleScroll}) => {
     const projectNameList = projectsInfo.map((project, index) => {
         return ( 
                 index === selectedProjectIndex ?
-                <Li key={index} id="projectNav"><Button key={index}
+                <Li key={index} id="projectNav">
+                    <Button key={index}
                             id={index}
-                            onClick={() => changeSelectedProject(index)} 
+                            onClick={(event) => {
+                                    handleScroll(event);
+                                    setTimeout(() => {
+                                        changeSelectedProject(index);
+                                    }, 500);
+                                }
+                            } 
+                            value="projectNav"
                             active >
                             {project.name}
-                </Button></Li>
+                    </Button>
+                </Li>
                 :
-                <Li key={index}><Button key={index} 
-                onClick={() => changeSelectedProject(index)} >
-                {project.name}
-                </Button></Li>
+                <Li key={index}>
+                    <Button key={index} 
+                            onClick={(event) => {
+                                handleScroll(event);
+                                setTimeout(() => {
+                                        changeSelectedProject(index);
+                                    }, 100);
+                                }
+                            } 
+                            value="projectNav" >
+                            {project.name}
+                    </Button>
+                </Li>
         );
     });
 
@@ -176,7 +196,7 @@ const Projects = ({handleScroll}) => {
 
         return (
                 projectIndex === selectedProjectIndex ?
-                <ProjectDetails className={projectDetailsState} key={projectIndex}
+                <ProjectDetails scrollDirection={scrollDirection} className={projectDetailsState} key={projectIndex}
                 onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                     <MediaCarousel media={project.media} />
                     <Paragraphs className={projectDetailsState}>
@@ -187,7 +207,7 @@ const Projects = ({handleScroll}) => {
                     </Links>
                     <Footer className={projectDetailsState}>
                         {selectedProjectIndex !== 0 ? 
-                        <ViewProjects onClick={(event) => {
+                            <ViewProjects onClick={(event) => {
                             handleScroll(event);
                             changeSelectedProject(selectedProjectIndex - 1);
                             }
@@ -228,11 +248,23 @@ const Projects = ({handleScroll}) => {
             <Heading>Projects</Heading>
             <ProjectSection>
                 <Navigation>
-                    <Sidescroll onClick={() => changeSelectedProject(selectedProjectIndex - 1)}>&#8249;</Sidescroll>
+                    <Sidescroll onClick={(event) => {
+                        handleScroll(event);
+                        setTimeout(() => {
+                            changeSelectedProject(selectedProjectIndex - 1);
+                            }, 100);
+                        }
+                    } value="projectNav">&#8249;</Sidescroll>
                     <List>
                         {projectNameList}
                     </List>
-                    <Sidescroll onClick={() => changeSelectedProject(selectedProjectIndex + 1)}>&#8250;</Sidescroll>
+                    <Sidescroll onClick={(event) => {
+                        handleScroll(event);
+                        setTimeout(() => {
+                            changeSelectedProject(selectedProjectIndex + 1);
+                            }, 100);
+                        }
+                    } value="projectNav">&#8250;</Sidescroll>
                 </Navigation>
                 {projectDetails}
             </ProjectSection>
@@ -249,7 +281,8 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 115rem;
+    height: 120rem;
+    overflow: hidden;
 
     @media (min-width: 375px) {
         height: 100rem;
@@ -268,24 +301,50 @@ const ProjectSection = styled.div`
     }
 
     @media (min-width: 751px) {
-        height: 82rem;
+        height: 85rem;
     }
 `
 
-const fadeIn = keyframes`
+const scrollInLeft = keyframes`
     0% { 
+        transform: translateX(100%);
         opacity: 0;
     }
     100% { 
+        transform: translateX(0rem);
         opacity: 1;
     }
 `
 
-const fadeOut = keyframes`
-    0% { 
+const scrollOutLeft = keyframes`
+    0% {
+        transform: translateX(0rem);
         opacity: 1;
     }
     100% { 
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+`
+
+const scrollInRight = keyframes`
+    0% { 
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% { 
+        transform: translateX(0rem);
+        opacity: 1;
+    }
+`
+
+const scrollOutRight = keyframes`
+    0% {
+        transform: translateX(0rem);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateX(100%);
         opacity: 0;
     }
 `
@@ -294,10 +353,8 @@ const ProjectDetails = styled.div`
     margin-bottom: 3rem;
     max-width: 45rem;
     margin-top: -1.15rem;
-    background: linear-gradient(to bottom, #2f344a 50%, transparent 50%);
-    background-position: 100% 0%;
-    background-size: 100% 200%;
-    height: 120rem;
+    background: #2f344a;
+    height: 125rem;
 
     @media (min-width: 375px) {
         height: 115rem;
@@ -316,7 +373,7 @@ const ProjectDetails = styled.div`
     }
 
     @media (min-width: 751px) {
-        height: 85rem;
+        height: 90rem;
     }
 
     &.hide {
@@ -324,31 +381,15 @@ const ProjectDetails = styled.div`
     }
 
     &.transitionIn {
-        transition: all 0.4s ease;
-        background-position: 100% 0%;
+        animation: ${props => props.scrollDirection === "left" ? scrollInLeft : scrollInRight} 0.4s;
     }
 
     &.loadNew {
-        background: linear-gradient(to top, transparent 50%, #2f344a 50%);
-        background-position: 0 100%;
-        background-size: 100% 200%;
-    }
-
-    &.transitionOut {
-        transition: all 0.4s ease;
-        background-position: 0% 100%;
-    }
-
-    &.transitionIn .media {
-        animation: ${fadeIn} 0.4s;
-    }
-
-    &.loadNew .media {
         opacity: 0;
     }
 
-    &.transitionOut .media {
-        animation: ${fadeOut} 0.4s;
+    &.transitionOut {
+        animation: ${props => props.scrollDirection === "left" ? scrollOutLeft : scrollOutRight} 0.4s;
     }
 `
 
@@ -369,7 +410,6 @@ const Sidescroll = styled.button`
     font-size: 1.4rem;
     padding: 0.58rem;
     text-align: center;
-
 
     @media (hover:hover) {
         &:hover {
@@ -408,18 +448,6 @@ const Paragraphs = styled.div`
     padding: 1rem;
     width: 90%;
     margin: auto;
-
-    &.transitionIn {
-        animation: ${fadeIn} 0.4s;
-    }
-
-    &.loadNew {
-        opacity: 0;
-    }
-
-    &.transitionOut {
-        animation: ${fadeOut} 0.4s;
-    }
 `
 
 const Paragraph = styled.p`
@@ -465,18 +493,6 @@ const Links = styled.div`
     gap: 2rem;
     width: 90%;
     margin: auto;
-
-    &.transitionIn {
-        animation: ${fadeIn} 0.4s;
-    }
-
-    &.loadNew {
-        opacity: 0;
-    }
-
-    &.transitionOut {
-        animation: ${fadeOut} 0.4s;
-    }
 `
 
 const Link = styled.a`
@@ -497,18 +513,10 @@ const Footer = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-    gap: 1rem;
+    gap: 0.5rem;
 
-    &.transitionIn {
-        animation: ${fadeIn} 0.4s;
-    }
-
-    &.loadNew {
-        opacity: 0;
-    }
-
-    &.transitionOut {
-        animation: ${fadeOut} 0.4s;
+    @media (min-width: 450px) {
+        gap: 1rem;
     }
 `
 
@@ -517,9 +525,15 @@ const ViewProjects = styled.button`
     background: transparent;
     border: 1px solid white;
     color: white;
-    font-size: 0.9rem;
-    padding: 0.5rem;
-    width: 12rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+    width: 9.5rem;
+
+    @media (min-width: 450px) {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+        width: 12rem;
+    }
 
     &:active {
         color: #f49f1c;

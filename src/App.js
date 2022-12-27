@@ -33,7 +33,7 @@ const App = () => {
 
       setTimeout(() => {
           updateButtonScroll(false);
-      }, 800);
+      }, 1000);
     }
   }
 
