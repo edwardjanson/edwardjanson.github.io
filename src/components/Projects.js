@@ -16,7 +16,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                         `The app currently requires users to update budgets and spend manually. 
                         To improve usability, I am currently in the process of integrating a solution using the Google Sheets API.`],
             links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]],
-            technologies: ["Python", "Flask"],
+            technologies: ["Python", "Flask", "PostgreSQL"],
             media: [{videos: [
                     ]},
                     {images:[
@@ -195,52 +195,26 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
         );
     });
 
-    const projectParagraphs = projectsInfo[selectedProjectIndex].description.map((paragraph, paragraphIndex) => {
+    const projectDetails = projectsInfo.map((project, projectIndex) => {
+        const projectParagraphs = project.description.map((paragraph, paragraphIndex) => {
             return ( 
                 <Paragraph key={paragraphIndex}>{paragraph}</Paragraph>
         )})
 
-    const projectLinks = projectsInfo[selectedProjectIndex].links.map((link, linkIndex) => {
-        return ( 
-            <InfoLi>&#8227;<Link key={linkIndex} href={link[1]} target="blank">{link[0]}</Link></InfoLi>
-    )})
+        const projectLinks = project.links.map((link, linkIndex) => {
+            return ( 
+                <InfoLi key={linkIndex}>&#8227;<Link href={link[1]} target="blank">{link[0]}</Link></InfoLi>
+        )})
 
-    const projectTechs = projectsInfo[selectedProjectIndex].technologies.map((tech, techIndex) => {
-        return ( 
-            <InfoLi>&#8227;<Tech key={techIndex}>{tech}</Tech></InfoLi>
-    )})
+        const projectTechs = project.technologies.map((tech, techIndex) => {
+            return ( 
+                <InfoLi key={techIndex}>&#8227;<Tech>{tech}</Tech></InfoLi>
+        )})
 
-    return (
-        <Section className="section" id="projects">
-            <Heading>Projects</Heading>
-            <ProjectSection>
-                <Navigation>
-                    <Sidescroll className={selectedProjectIndex === 0 ? "disable" : ""}
-                                onClick={(event) => {
-                                    handleScroll(event);
-                                    setTimeout(() => {
-                                        changeSelectedProject(selectedProjectIndex - 1);
-                                        }, 100);
-                                    }
-                                } 
-                                value="projectNav">&#8249;
-                    </Sidescroll>
-                    <NavList>
-                        {projectNameList}
-                    </NavList>
-                    <Sidescroll className={selectedProjectIndex === projectsInfo.length - 1 ? "disable" : ""}
-                                onClick={(event) => {
-                                    handleScroll(event);
-                                    setTimeout(() => {
-                                        changeSelectedProject(selectedProjectIndex + 1);
-                                        }, 100);
-                                    }
-                                } 
-                                value="projectNav">&#8250;
-                    </Sidescroll>
-                </Navigation>
-                <ProjectDetails scrollDirection={scrollDirection} className={projectDetailsState} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-                    <MediaCarousel media={projectsInfo[selectedProjectIndex].media} activeMedia={activeMedia} changeActiveMedia={changeActiveMedia} />
+        return (
+                projectIndex === selectedProjectIndex ?
+                <ProjectDetails key={projectIndex} scrollDirection={scrollDirection} className={projectDetailsState} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                    <MediaCarousel media={project.media} activeMedia={activeMedia} changeActiveMedia={changeActiveMedia} />
                     <Paragraphs>
                         {projectParagraphs}
                     </Paragraphs>
@@ -279,6 +253,80 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                         }
                     </Footer>                
                 </ProjectDetails>
+                :
+                <ProjectDetails key={projectIndex} className="hide" scrollDirection={scrollDirection} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                    <MediaCarousel media={project.media} activeMedia={activeMedia} changeActiveMedia={changeActiveMedia} />
+                    <Paragraphs>
+                        {projectParagraphs}
+                    </Paragraphs>
+                    <Info>
+                        <InfoBox>
+                            <InfoHeading>Technologies</InfoHeading>
+                            <InfoList>
+                                {projectTechs}
+                            </InfoList>
+                        </InfoBox>
+                        <InfoBox>
+                            <InfoHeading>Links</InfoHeading>
+                            <InfoList>
+                                {projectLinks}
+                            </InfoList>
+                        </InfoBox>
+                    </Info>
+                    <Footer>
+                        {selectedProjectIndex !== 0 ? 
+                            <FooterNav onClick={(event) => {
+                            handleScroll(event);
+                            changeSelectedProject(selectedProjectIndex - 1);
+                            }
+                        } value="projectNav">&#8249; Previous</FooterNav>
+                        :
+                        ""
+                        }
+                        {selectedProjectIndex + 1 !== projectsInfo.length ?
+                        <FooterNav onClick={(event) => {
+                            handleScroll(event);
+                            changeSelectedProject(selectedProjectIndex + 1);
+                            }
+                        } value="projectNav">Next &#8250;</FooterNav>
+                        :
+                        ""
+                        }
+                    </Footer>                
+                </ProjectDetails>
+        );
+    });
+
+    return (
+        <Section className="section" id="projects">
+            <Heading>Projects</Heading>
+            <ProjectSection>
+                <Navigation>
+                    <Sidescroll className={selectedProjectIndex === 0 ? "disable" : ""}
+                                onClick={(event) => {
+                                    handleScroll(event);
+                                    setTimeout(() => {
+                                        changeSelectedProject(selectedProjectIndex - 1);
+                                        }, 100);
+                                    }
+                                } 
+                                value="projectNav">&#8249;
+                    </Sidescroll>
+                    <NavList>
+                        {projectNameList}
+                    </NavList>
+                    <Sidescroll className={selectedProjectIndex === projectsInfo.length - 1 ? "disable" : ""}
+                                onClick={(event) => {
+                                    handleScroll(event);
+                                    setTimeout(() => {
+                                        changeSelectedProject(selectedProjectIndex + 1);
+                                        }, 100);
+                                    }
+                                } 
+                                value="projectNav">&#8250;
+                    </Sidescroll>
+                </Navigation>
+                {projectDetails}
             </ProjectSection>
         </Section>
     );
