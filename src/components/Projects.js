@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import MediaCarousel from './MediaCarousel';
 
 
-const Projects = ({handleScroll}) => {
+const Projects = ({handleScroll, updateButtonScroll}) => {
 
     const projectsInfo = [
         {
@@ -98,10 +98,17 @@ const Projects = ({handleScroll}) => {
                 changeProjectDetailsState("transitionIn");
             }, 100);
 
+            setTimeout(() => {
             const project = document.getElementById(selectedProjectIndex);
             if (project) {
-                project.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
+                updateButtonScroll(true);
+                project.scrollIntoView({ behavior: "smooth", block: "nearest" })
+          
+                setTimeout(() => {
+                    updateButtonScroll(false);
+                }, 1000);
             }
+            }, 150);
         }
     }, [selectedProjectIndex]);
 
@@ -150,7 +157,7 @@ const Projects = ({handleScroll}) => {
 
     const projectNameList = projectsInfo.map((project, index) => {
         return ( 
-                index === selectedProjectIndex ?
+                index === selectedProjectIndex && projectDetailsState === "transitionIn" ?
                 <Li key={index} id="projectNav">
                     <Button key={index}
                             id={index}
@@ -211,7 +218,7 @@ const Projects = ({handleScroll}) => {
                             handleScroll(event);
                             changeSelectedProject(selectedProjectIndex - 1);
                             }
-                        } value="projectNav">&#8249; Previous project</ViewProjects>
+                        } value="projectNav">&#8249; Previous</ViewProjects>
                         :
                         ""
                         }
@@ -220,7 +227,7 @@ const Projects = ({handleScroll}) => {
                             handleScroll(event);
                             changeSelectedProject(selectedProjectIndex + 1);
                             }
-                        } value="projectNav">Next project &#8250;</ViewProjects>
+                        } value="projectNav">Next &#8250;</ViewProjects>
                         :
                         ""
                         }
@@ -513,11 +520,7 @@ const Footer = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-    gap: 0.5rem;
-
-    @media (min-width: 450px) {
-        gap: 1rem;
-    }
+    gap: 1rem;
 `
 
 const ViewProjects = styled.button`
@@ -525,15 +528,9 @@ const ViewProjects = styled.button`
     background: transparent;
     border: 1px solid white;
     color: white;
-    font-size: 0.8rem;
-    padding: 0.5rem 0;
-    width: 9.5rem;
-
-    @media (min-width: 450px) {
-        padding: 0.5rem;
-        font-size: 0.9rem;
-        width: 12rem;
-    }
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    width: 8rem;
 
     &:active {
         color: #f49f1c;
