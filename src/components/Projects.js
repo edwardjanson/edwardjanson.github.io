@@ -488,9 +488,11 @@ const Button = styled.button`
     font-size: 0.8rem;
     white-space: nowrap; 
 
-    &:hover {
-        color: #f49f1c;
-        cursor: pointer;
+    @media (hover:hover) {
+        &:hover {
+            color: #f49f1c;
+            cursor: pointer;
+        }
     }
 `
 
