@@ -131,7 +131,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
     }
 
     // Swipe logic taken from: https://stackoverflow.com/questions/70612769/how-do-i-recognize-swipe-events-in-react
-    const minSwipeDistance = 50 
+    const minSwipeDistance = 150;
 
     const onTouchStart = (e) => {
         touchEnd.current.x = null;

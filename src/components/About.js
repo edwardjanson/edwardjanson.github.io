@@ -11,16 +11,16 @@ const About = () => {
             </HeadingImage>
             <Paragraph>
             I've recently started a Software Development course at CodeClan, which finishes in February 2023. 
-            Before starting the course, I grew my expertise in Digital Marketing at a digital agency (80 DAYS) for seven years. 
-            I thoroughly enjoyed my time there, continuously developing my skills surrounded by a great team. 
+            Before starting the course, I grew my expertise in Digital Marketing at an agency (80 DAYS) for seven years where I worked my way up from junior level as a new graduate to Head of Search & Analytics leading a team of six. 
+            I thoroughly enjoyed my time there, continuously developing my technical skills surrounded by a great team. 
             Over the years I increased my focus on data, usability and SEO and developed a strong interest in UX, which I believe now helps me develop more user-friendly apps.
             </Paragraph>
             <Paragraph>
-            My passion for coding started whilst doing a Python course on Udemy. 
+            My passion for coding started whilst doing a Python course on Udemy early 2022.  
             The ability to develop ideas and find new solutions to problems are some of the aspects of coding that drove me to take a career step change.
             </Paragraph>
             <Paragraph>
-            Listed below are the main projects I've completed up until now. I hope you find them interesting and welcome any feedback/questions.
+            Listed below are the main projects I've completed up until now. I hope you find them interesting and I welcome any feedback or questions.
             </Paragraph>
         </Section>
     );
