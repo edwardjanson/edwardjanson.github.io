@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Header = ({handleScroll, buttonScroll}) => {
 
     const [headerState, setHeaderState] = useState("show");
+    const [burgerOpen, updateBurgerOpen] = useState(false);
 
     useEffect(() => {
         if (window.scrollY === 0) setHeaderState("show");
@@ -20,15 +21,25 @@ const Header = ({handleScroll, buttonScroll}) => {
 
     return (
         <Section className={"section " + headerState} id="header">
-            <ExternalLinks>
-                <Link href="https://github.com/edwardjanson" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/github-icon-hover.png"}></Icon></Link>
-                <Link href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/linkedin-icon-hover.png"}></Icon></Link>
-            </ExternalLinks>
-            <AnchorLinks>
-                <Button onClick={(event) => handleScroll(event)} value="about">About</Button>
-                <Button onClick={(event) => handleScroll(event)} value="skills">Skills</Button>
-                <Button onClick={(event) => handleScroll(event)} value="projects">Projects</Button>
-            </AnchorLinks>
+                <>
+                <Name>EdwardJanson</Name>
+                <Burger className={burgerOpen ? "change" : ""} onClick={() => updateBurgerOpen(!burgerOpen)}>
+                    <BurgerBar/>
+                </Burger>
+                </>
+
+                {/* <>
+                <ExternalLinks>
+                    <Link href="https://github.com/edwardjanson" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/github-icon-hover.png"}></Icon></Link>
+                    <Link href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/linkedin-icon-hover.png"}></Icon></Link>
+                </ExternalLinks>
+                <AnchorLinks>
+                    <Button onClick={(event) => handleScroll(event)} value="about">About</Button>
+                    <Button onClick={(event) => handleScroll(event)} value="skills">Skills</Button>
+                    <Button onClick={(event) => handleScroll(event)} value="projects">Projects</Button>
+                </AnchorLinks>
+                </> */}
+
         </Section>
     );
 };
@@ -54,6 +65,42 @@ const Section = styled.div`
     &.show {
         top: 0;
     }
+`
+
+const Name = styled.span`
+`
+
+// Inspired from: https://codepen.io/Bilal1909/pen/KKdrmRP
+const Burger = styled.div`
+  top: 50%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 30px;
+
+  &:before, :after, div {
+    background: #fff;
+    content: "";
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    transition: 0.5s;
+  }
+
+  &.change:before {
+    transform: translateY(8px) rotate(135deg);
+  }
+
+  &.change:after {
+    transform: translateY(-8px) rotate(-135deg);
+  }
+
+  &.change div {
+    transform: scale(0);
+  }
+`
+
+const BurgerBar = styled.div`
 `
 
 const ExternalLinks = styled.div`
