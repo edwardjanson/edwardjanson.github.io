@@ -67,8 +67,8 @@ const Paragraph = styled.p`
 `
 
 const HeadingImage = styled.div`
-    margin-top: -5rem;
-    padding-top: 5rem;
+    margin-top: -1rem;
+    padding-top: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

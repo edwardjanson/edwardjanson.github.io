@@ -58,6 +58,20 @@ const App = () => {
 }
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    padding: 0.6rem;
+  }
+
+  h1, h2, h3 {
+    margin: 1rem 0;
+  }
+
   body {
     position: relative;
     font-family: "Space Mono", Arial, Helvetica, sans-serif;

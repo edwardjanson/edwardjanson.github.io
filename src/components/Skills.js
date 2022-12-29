@@ -86,14 +86,14 @@ const Boxes = styled.div`
 `
 
 const Box = styled.div`
-    width: 85%;
+    width: 90%;
     padding: 0.5rem 1rem;
     border: 0.1rem solid #2f344a;
-    min-height: 6.5rem;
+    min-height: 8rem;
 
     @media (min-width: 700px) {
-        height: 7rem;
-        width: 39%;
+        height: 9rem;
+        width: 45%;
     }
 `
 

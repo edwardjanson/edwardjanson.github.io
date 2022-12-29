@@ -6,6 +6,7 @@ const Header = ({handleScroll, buttonScroll}) => {
 
     const [headerState, setHeaderState] = useState("show");
     const [burgerOpen, updateBurgerOpen] = useState(false);
+    const [initialLoad, setInitialLoad] = useState(true);
 
     useEffect(() => {
         if (window.scrollY === 0) setHeaderState("show");
@@ -26,13 +27,17 @@ const Header = ({handleScroll, buttonScroll}) => {
     }, [buttonScroll]);
 
     return (
-        <Section className={"section " + headerState + (burgerOpen ? " opened" : " closed")} id="header">
+        <Section className={"section " + headerState} id="header">
             <Name>EdwardJanson</Name>
-            <Burger className={burgerOpen ? "change" : ""} onClick={() => updateBurgerOpen(!burgerOpen)}>
+            <Burger className={burgerOpen ? "change" : ""} onClick={() => {
+                updateBurgerOpen(!burgerOpen);
+                setInitialLoad(false);
+                }
+            }>
                 <BurgerBar/>
             </Burger>
 
-            <BurgerMenu className={burgerOpen ? " opened" : " closed"}>
+            <BurgerMenu className={(burgerOpen ? "opened" : "closed") + (initialLoad ? " initial": "")}>
                 <AnchorLinks>
                     <Button onClick={(event) => handleScroll(event)} value="about">About</Button>
                     <Button onClick={(event) => handleScroll(event)} value="skills">Skills</Button>
@@ -54,19 +59,12 @@ const Section = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(25, 28, 41, 0.95);
-    height: 3rem;
     width: 100%;
-    margin-bottom: 4rem;
     max-width: inherit !important;
     transition: 0.5s;
-
-    &.opened {
-        height: 15rem;
-    }
     
     &.hide {
-        top: -3rem;
+        top: -3.5rem;
     }
     
     &.show {
@@ -75,6 +73,7 @@ const Section = styled.div`
 `
 
 const Name = styled.span`
+    z-index: 4;
     position: absolute;
     top: 0.75rem;
     left: 1rem;
@@ -82,11 +81,13 @@ const Name = styled.span`
 
 // Inspired from: https://codepen.io/Bilal1909/pen/KKdrmRP
 const Burger = styled.div`
+    z-index: 4;
     top: 1.5rem;
     right: 1rem;
     transform: translate(-50%, -50%);
     position: absolute;
     width: 30px;
+    cursor: pointer;
 
     &:before, :after, div {
         background: #fff;
@@ -115,39 +116,51 @@ const BurgerBar = styled.div`
 
 const expandBurger = keyframes`
     0% {
-        transform: translateY(-100%);
+        transform: translateY(-79%);
     }
     100% { 
-        transform: translateY(0rem);
+        transform: translateY(0);
     }
 `
 
 const collapseBurger = keyframes`
     0% { 
-        transform: translateY(0rem);
+        transform: translateY(0);
     }
     100% { 
-        transform: translateY(-200%);
+        transform: translateY(-79%);
     }
 `
 
 const BurgerMenu = styled.div`
     display: none;
     position: absolute;
-    right: 5rem;
-    top: 4rem;
+    padding-right: 5rem;
+    right: 0;
+    top: 0;
     gap: 1.5em;
+    background-color: rgba(25, 28, 41, 0.98);
+    width: 100%;
+    height: 15rem;
+
+    &.initial {
+        animation-duration: 0s !important;
+    }
 
     &.opened {
         animation: ${expandBurger} 0.75s;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        
     }
 
     &.closed {
         animation: ${collapseBurger} 0.75s;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         animation-fill-mode: forwards;
     }
 `
@@ -163,8 +176,8 @@ const AnchorLinks = styled.div`
 const ExternalLinks = styled.div`
     opacity: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    padding-left: 1rem;
     gap: 1.3rem;
 `
 

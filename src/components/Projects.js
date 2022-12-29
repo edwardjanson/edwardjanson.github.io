@@ -412,7 +412,6 @@ const scrollOutRight = keyframes`
 const ProjectDetails = styled.div`
     margin-bottom: 3rem;
     max-width: 45rem;
-    margin-top: -1.15rem;
     background: #2f344a;
     height: 100%;
 
@@ -491,7 +490,7 @@ const Heading = styled.h2`
 `
 
 const Paragraphs = styled.div`
-    padding: 1rem;
+    padding: 0.5rem;
     width: 90%;
     margin: auto;
 `
@@ -539,8 +538,12 @@ const Info = styled.div`
     display: flex;
     gap: 2rem;
     width: 90%;
-    margin: auto;
+    margin-left: 10%;
     color: #c5c5c7;
+
+    @media (min-width: 700px) {
+        margin-left: 7.5%;
+    }
 `
 
 const InfoBox = styled.div`
