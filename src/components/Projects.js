@@ -446,7 +446,7 @@ const Sidescroll = styled.button`
     color: #f5f5f5;
     border: 0;
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.75rem;
     padding: 0.58rem;
     text-align: center;
 
@@ -470,6 +470,8 @@ const Sidescroll = styled.button`
 `
 
 const Heading = styled.h2`
+    margin-top: -1rem;
+    padding-top: 1rem;
     display: flex;
     align-items: center;
     font-weight: 900;

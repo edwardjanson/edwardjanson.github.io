@@ -54,6 +54,8 @@ const Section = styled.div`
 `
 
 const Heading = styled.h2`
+    margin-top: -1rem;
+    padding-top: 1rem;
     display: flex;
     align-items: center;
     font-weight: 900;
