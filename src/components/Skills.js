@@ -56,10 +56,8 @@ const Section = styled.div`
 const Heading = styled.h2`
     display: flex;
     align-items: center;
-    font-family: "Kadwa";
     font-weight: 900;
     font-size: 2rem;
-    color: #f49f1c;
     width: 100%;
     white-space: nowrap;
 
@@ -101,7 +99,7 @@ const BoxHeading = styled.h3`
     display: flex;
     gap: 0.6rem;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
     height: 1rem;
 `
 

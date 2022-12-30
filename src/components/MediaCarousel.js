@@ -140,7 +140,7 @@ const SmallNav = styled.div`
     flex-direction: column;
 
     & .button {
-        font-family: "Space Mono", Arial, Helvetica, sans-serif;
+        font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     }
 `
 
@@ -150,7 +150,7 @@ const ModalNav = styled.div`
     background-color: #191c29;
 
     & .button {
-        font-family: "Space Mono", Arial, Helvetica, sans-serif;
+        font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     }
 `
 
@@ -204,7 +204,7 @@ const Image = styled.img`
 `
 
 const SmallButton = styled.button`
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     z-index: 1;
     padding: 0;
 
@@ -227,7 +227,7 @@ const SmallButton = styled.button`
 `
 
 const ModalButton = styled.button`
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     z-index: 1;
     position: absolute;
     background: transparent;

@@ -37,13 +37,11 @@ const Section = styled.div`
     margin-top: 5rem;
 `
 
-const Heading = styled.h1`
+const Heading = styled.h2`
     display: flex;
     align-items: center;
-    font-family: "Kadwa";
     font-weight: 900;
     font-size: 2rem;
-    color: #f49f1c;
     width: 15rem;
     height: 2rem;
     width: 100%;

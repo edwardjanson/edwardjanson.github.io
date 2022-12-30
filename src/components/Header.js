@@ -9,15 +9,14 @@ const Header = ({handleScroll, buttonScroll}) => {
     const [initialLoad, setInitialLoad] = useState(true);
 
     useEffect(() => {
-        if (window.scrollY === 0) setHeaderState("show");
         let lastY = 0;
         window.onscroll = () => {
             let y = window.scrollY;
-            if (y > lastY) {
+            if (y > lastY && y > 0) {
                 setHeaderState("hide");
                 updateBurgerOpen(false);
             }
-            if (y < lastY) setHeaderState("show");
+            if (y < lastY && y > 0) setHeaderState("show");
             if (buttonScroll) {
                 setHeaderState("hide");
                 updateBurgerOpen(false);
@@ -28,7 +27,7 @@ const Header = ({handleScroll, buttonScroll}) => {
 
     return (
         <Section className={"section " + headerState} id="header">
-            <Name>EdwardJanson</Name>
+            <Name><Curly>&#123;</Curly>Edward Janson<Curly>&#125;</Curly></Name>
             <Burger className={burgerOpen ? "change" : ""} onClick={() => {
                 updateBurgerOpen(!burgerOpen);
                 setInitialLoad(false);
@@ -38,12 +37,12 @@ const Header = ({handleScroll, buttonScroll}) => {
             </Burger>
 
             <BurgerMenu className={(burgerOpen ? "opened" : "closed") + (initialLoad ? " initial": "")}>
-                <AnchorLinks>
+                <AnchorLinks className={burgerOpen ? "opened" : "closed"}>
                     <Button onClick={(event) => handleScroll(event)} value="about">About</Button>
                     <Button onClick={(event) => handleScroll(event)} value="skills">Skills</Button>
                     <Button onClick={(event) => handleScroll(event)} value="projects">Projects</Button>
                 </AnchorLinks>
-                <ExternalLinks>
+                <ExternalLinks className={burgerOpen ? "opened" : "closed"}>
                     <Link href="https://github.com/edwardjanson" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/github-icon-hover.png"}></Icon></Link>
                     <Link href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/linkedin-icon-hover.png"}></Icon></Link>
                 </ExternalLinks>
@@ -72,11 +71,18 @@ const Section = styled.div`
     }
 `
 
-const Name = styled.span`
+const Name = styled.h1`
     z-index: 4;
     position: absolute;
-    top: 0.75rem;
+    top: 0.5rem;
     left: 1rem;
+    font-size: 1.5rem;
+    margin: 0;
+    color: #f5f5f5;
+`
+
+const Curly = styled.span`
+    color: #f49f1c;
 `
 
 // Inspired from: https://codepen.io/Bilal1909/pen/KKdrmRP
@@ -142,6 +148,7 @@ const BurgerMenu = styled.div`
     background-color: rgba(25, 28, 41, 0.98);
     width: 100%;
     height: 15rem;
+    opacity: 1;
 
     &.initial {
         animation-duration: 0s !important;
@@ -153,7 +160,6 @@ const BurgerMenu = styled.div`
         flex-direction: column;
         justify-content: center;
         position: absolute;
-        
     }
 
     &.closed {
@@ -171,14 +177,26 @@ const AnchorLinks = styled.div`
     flex-direction: column;
     align-items: flex-end;
     gap: 0.8rem;
+    opacity: 1;
+
+    &.closed {
+        opacity: 0;
+        transition: opacity 0s 0.75s;
+    }
 `
 
 const ExternalLinks = styled.div`
     opacity: 1;
     display: flex;
     justify-content: flex-end;
-    padding-left: 1rem;
+    padding-right: 0.1rem;
     gap: 1.3rem;
+    opacity: 1;
+
+    &.closed {
+        opacity: 0;
+        transition: opacity 0s 0.75s;
+    }
 `
 
 const Link = styled.a`

@@ -438,7 +438,7 @@ const Navigation = styled.nav`
 `
 
 const Sidescroll = styled.button`
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     background: linear-gradient(to top, #2f344a 50%, transparent 50%);
     background-position: 0% 0%;
     background-size: 100% 200%;
@@ -472,10 +472,8 @@ const Sidescroll = styled.button`
 const Heading = styled.h2`
     display: flex;
     align-items: center;
-    font-family: "Kadwa";
     font-weight: 900;
     font-size: 2rem;
-    color: #f49f1c;
     width: 100%;
     white-space: nowrap;
 
@@ -514,7 +512,7 @@ const NavLi = styled.li`
 `
 
 const Button = styled.button`
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     background: linear-gradient(to top, #2f344a 50%, transparent 50%);
     background-position: ${props => props.active ? "0% 100%" : "0% 0%"};
     background-size: 100% 200%;
@@ -596,7 +594,7 @@ const Footer = styled.div`
 `
 
 const FooterNav = styled.button`
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     background: transparent;
     border: 1px solid white;
     color: white;
