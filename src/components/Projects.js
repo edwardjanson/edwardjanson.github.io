@@ -341,27 +341,27 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 120rem;
+    height: 115rem;
     overflow: hidden;
 
     @media (min-width: 375px) {
-        height: 112rem;
+        height: 110rem;
     }
 
     @media (min-width: 423px) {
-        height: 108rem;
+        height: 103rem;
     }
 
     @media (min-width: 521px) {
-        height: 105rem;
+        height: 100rem;
     }
 
     @media (min-width: 591px) {
-        height: 101rem;
+        height: 92rem;
     }
 
     @media (min-width: 751px) {
-        height: 95rem;
+        height: 92rem;
     }
 `
 
@@ -412,7 +412,6 @@ const scrollOutRight = keyframes`
 const ProjectDetails = styled.div`
     margin-bottom: 3rem;
     max-width: 45rem;
-    margin-top: -1.15rem;
     background: #2f344a;
     height: 100%;
 
@@ -439,7 +438,7 @@ const Navigation = styled.nav`
 `
 
 const Sidescroll = styled.button`
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     background: linear-gradient(to top, #2f344a 50%, transparent 50%);
     background-position: 0% 0%;
     background-size: 100% 200%;
@@ -473,10 +472,8 @@ const Sidescroll = styled.button`
 const Heading = styled.h2`
     display: flex;
     align-items: center;
-    font-family: "Kadwa";
     font-weight: 900;
     font-size: 2rem;
-    color: #f49f1c;
     width: 100%;
     white-space: nowrap;
 
@@ -491,7 +488,7 @@ const Heading = styled.h2`
 `
 
 const Paragraphs = styled.div`
-    padding: 1rem;
+    padding: 0.5rem;
     width: 90%;
     margin: auto;
 `
@@ -515,7 +512,7 @@ const NavLi = styled.li`
 `
 
 const Button = styled.button`
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     background: linear-gradient(to top, #2f344a 50%, transparent 50%);
     background-position: ${props => props.active ? "0% 100%" : "0% 0%"};
     background-size: 100% 200%;
@@ -524,7 +521,7 @@ const Button = styled.button`
     border: 0;
     width: 100%;
     padding: 1rem 1.5rem;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     white-space: nowrap; 
 
     @media (hover:hover) {
@@ -539,8 +536,12 @@ const Info = styled.div`
     display: flex;
     gap: 2rem;
     width: 90%;
-    margin: auto;
+    margin-left: 10%;
     color: #c5c5c7;
+
+    @media (min-width: 700px) {
+        margin-left: 7.5%;
+    }
 `
 
 const InfoBox = styled.div`
@@ -572,7 +573,7 @@ const Tech = styled.span`
 `
 
 const Link = styled.a`
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #f49f1c;
     text-decoration: none;
     word-spacing: -0.3rem;
@@ -593,12 +594,12 @@ const Footer = styled.div`
 `
 
 const FooterNav = styled.button`
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     background: transparent;
     border: 1px solid white;
     color: white;
     padding: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     width: 8rem;
 
     &:active {

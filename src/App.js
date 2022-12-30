@@ -58,11 +58,27 @@ const App = () => {
 }
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    padding: 0.6rem;
+  }
+
+  h1, h2 {
+    font-family: "Khand", Arial, Helvetica, sans-serif;
+    margin: 1rem 0;
+    color: #f49f1c;
+  }
+
   body {
     position: relative;
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     background-color: #191c29;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #f5f5f5;
     margin: 1rem;
     margin-bottom:50px;

@@ -56,10 +56,8 @@ const Section = styled.div`
 const Heading = styled.h2`
     display: flex;
     align-items: center;
-    font-family: "Kadwa";
     font-weight: 900;
     font-size: 2rem;
-    color: #f49f1c;
     width: 100%;
     white-space: nowrap;
 
@@ -86,14 +84,14 @@ const Boxes = styled.div`
 `
 
 const Box = styled.div`
-    width: 85%;
+    width: 90%;
     padding: 0.5rem 1rem;
     border: 0.1rem solid #2f344a;
-    min-height: 6.5rem;
+    min-height: 8rem;
 
     @media (min-width: 700px) {
-        height: 7rem;
-        width: 39%;
+        height: 9rem;
+        width: 45%;
     }
 `
 
@@ -101,8 +99,9 @@ const BoxHeading = styled.h3`
     display: flex;
     gap: 0.6rem;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
     height: 1rem;
+    margin: 1rem 0;
 `
 
 const Paragraph = styled.p`
