@@ -476,6 +476,7 @@ const Heading = styled.h2`
     font-size: 2rem;
     width: 100%;
     white-space: nowrap;
+    margin-bottom: 3rem;
 
     &:after {
         content: "";
