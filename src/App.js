@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0.6rem;
   }
 
-  h1, h2, h3 {
+  h1, h2 {
     font-family: "Khand", Arial, Helvetica, sans-serif;
     margin: 1rem 0;
     color: #f49f1c;

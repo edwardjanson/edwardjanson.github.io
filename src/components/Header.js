@@ -74,7 +74,7 @@ const Section = styled.div`
 const Name = styled.h1`
     z-index: 4;
     position: absolute;
-    top: 0.5rem;
+    top: 0.55rem;
     left: 1rem;
     font-size: 1.5rem;
     margin: 0;
@@ -88,7 +88,7 @@ const Curly = styled.span`
 // Inspired from: https://codepen.io/Bilal1909/pen/KKdrmRP
 const Burger = styled.div`
     z-index: 4;
-    top: 1.5rem;
+    top: 1.55rem;
     right: 1rem;
     transform: translate(-50%, -50%);
     position: absolute;
@@ -147,7 +147,7 @@ const BurgerMenu = styled.div`
     gap: 1.5em;
     background-color: rgba(25, 28, 41, 0.98);
     width: 100%;
-    height: 15rem;
+    height: 15.5rem;
     opacity: 1;
 
     &.initial {
@@ -179,6 +179,7 @@ const AnchorLinks = styled.div`
     gap: 0.8rem;
     opacity: 1;
 
+
     &.closed {
         opacity: 0;
         transition: opacity 0s 0.75s;
@@ -203,11 +204,11 @@ const Link = styled.a`
 `
 
 const Button = styled.button`
-    font-family: "Space Mono", Arial, Helvetica, sans-serif;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     background: transparent;
     border: 0;
     color: white;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 
     &:active {
         color: #f49f1c;

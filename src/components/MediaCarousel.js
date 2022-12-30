@@ -116,18 +116,19 @@ const Section = styled.div`
         text-shadow: 1px 1px 3px black;
         z-index: 1;
         height: 100%;
-        font-size: 3rem;
+        font-size: 5rem;
         background-color: transparent;
         color: white;
         border: 0;
     }
 
     & .open {
+        position: relative;
         text-shadow: 1px 1px 3px black;
         margin-bottom: -145%;
         z-index: 2;
-        top: 0;
-        right: 0;
+        top: 2%;
+        left: -20%;
         font-size: 1.5rem;
         background-color: transparent;
         color: white;
@@ -236,20 +237,21 @@ const ModalButton = styled.button`
     text-shadow: 1px 1px 3px black;
 
     &.left, &.right {
-        font-size: 3rem;
+        font-size: 5rem;
 
         @media (min-width: 421px) {
-            font-size: 4rem;
+            font-size: 6rem;
         }
     }
 
     &.left {
         top: 45%;
+        left: 1%;
     }
 
     &.right {
         top: 45%;
-        right: 0;
+        right: 1%;
     }
 
     &.close {

@@ -341,27 +341,27 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 120rem;
+    height: 115rem;
     overflow: hidden;
 
     @media (min-width: 375px) {
-        height: 112rem;
+        height: 110rem;
     }
 
     @media (min-width: 423px) {
-        height: 108rem;
+        height: 103rem;
     }
 
     @media (min-width: 521px) {
-        height: 105rem;
+        height: 100rem;
     }
 
     @media (min-width: 591px) {
-        height: 101rem;
+        height: 92rem;
     }
 
     @media (min-width: 751px) {
-        height: 95rem;
+        height: 92rem;
     }
 `
 
@@ -521,7 +521,7 @@ const Button = styled.button`
     border: 0;
     width: 100%;
     padding: 1rem 1.5rem;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     white-space: nowrap; 
 
     @media (hover:hover) {
@@ -573,7 +573,7 @@ const Tech = styled.span`
 `
 
 const Link = styled.a`
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #f49f1c;
     text-decoration: none;
     word-spacing: -0.3rem;
@@ -599,7 +599,7 @@ const FooterNav = styled.button`
     border: 1px solid white;
     color: white;
     padding: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     width: 8rem;
 
     &:active {

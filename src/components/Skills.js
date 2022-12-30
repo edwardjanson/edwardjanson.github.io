@@ -101,6 +101,7 @@ const BoxHeading = styled.h3`
     align-items: center;
     font-size: 1.2rem;
     height: 1rem;
+    margin: 1rem 0;
 `
 
 const Paragraph = styled.p`
