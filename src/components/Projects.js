@@ -411,6 +411,7 @@ const scrollOutRight = keyframes`
 
 const ProjectDetails = styled.div`
     margin-bottom: 3rem;
+    margin-top: -0.1rem;
     max-width: 45rem;
     background: #2f344a;
     height: 100%;

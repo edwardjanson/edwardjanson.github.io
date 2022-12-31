@@ -125,10 +125,11 @@ const Section = styled.div`
     & .open {
         position: relative;
         text-shadow: 1px 1px 3px black;
-        margin-bottom: -145%;
+        margin-bottom: -170%;
+        margin-right: -1rem;
         z-index: 2;
         top: 2%;
-        left: -20%;
+        left: -35%;
         font-size: 1.5rem;
         background-color: transparent;
         color: white;

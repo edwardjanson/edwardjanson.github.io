@@ -75,7 +75,7 @@ const Name = styled.h1`
     z-index: 4;
     position: absolute;
     top: 0.55rem;
-    left: 1rem;
+    left: 0;
     font-size: 1.5rem;
     margin: 0;
     color: #f5f5f5;
@@ -115,6 +115,10 @@ const Burger = styled.div`
     &.change div {
         transform: scale(0);
     }
+
+    @media (min-width: 750px) {
+            right: 0rem;
+        }
 `
 
 const BurgerBar = styled.div`
