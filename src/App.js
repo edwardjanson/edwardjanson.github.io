@@ -50,7 +50,7 @@ const App = () => {
         <About />
         <Skills />
         <Projects handleScroll={handleScroll} updateButtonScroll={updateButtonScroll} />
-        <Footer id="footer"><Copyright>©</Copyright> Edward Janson 2022</Footer>
+        <Footer id="footer"><Copyright>©</Copyright> Edward Janson {new Date().getFullYear()}</Footer>
       </Section>
       }
     </Main>
