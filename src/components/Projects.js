@@ -72,6 +72,49 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
             ]}]
         },
         {
+            name: "Shiatsu Website",
+            description: [`This React website was developed for my mum, a Shiatsu practitioner. 
+                        It is mobile-friendly and optimised from a technical SEO standpoint.`,
+                        `Specifications:`,
+                        `‣ Built with React`,
+                        `‣ Mobile-friendly`,
+                        `‣ Optimised for technical SEO: title tag, meta description, canonical tag, hreflang tags`,
+                        `‣ Content available in English and German`,
+                        `‣ Hosted on AWS S3`,
+                        `‣ AWS Route 53 for its DNS service`,
+                        `‣ CloudFront for its CDN service and to serve the website in HTTPS`],
+            links: [["GitHub", "https://github.com/edwardjanson/shiatsu-website"],
+                    ["Website", "https://www.shiatsutegernsee.de/"]],
+            technologies: ["React"],
+            media: [{videos: [
+                    ]},
+                    {images:[
+                        "/media/shiatsu-1.png",
+                        "/media/shiatsu-2.png"
+                    ]}]
+        },
+        {
+            name: "Climate Quiz",
+            description: [`A group project to consolidate our learning following the CodeClan module on JavaScript and React.
+                        We developed a full stack app in the form of an educational quiz on climate change and the different factors which affect it.`,
+                        `Specifications:`,
+                        `‣ A quiz that gives users feedback on their answer as well as information about the quizzed topic`,
+                        `‣ The user can provide a nickname which is then saved within the database`,
+                        `‣ The users receive points for answering correctly, increasing their total score`,
+                        `‣ The score can be viewed in a leaderboard at the end of the game and can be removed by the user, which deletes the nickname and associated score from the database`],
+            links: [["GitHub", "https://github.com/edwardjanson/climate_quiz"],
+                    ["Website", "https://edwardjanson.github.io/climate_quiz/"]],
+            technologies: ["React", "Express", "MongoDB"],
+            media: [{videos: [
+            ]},
+            {images:[
+                "/media/climate-quiz-1.png",
+                "/media/climate-quiz-2.png",
+                "/media/climate-quiz-3.png",
+                "/media/climate-quiz-4.png"
+            ]}]
+        },
+        {
             name: "Metronome",
             description: ["Half-day duo project (with https://github.com/bsmith/) project building a metronome using React."],
             technologies: ["React"],
@@ -341,7 +384,7 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 115rem;
+    height: 105rem;
     overflow: hidden;
 
     @media (min-width: 375px) {
@@ -349,19 +392,15 @@ const ProjectSection = styled.div`
     }
 
     @media (min-width: 423px) {
-        height: 103rem;
+        height: 98rem;
     }
 
     @media (min-width: 521px) {
-        height: 100rem;
+        height: 90rem;
     }
 
     @media (min-width: 591px) {
-        height: 92rem;
-    }
-
-    @media (min-width: 751px) {
-        height: 92rem;
+        height: 89rem;
     }
 `
 
@@ -525,7 +564,7 @@ const Button = styled.button`
     border: 0;
     width: 100%;
     padding: 1rem 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     white-space: nowrap; 
 
     @media (hover:hover) {

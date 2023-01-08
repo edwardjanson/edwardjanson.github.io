@@ -78,10 +78,10 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     font-family: "Rajdhani", Arial, Helvetica, sans-serif;
     background-color: #191c29;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #f5f5f5;
     margin: 1rem;
-    margin-bottom:50px;
+    margin-bottom: 50px;
 
     .react-responsive-modal-modal {
       width: 100%;
