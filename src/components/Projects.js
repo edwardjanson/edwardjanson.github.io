@@ -8,6 +8,31 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
 
     const projectsInfo = [
         {
+            name: "CWV Checker",
+            description: [`My capstone project for Harvard's CS50 Introduction to Computer Science course. 
+                            With Core Web Vitals (CWV) becoming an increasing ranking factor in Google's search engine algorithm, it is important to stay on top of the performance of all pages on a website.`,
+                        `Google's PageSpeed Insights report contains CWV metric stats, but requires individual checks to review multiple pages. 
+                        Search Console provides an overview of CWV issues on a website per page, and this project aims to provide an alternative outwith Search Console.`,
+                        `Google provides CWV metrics via the CrUX API and allows to get data at origin (homepage) and page level. 
+                        This project uses the CrUX API and is currently deployed on Heroku.`,
+                        `The process that this tool follows is as per the below:`,
+                        `‣ A user inputs a website to investigate with the option to include and/or exclude specific URLs.`,
+                        `‣ Website URLs are collected using internal links.`,
+                        `‣ The CrUX API fetches CWV metrics for the collected URLs.`,
+                        `‣ The metrics are displayed in a table at page level with a score of 'good', 'needs improvement' or 'poor'.`],
+                            links: [["GitHub", "https://github.com/edwardjanson/cwv_checker"],
+                    ["Website", "https://core-web-vitals-checker.herokuapp.com/"]],
+            technologies: ["Python", "Flask"],
+            media: [{videos: [
+                "https://www.youtube.com/embed/VetSbRSZAFE"
+            ]},
+            {images:[
+                "/media/cwv-home.png",
+                "/media/cwv-report.png",
+                "/media/cwv-about.png"
+            ]}]
+        },
+        {
             name: "Budgissimo",
             description: [`My first solo capstone project at CodeClan. We were tasked to deliver a Python app with CRUD operations and RESTful routes in seven days. 
                         I decided to build a mobile-first web application that allows users to keep track of their online advertising budgets and spending across multiple platforms and campaigns. 
