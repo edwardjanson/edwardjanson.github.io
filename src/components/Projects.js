@@ -13,8 +13,11 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                         I decided to build a mobile-first web application that allows users to keep track of their online advertising budgets and spending across multiple platforms and campaigns. 
                         Tags can also be added to campaigns that share a common targeting location e.g., UK, a promotion e.g. 'Christmas Offer', and more. 
                         With tags, budget and spend can be viewed across multiple platforms in a single table.`,
-                        `The app currently requires users to update budgets and spend manually. 
-                        To improve usability, I am currently in the process of integrating a solution using the Google Sheets API.`],
+                        `Features:`,
+                        `‣ Create Platforms, Campaigns, Tag Categories and Tags`,
+                        `‣ Set budgets and amount spent at Account, Platform, Campaign and Tag level`,
+                        `‣ View recommended daily spend based on budget and amount spend in current month`,
+                        `‣ Add tags to campaigns to track spend across platforms`],
             links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]],
             technologies: ["Python", "Flask", "PostgreSQL"],
             media: [{videos: [
@@ -47,35 +50,10 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                     ]}]
         },
         {
-            name: "CWV Checker",
-            description: [`My capstone project for Harvard's CS50 Introduction to Computer Science course. 
-                            With Core Web Vitals (CWV) becoming an increasing ranking factor in Google's search engine algorithm, it is important to stay on top of the performance of all pages on a website.`,
-                        `Google's PageSpeed Insights report contains CWV metric stats, but requires individual checks to review multiple pages. 
-                        Search Console provides an overview of CWV issues on a website per page, and this project aims to provide an alternative outwith Search Console.`,
-                        `Google provides CWV metrics via the CrUX API and allows to get data at origin (homepage) and page level. 
-                        This project uses the CrUX API and is currently deployed on Heroku.`,
-                        `The process that this tool follows is as per the below:`,
-        `‣ A user inputs a website to investigate with the option to include and/or exclude specific URLs.`,
-        `‣ Website URLs are collected using internal links.`,
-        `‣ The CrUX API fetches CWV metrics for the collected URLs.`,
-        `‣ The metrics are displayed in a table at page level with a score of 'good', 'needs improvement' or 'poor'.`],
-            links: [["GitHub", "https://github.com/edwardjanson/cs50_final_project"],
-                    ["Website", "https://core-web-vitals-checker.herokuapp.com/"]],
-            technologies: ["Python", "Flask"],
-            media: [{videos: [
-                "https://www.youtube.com/embed/VetSbRSZAFE"
-            ]},
-            {images:[
-                "/media/cwv-home.png",
-                "/media/cwv-report.png",
-                "/media/cwv-about.png"
-            ]}]
-        },
-        {
             name: "Shiatsu Website",
             description: [`This React website was developed for my mum, a Shiatsu practitioner. 
                         It is mobile-friendly and optimised from a technical SEO standpoint.`,
-                        `Specifications:`,
+                        `Features and deployment:`,
                         `‣ Built with React`,
                         `‣ Mobile-friendly`,
                         `‣ Optimised for technical SEO: title tag, meta description, canonical tag, hreflang tags`,
@@ -97,7 +75,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
             name: "Climate Quiz",
             description: [`A group project to consolidate our learning following the CodeClan module on JavaScript and React.
                         We developed a full stack app in the form of an educational quiz on climate change and the different factors which affect it.`,
-                        `Specifications:`,
+                        `Features:`,
                         `‣ A quiz that gives users feedback on their answer as well as information about the quizzed topic`,
                         `‣ The user can provide a nickname which is then saved within the database`,
                         `‣ The users receive points for answering correctly, increasing their total score`,
@@ -386,6 +364,7 @@ const ProjectSection = styled.div`
     flex-direction: column;
     height: 105rem;
     overflow: hidden;
+    padding-bottom: 1rem;
 
     @media (min-width: 375px) {
         height: 110rem;

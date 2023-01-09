@@ -50,7 +50,13 @@ const App = () => {
         <About />
         <Skills />
         <Projects handleScroll={handleScroll} updateButtonScroll={updateButtonScroll} />
-        <Footer id="footer"><Copyright>©</Copyright> Edward Janson {new Date().getFullYear()}</Footer>
+        <Footer id="footer">
+          <Icons>
+            <Link href="https://github.com/edwardjanson" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/github-icon-hover.png"}></Icon></Link>
+            <Link href="https://www.linkedin.com/in/edwardjanson/" target="_blank"><Icon src={process.env.PUBLIC_URL + "/media/linkedin-icon-hover.png"}></Icon></Link>
+          </Icons>
+          <Copyright>© Edward Janson {new Date().getFullYear()}</Copyright>
+        </Footer>
       </Section>
       }
     </Main>
@@ -183,15 +189,45 @@ const Section = styled.div`
 `
 
 const Copyright = styled.span`
-  font-family: sans-serif;
 `
 
 const Footer = styled.span`
   position: absolute;
-  bottom: -2rem;
+  bottom: -2.5rem;
   left: 0;
   right: 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+`
+
+const Icons = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
+const Icon = styled.img`
+    opacity: 1;
+    width: 1.4rem;
+    height: 1.4rem;
+    object-fit: cover;
+    object-position: left;
+
+    &:active {
+        object-position: right;
+    }
+
+    @media (hover:hover) {
+        &:hover {
+            object-position: right;
+        }
+    }
+`
+
+const Link = styled.a`
 `
 
 export default App;
