@@ -41,7 +41,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                         `Features:`,
                         `‣ Create Platforms, Campaigns, Tag Categories and Tags`,
                         `‣ Set budgets and amount spent at Account, Platform, Campaign and Tag level`,
-                        `‣ View recommended daily spend based on budget and amount spend in current month`,
+                        `‣ View recommended daily spend based on budget and amount spend in the current month`,
                         `‣ Add tags to campaigns to track spend across platforms`],
             links: [["GitHub", "https://github.com/edwardjanson/budgissimo"]],
             technologies: ["Python", "Flask", "PostgreSQL"],
@@ -101,7 +101,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
             description: [`A group project to consolidate our learning following the CodeClan module on JavaScript and React.
                         We developed a full stack app in the form of an educational quiz on climate change and the different factors which affect it.`,
                         `Features:`,
-                        `‣ A quiz that gives users feedback on their answer as well as information about the quizzed topic`,
+                        `‣ A quiz that gives users feedback on their answers as well as information about the quizzed topic`,
                         `‣ The user can provide a nickname which is then saved within the database`,
                         `‣ The users receive points for answering correctly, increasing their total score`,
                         `‣ The score can be viewed in a leaderboard at the end of the game and can be removed by the user, which deletes the nickname and associated score from the database`],

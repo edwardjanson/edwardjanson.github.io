@@ -11,19 +11,19 @@ const Intro = ({updateIntro}) => {
                 <Heading>
                     <Typewriter
                     options={{
-                        delay: "natural",
+                        delay: 100,
                         changeDeleteSpeed: 800
                     }}
                     onInit={(typewriter) => {
                         typewriter
                         .start()
-                        .pauseFor(500)
+                        .pauseFor(400)
                         .typeString("Hi,")
-                        .pauseFor(200)
-                        .typeString(" I'm Edward")
-                        .pauseFor(200)
-                        .deleteChars(4)
                         .pauseFor(100)
+                        .typeString(" I'm Edward")
+                        .pauseFor(100)
+                        .deleteChars(4)
+                        .pauseFor(50)
                         .typeString(".")
                         .callFunction(() => {
                             updateIntro();
