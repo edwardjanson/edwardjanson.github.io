@@ -13,7 +13,7 @@ const Skills = () => {
                         Languages
                     </BoxHeading>
                     <Paragraph>
-                        Python, Node.js, Java, SQL
+                        C, Python, JavaScript, Java, SQL
                     </Paragraph>
                 </Box>
                 <Box>
