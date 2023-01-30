@@ -122,7 +122,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
         },
         {
             name: "Metronome",
-            description: ["Half-day duo project (with https://github.com/bsmith/) project building a metronome using React."],
+            description: ["Half-day pair programming project with https://github.com/bsmith/ building a metronome using React."],
             technologies: ["React"],
             links: [["GitHub", "https://github.com/edwardjanson/metronome"],
                     ["Website", "https://edwardjanson.github.io/metronome/"]],
