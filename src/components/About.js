@@ -10,7 +10,7 @@ const About = () => {
                 <Image src={process.env.PUBLIC_URL + "/media/profile.jpg"}/>
             </HeadingImage>
             <Paragraph>
-            I've recently started a Software Development course at CodeClan, which finishes in February 2023. 
+            I recently completed a full-time 16-week Software Development course at CodeClan. 
             Before starting the course, I grew my expertise in Digital Marketing at an agency (80 DAYS) for seven years where I worked my way up from junior level as a new graduate to Head of Search & Analytics leading a team of six. 
             I thoroughly enjoyed my time there, continuously developing my technical skills surrounded by a great team. 
             Over the years I increased my focus on data, usability and SEO and developed a strong interest in UX, which I believe now helps me develop more user-friendly apps.

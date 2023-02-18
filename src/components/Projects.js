@@ -8,6 +8,32 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
 
     const projectsInfo = [
         {
+            name: "Group",
+            description: [`My group capstone project for CodeClan. 
+                        The app we developed for this project allows groups of friends to stay in touch and organise hangouts in an easy and centralised way.`,
+                        `In the space of two weeks, we created brand guidelines to have a clear vision of the brand from the start, mapped class diagrams and user flows and agreed on ways of working.
+                        This included 3-day sprints, daily stand-ups, SCRUM master responsibilities, pair/mob programming, Trello board and GitHub conventions.
+                        We also created detailed wireframes in Figma for the app's 23 screens and views and dedicated two learning days for React Native and TypeScript.`,
+                        `The app allows users to:`,
+                        `‣ Easily view upcoming events and polls that are still open for votes on the homepage`,
+                        `‣ A groups screen with notifications to indicate an open poll`,
+                        `‣ Create a new group and add members from the user's Group contact list`,
+                        `‣ View a group's details including the next upcoming event and open poll`,
+                        `‣ Create a new group and add members from the user's Group contact list`,
+                        `‣ Create a new event, with the option to predefine information. If no information is provided polls a created in the following order of priority Date > Activity > Location`,
+                        `‣ Add options to a poll and vote once per option`,
+                        `‣ Use a calendar to find upcoming events by date (a dot below a date notifies the user that an event exists for that date) or use the list view to view all upcoming events`,
+                        `‣ Update their details, update and remove groups, and remove events and contacts.`
+                    ],
+                            links: [["GitHub", "https://github.com/edwardjanson/group"]],
+            technologies: ["Java", "Spring", "React Native", "TypeScript", "PostgreSQL"],
+            media: [{videos: [
+            ]},
+            {images:[
+                "/media/team.jpg",
+            ]}]
+        },
+        {
             name: "CWV Checker",
             description: [`My capstone project for Harvard's CS50 Introduction to Computer Science course. 
                         With Core Web Vitals (CWV) becoming an increasing ranking factor in Google's search engine algorithm, it is important to stay on top of the performance of all pages on a website.`,
@@ -390,24 +416,28 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 108rem;
+    height: 136rem;
     overflow: hidden;
     padding-bottom: 1rem;
 
     @media (min-width: 375px) {
-        height: 104rem;
+        height: 129rem;
     }
 
     @media (min-width: 423px) {
-        height: 100rem;
+        height: 120rem;
     }
 
     @media (min-width: 521px) {
-        height: 92rem;
+        height: 116rem;
     }
 
     @media (min-width: 591px) {
-        height: 91rem;
+        height: 111rem;
+    }
+
+    @media (min-width: 700px) {
+        height: 103rem;
     }
 `
 

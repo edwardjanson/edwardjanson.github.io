@@ -13,7 +13,7 @@ const Skills = () => {
                         Languages
                     </BoxHeading>
                     <Paragraph>
-                        Java, Python, C, JavaScript, SQL
+                        Java, TypeScript, SQL
                     </Paragraph>
                 </Box>
                 <Box>
@@ -22,7 +22,7 @@ const Skills = () => {
                         Frameworks & Libraries
                     </BoxHeading>
                     <Paragraph>
-                        Flask, React, Express, Spring Boot
+                        Spring Boot, React, React Native, Express
                     </Paragraph>
                 </Box>
                 <Box>
@@ -40,7 +40,7 @@ const Skills = () => {
                         Test Driven Development
                     </BoxHeading>
                     <Paragraph>
-                        UnitTest, Mocha, Junit, Selenium, Cypress 
+                        Mocha, Junit, Selenium, Cypress 
                     </Paragraph>
                 </Box>
             </Boxes>
