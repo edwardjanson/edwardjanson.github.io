@@ -12,7 +12,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
             description: [`My group capstone project for CodeClan. 
                         The app we developed for this project allows groups of friends to stay in touch and organise hangouts in an easy and centralised way.`,
                         `In the space of two weeks, we created brand guidelines to have a clear vision of the brand from the start, mapped class diagrams and user flows and agreed on ways of working.
-                        This included 3-day sprints, daily stand-ups, SCRUM master responsibilities, pair/mob programming, Trello board and GitHub conventions.
+                        This included 3-day sprints, daily stand-ups, taking turns with scrum master responsibilities, pair/mob programming, Trello board and GitHub conventions.
                         We also created detailed wireframes in Figma for the app's 23 screens and views and dedicated two learning days for React Native and TypeScript.`,
                         `The app allows users to:`,
                         `‣ Easily view upcoming events and polls that are still open for votes on the homepage`,
