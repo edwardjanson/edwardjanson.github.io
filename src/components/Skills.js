@@ -22,7 +22,7 @@ const Skills = () => {
                         Frameworks & Libraries
                     </BoxHeading>
                     <Paragraph>
-                        Spring Boot, React, React Native, Express
+                        Spring, React, React Native, Express
                     </Paragraph>
                 </Box>
                 <Box>
