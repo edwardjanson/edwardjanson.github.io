@@ -28,6 +28,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                             links: [["GitHub", "https://github.com/edwardjanson/group"]],
             technologies: ["Java", "Spring", "React Native", "TypeScript", "PostgreSQL"],
             media: [{videos: [
+                "https://www.youtube.com/embed/BYUk4XB6sXw"
             ]},
             {images:[
                 "/media/team.jpg",
