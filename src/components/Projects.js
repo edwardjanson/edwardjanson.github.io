@@ -10,7 +10,9 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
         {
             name: "Group",
             description: [`My group capstone project for CodeClan. 
-                        The app we developed for this project allows groups of friends to stay in touch and organise hangouts in an easy and centralised way.`,
+                        We developed this app to make planning an event with your friends easier and more convenient. 
+                        We found that often it can be difficult to organise and plan an event using traditional messenger applications. 
+                        Our app allows for a centralised planning platform, where users can see their upcoming events and arrange an event with ease.`,
                         `In the space of two weeks, we created brand guidelines to have a clear vision of the brand from the start, mapped class diagrams and user flows and agreed on ways of working.
                         This included 3-day sprints, daily stand-ups, taking turns with scrum master responsibilities, pair/mob programming, Trello board and GitHub conventions.
                         We also created detailed wireframes in Figma for the app's 23 screens and views and dedicated two learning days for React Native and TypeScript.`,
@@ -25,7 +27,7 @@ const Projects = ({handleScroll, updateButtonScroll}) => {
                         `‣ Use a calendar to find upcoming events by date (a dot below a date notifies the user that an event exists for that date) or use the list view to view all upcoming events`,
                         `‣ Update their details, update and remove groups, and remove events and contacts.`
                     ],
-                            links: [["GitHub", "https://github.com/edwardjanson/group"]],
+                            links: [["GitHub", "https://github.com/edwardjanson/group_app"]],
             technologies: ["Java", "Spring", "React Native", "TypeScript", "PostgreSQL"],
             media: [{videos: [
                 "https://www.youtube.com/embed/BYUk4XB6sXw"
@@ -417,28 +419,28 @@ const Section = styled.div`
 const ProjectSection = styled.div`
     display: flex;
     flex-direction: column;
-    height: 136rem;
+    height: 145rem;
     overflow: hidden;
     padding-bottom: 1rem;
 
     @media (min-width: 375px) {
-        height: 129rem;
+        height: 136rem;
     }
 
     @media (min-width: 423px) {
-        height: 120rem;
+        height: 125rem;
     }
 
     @media (min-width: 521px) {
-        height: 116rem;
+        height: 121rem;
     }
 
     @media (min-width: 591px) {
-        height: 111rem;
+        height: 116rem;
     }
 
     @media (min-width: 700px) {
-        height: 103rem;
+        height: 108rem;
     }
 `
 
